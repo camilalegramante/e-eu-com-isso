@@ -118,4 +118,12 @@ export const TEMAS_COM_CONTEUDO: string[] = [
   "moradia",
   "previdencia",
   "direitos-mulheres",
+  "direitos-trabalhistas",
+  "meio-ambiente",
+  "agricultura",
+  "transporte",
+  "empreendedorismo",
+  "tecnologia",
+  "cultura",
+  "diversidade",
 ];

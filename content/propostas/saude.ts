@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Saúde pública. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Saúde pública. Linguagem simples.
 export const saude: Proposta[] = [
   {
     id: "saude-flavio-prontuario-digital-prevencao",
@@ -53,8 +53,6 @@ Também quer ampliar o atendimento perto de casa (Saúde da Família), ampliar e
         pagina: 21,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "saude-lula-sus-agora-tem-especialistas",
@@ -109,7 +107,5 @@ Promete manter a Farmácia Popular, que já existe, com remédios de graça, e p
         pagina: 38,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

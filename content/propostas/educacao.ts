@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Educação e universidades. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Educação e universidades. Linguagem simples.
 export const educacao: Proposta[] = [
   {
     id: "educacao-flavio-alfabetizacao-voucher-tecnico",
@@ -55,8 +55,6 @@ Quer mais ensino técnico no ensino médio, junto com empresas. Na faculdade, o 
         pagina: 37,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "educacao-lula-pe-de-meia-creches-ifs",
@@ -117,7 +115,5 @@ Também quer mais institutos federais (escolas públicas de ensino técnico), ma
         pagina: 33,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

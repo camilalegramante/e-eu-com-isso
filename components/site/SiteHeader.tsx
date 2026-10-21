@@ -23,9 +23,6 @@ export function SiteHeader({
           className="flex min-w-0 items-center gap-2 font-display text-base font-semibold leading-tight text-paper sm:text-lg"
           aria-label={`${SITE.nome} — página inicial`}
         >
-          {/* O mesmo desenho do favicon (app/icon.png); decorativo. Some
-              abaixo de 360px; quando falta espaço, o nome quebra em duas
-              linhas em vez de empurrar os botões. */}
           <Image
             src={icone}
             alt=""
@@ -37,9 +34,6 @@ export function SiteHeader({
           <span>E eu com isso?</span>
         </Link>
         <nav className="flex items-center gap-3 text-sm sm:gap-5">
-          {/* No celular fica em branco cheio (não apagado). Sem o "Começar"
-              ao lado (home), vira botão contornado; com ele, não cabem dois
-              botões em 360px, então fica como link. */}
           <Link
             href="/sobre"
             className={`inline-flex min-h-11 items-center whitespace-nowrap font-medium text-paper transition-opacity hover:text-paper active:opacity-60 sm:border-0 sm:px-0 sm:font-normal sm:text-paper/80 ${

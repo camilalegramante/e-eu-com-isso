@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Previdência e aposentadoria. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Previdência e aposentadoria. Linguagem simples.
 export const previdencia: Proposta[] = [
   {
     id: "previdencia-flavio-inss-sem-fila-fraudes",
@@ -41,8 +41,6 @@ Também quer mudar as regras do empréstimo consignado (aquele descontado direto
         pagina: 73,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "previdencia-lula-fortalecimento-previdencia",
@@ -85,7 +83,5 @@ Quer formas mais flexíveis de contribuir para quem muda muito de trabalho, incl
         pagina: 19,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

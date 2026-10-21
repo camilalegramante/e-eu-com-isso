@@ -7,7 +7,7 @@ import { CONGRESSO, somaPorCampo } from "./congresso";
 // O critério "parlamentar" usa SEMPRE as mesmas frases para as duas
 // candidaturas (abaixo); só muda o que a proposta exige (ação do governo, lei
 // ou PEC). As etiquetas usam o vocabulário fixo de lib/types.ts e mostram a
-// exigência mais alta citada no texto. Números vêm de content/congresso.ts. Status editorial: aprovado (revisado em 2026-10-21).
+// exigência mais alta citada no texto. Números vêm de content/congresso.ts.
 
 const { regras } = CONGRESSO;
 const soma = somaPorCampo();
@@ -196,6 +196,175 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Depende de terminar as obras e de fiscalizar os planos nas empresas.",
     juridica:
       "Apoia-se na Lei de Igualdade Salarial, que já existe. Novas obrigações para as empresas podem ser contestadas na Justiça.",
+  },
+
+  // ---- Direitos trabalhistas ----
+  "direitos-trabalhistas-flavio-sindicatos-reforma-2017": {
+    etiquetas: { orcamento: "Pouco gasto novo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Mudar regras de sindicatos e de acordos de trabalho quase não gera gasto novo.",
+    parlamentar: `Revisar portarias pode ser feito pelo governo. Dar mais peso aos acordos ou mudar regras dos sindicatos exige lei. ${LEI}`,
+    institucional:
+      "Revisar portarias e regulamentos trabalhistas exige trabalho técnico no Ministério do Trabalho.",
+    juridica:
+      "A unicidade sindical está na Constituição. Mudanças nas regras do trabalho costumam ser questionadas na Justiça do Trabalho e no STF.",
+  },
+  "direitos-trabalhistas-lula-fiscalizacao-sindicatos": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Reforçar a fiscalização exige mais auditores do trabalho e estrutura, um gasto que se repete; o plano não diz o valor.",
+    parlamentar: `Reforçar a fiscalização pode ser feito pelo governo. Mudar a lei trabalhista e regulamentar a negociação no serviço público exige lei. ${LEI}`,
+    institucional:
+      "Depende de ter auditores do trabalho em número suficiente para fiscalizar campo, cidade e plataformas.",
+    juridica:
+      "Mudanças na lei trabalhista e nas regras dos sindicatos costumam ser questionadas na Justiça do Trabalho e no STF.",
+  },
+  // ---- Meio ambiente e clima ----
+  "meio-ambiente-flavio-desmatamento-ilegal-licenca": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Fiscalizar com satélite, pagar a quem preserva e fazer obras contra enchentes são gastos que se repetem e dependem do orçamento.",
+    parlamentar: `Dar a licença quando o órgão não responde no prazo e fixar regras por até 20 anos dependem de lei. ${LEI}`,
+    institucional:
+      "Depende de pessoas e sistemas no Ibama, no ICMBio e nos órgãos de licença dos estados. Reorganizar as tarefas entre Ibama, Funai e ICMBio exige mudar a estrutura desses órgãos.",
+    juridica:
+      "A Constituição exige estudo de impacto para obras que podem causar dano grave à natureza; licença dada por falta de resposta pode ser questionada na Justiça. Exigências sobre ONGs precisam respeitar a liberdade de associação.",
+  },
+  "meio-ambiente-lula-desmatamento-liquido-clima": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Fiscalizar com satélite, pagar a quem preserva e fazer obras contra enchentes são gastos que se repetem e dependem do orçamento. Parte do dinheiro viria de fundos que já existem, como o Fundo Clima.",
+    parlamentar: `A maior parte pode ser feita pelo governo. Mas o plano também fala em reconhecer em lei um tipo de recuperação da natureza (restauração biocultural), o que exige lei. ${LEI}`,
+    institucional:
+      "Depende de pessoas e sistemas no Ibama e no ICMBio e de acordo com estados e cidades. Rastrear a origem dos produtos exige sistemas ligados às empresas.",
+    juridica:
+      "Destinar terras públicas e regularizar áreas costuma gerar disputas na Justiça sobre quem é dono da terra. Exigir rastreamento das empresas precisa ter base em lei.",
+  },
+  // ---- Agricultura e alimentação ----
+  "agricultura-flavio-seguro-titulo-irrigacao": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "O governo paga parte do Seguro Rural, e obras de irrigação custam caro; os dois precisam de dinheiro no orçamento todo ano.",
+    parlamentar: `Reorganizar dívidas do campo costuma exigir lei ou medida provisória aprovada pelo Congresso. O seguro, a titulação e a irrigação podem ser tocados pelo governo, com dinheiro do orçamento. ${LEI}`,
+    institucional:
+      "Entregar títulos de terra depende da estrutura do Incra (órgão federal que cuida das terras rurais). Parte das licenças de água para irrigação é dada pelos estados.",
+    juridica:
+      "A Constituição liga o direito de propriedade à função social da terra; regras novas sobre propriedade podem ser questionadas na Justiça. A titulação precisa seguir as leis ambientais.",
+  },
+  "agricultura-lula-plano-safra-agricultura-familiar": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
+    orcamento:
+      "Juros mais baixos no Plano Safra, compras do PAA e Garantia-Safra são gasto que se repete e dependem do orçamento.",
+    parlamentar: `Plano Safra, PAA e reforma agrária já existem e são tocados pelo governo. O plano não diz se o instrumento contra grandes perdas de safra precisaria de lei. ${GOVERNO_E_ORCAMENTO}`,
+    institucional:
+      "Depende do Incra (órgão federal que cuida da reforma agrária), da assistência técnica no campo e de estados e municípios para as compras de alimentos.",
+    juridica:
+      "A reforma agrária segue regras da Constituição; desapropriações e titulações de terra costumam ser questionadas na Justiça.",
+  },
+  // ---- Transporte público ----
+  "transporte-flavio-mobilidade-urbana": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Ação do governo" },
+    orcamento:
+      "Empréstimos de bancos públicos e obras de trem custam caro; o plano não diz quanto iria para o transporte nas cidades nem quanto custaria o Trem do Nordeste.",
+    parlamentar: GOVERNO_E_ORCAMENTO,
+    institucional:
+      "Metrô e ônibus são cuidados por estados e cidades; eles teriam de fazer os projetos e as obras. O trem entre capitais exige projeto, licenças e acordo entre vários estados.",
+    juridica:
+      "Obras grandes precisam de licença ambiental e de contratos que podem ser questionados na Justiça.",
+  },
+  "transporte-lula-mobilidade-urbana": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Ação do governo" },
+    orcamento:
+      "As obras do Novo PAC dependem de dinheiro do orçamento todos os anos; o plano não diz quanto dinheiro novo iria para o transporte nas cidades.",
+    parlamentar: GOVERNO_E_ORCAMENTO,
+    institucional:
+      "Metrô e ônibus são cuidados por estados e cidades; eles teriam de tocar os projetos e as obras com apoio federal.",
+    juridica:
+      "Obras grandes precisam de licença ambiental e de contratos que podem ser questionados na Justiça.",
+  },
+  // ---- Empreendedorismo ----
+  "empreendedorismo-flavio-minha-primeira-empresa": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Não definido no plano" },
+    orcamento:
+      "Crédito pela Caixa e cursos pelo Sistema S custam dinheiro ou exigem recursos dos bancos públicos; o plano não diz quanto nem de onde viria.",
+    parlamentar: `O plano não diz se o Minha Primeira Empresa e o "revogaço" precisariam de lei nova. Parte pode ser feita pelo governo; se precisar de lei, segue a regra comum: ${LEI}`,
+    institucional:
+      "Boa parte das licenças é de estados e municípios, que precisariam aderir. A Caixa precisaria adaptar sua rede e seus sistemas para atender pequenos negócios.",
+    juridica:
+      "Cortar regras exige cuidado para não retirar exigências de saúde, segurança ou meio ambiente; mudanças podem ser questionadas na Justiça.",
+  },
+  "empreendedorismo-lula-pequenos-negocios": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Não definido no plano" },
+    orcamento:
+      "Os fundos garantidores e as linhas de crédito usam dinheiro público, que depende do orçamento de cada ano; o plano não diz quanto seria.",
+    parlamentar: `O plano não diz se as mudanças precisariam de lei nova. Os programas de crédito podem ser feitos pelo governo; mudanças nos impostos das pequenas empresas exigem lei. Se for preciso, segue a regra comum: ${LEI}`,
+    institucional:
+      "Depende dos bancos públicos, dos fundos garantidores e de plataformas como o Contrata+ Brasil funcionando para pequenos negócios.",
+    juridica:
+      "Mudanças nos impostos das pequenas empresas precisam seguir a reforma tributária, que já está na Constituição e em lei.",
+  },
+  // ---- Tecnologia e inteligência artificial ----
+  "tecnologia-flavio-estado-digital": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Pagar pacotes de internet e levar rede a lugares com pouco sinal é gasto que se repete e depende do orçamento; o plano não diz quanto custaria.",
+    parlamentar: `Digitalizar serviços pode ser feito pelo governo, mas a nova lei sobre inovação precisa passar no Congresso. ${LEI}`,
+    institucional:
+      "Exige ligar os sistemas de muitos órgãos ao Gov.br e ter internet nas regiões mais distantes, com apoio das empresas de telefonia.",
+    juridica:
+      "Usar dados de cada pessoa para indicar serviços precisa seguir a LGPD (lei que protege seus dados).",
+  },
+  "tecnologia-lula-soberania-digital": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Levar fibra óptica e 5G e investir em IA e supercomputadores é gasto que se repete; o plano cita o FUST (fundo para levar internet a todo o país), mas não diz quanto custaria.",
+    parlamentar: `Ampliar a internet e os serviços digitais pode ser feito pelo governo, mas regras novas para as redes sociais costumam exigir lei. ${LEI}`,
+    institucional:
+      "Exige ligar os sistemas dos órgãos ao Gov.br, criar estrutura para a política de ensino digital e contar com as empresas de telefonia para expandir a rede.",
+    juridica:
+      "Regras para redes sociais podem ser questionadas na Justiça por causa da liberdade de expressão. O uso de dados precisa seguir a LGPD (lei que protege seus dados).",
+  },
+  // ---- Cultura e lazer ----
+  "cultura-flavio-esporte-e-raizes": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Precisa de lei" },
+    orcamento:
+      "O plano conta com dinheiro de empresas, estados e municípios para o esporte, mas não diz quanto custaria nem quanto viria de cada parte. Restaurar o patrimônio histórico também depende do orçamento.",
+    parlamentar: `O programa nas escolas pode ser feito pelo governo. Mudar as leis de incentivo à cultura e as regras das competições pode exigir lei. ${LEI}`,
+    institucional:
+      "Levar times e competições às escolas exige acordo com estados, municípios e empresas. Mudar as leis de incentivo exige ajustar o trabalho do Ministério da Cultura.",
+    juridica:
+      "Regras sobre quem pode competir na categoria feminina podem ser questionadas na Justiça. Muitas competições também seguem regras das próprias confederações esportivas.",
+  },
+  "cultura-lula-cultura-e-esporte": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "Manter e ampliar Pontos de Cultura, Bolsa Atleta, bibliotecas e Arenas é gasto que se repete e depende do orçamento de cada ano.",
+    parlamentar: `Boa parte dos programas já existe e pode continuar pelo governo. A regulação do streaming e a lei de direito autoral na internet exigem lei. ${LEI}`,
+    institucional:
+      "Depende do Ministério da Cultura, do Ministério do Esporte e de parcerias com estados e municípios para construir e manter os espaços.",
+    juridica:
+      "Regular o streaming e o uso de obras por inteligência artificial mexe com empresas estrangeiras e pode ser questionado na Justiça.",
+  },
+  // ---- Diversidade e inclusão ----
+  "diversidade-flavio-cuidado-terras-esporte": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
+    orcamento:
+      "A ajuda para adaptar casas, os centros de autismo e as vagas para idosos são gastos que se repetem; o plano não diz quanto custariam.",
+    parlamentar: `Os programas para idosos e pessoas com deficiência podem ser feitos pelo governo. Mudar as regras de uso das terras indígenas e quilombolas deve exigir lei; o plano não detalha. ${LEI}`,
+    institucional:
+      "Os centros e as vagas para idosos dependem de parcerias com estados, municípios e organizações sociais. As mudanças nas terras envolvem a Funai e o Incra.",
+    juridica:
+      "As terras indígenas têm proteção especial na Constituição; mudanças no uso delas costumam ser levadas ao STF.",
+  },
+  "diversidade-lula-igualdade-racial-inclusao": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
+    orcamento:
+      "Ampliar Centros-Dia, atendimento em casa e centros de reabilitação são gastos que se repetem; o plano não diz quanto custariam.",
+    parlamentar: GOVERNO_E_ORCAMENTO,
+    institucional:
+      "Titular terras quilombolas e demarcar terras indígenas são processos longos, que dependem do Incra, da Funai e de estudos técnicos. O atendimento em casa e os Centros-Dia dependem das prefeituras.",
+    juridica:
+      "Demarcações e titulações costumam ser contestadas na Justiça, inclusive pela discussão sobre o marco temporal (regra que discute a data de ocupação da terra). As cotas já estão na lei.",
   },
 };
 

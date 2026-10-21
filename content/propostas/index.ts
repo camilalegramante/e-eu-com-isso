@@ -7,6 +7,14 @@ import { educacao } from "./educacao";
 import { moradia } from "./moradia";
 import { previdencia } from "./previdencia";
 import { direitosMulheres } from "./direitos-mulheres";
+import { direitosTrabalhistas } from "./direitos-trabalhistas";
+import { meioAmbiente } from "./meio-ambiente";
+import { agricultura } from "./agricultura";
+import { transporte } from "./transporte";
+import { empreendedorismo } from "./empreendedorismo";
+import { tecnologia } from "./tecnologia";
+import { cultura } from "./cultura";
+import { diversidade } from "./diversidade";
 
 // Agregação de todas as propostas revisadas.
 export const TODAS_PROPOSTAS: Proposta[] = [
@@ -18,18 +26,17 @@ export const TODAS_PROPOSTAS: Proposta[] = [
   ...moradia,
   ...previdencia,
   ...direitosMulheres,
+  ...direitosTrabalhistas,
+  ...meioAmbiente,
+  ...agricultura,
+  ...transporte,
+  ...empreendedorismo,
+  ...tecnologia,
+  ...cultura,
+  ...diversidade,
 ];
 
 /** Propostas de um tema, na ordem em que foram declaradas. */
 export function propostasDoTema(temaId: string): Proposta[] {
   return TODAS_PROPOSTAS.filter((p) => p.temaId === temaId);
-}
-
-/** Temas que possuem ao menos uma proposta aprovada. */
-export function temasComPropostaAprovada(): string[] {
-  const ids = new Set<string>();
-  for (const p of TODAS_PROPOSTAS) {
-    if (p.statusRevisao === "aprovado") ids.add(p.temaId);
-  }
-  return [...ids];
 }

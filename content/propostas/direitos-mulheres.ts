@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Direitos das mulheres. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Direitos das mulheres. Linguagem simples.
 export const direitosMulheres: Proposta[] = [
   {
     id: "direitos-mulheres-flavio-brasil-por-elas",
@@ -61,8 +61,6 @@ Fala também em internet grátis para usar esses serviços, ajuda para organizar
         pagina: 21,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "direitos-mulheres-lula-pacto-feminicidio-igualdade-salarial",
@@ -120,7 +118,5 @@ Na saúde, quer reforçar a entrega de absorventes e remédios para a menstruaç
         pagina: 75,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

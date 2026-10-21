@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Custo de vida e impostos. Status "aprovado" (revisado em 2026-10-21).
+// Tema: Custo de vida e impostos.
 // Linguagem simples (ver content/README.md).
 export const custoDeVida: Proposta[] = [
   {
@@ -53,8 +53,6 @@ Para a comida ficar mais barata, fala em melhorar o transporte das colheitas, gu
         pagina: 32,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "custo-de-vida-lula-reforma-tributaria",
@@ -118,7 +116,5 @@ O que promete para o próximo mandato: abrir um debate sobre como baratear a con
         pagina: 66,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

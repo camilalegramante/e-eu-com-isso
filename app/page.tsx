@@ -149,7 +149,7 @@ export default function HomePage() {
                     >
                       <Icon name={t.icone} className="h-4 w-4" />
                     </span>
-                    <span className="min-w-0">{t.rotulo}</span>
+                    <span className="min-w-0 hyphens-auto break-words">{t.rotulo}</span>
                   </li>
                 );
               })}

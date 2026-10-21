@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Moradia e financiamento. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Moradia e financiamento. Linguagem simples.
 export const moradia: Proposta[] = [
   {
     id: "moradia-flavio-caixa-casa-propria-saneamento",
@@ -37,8 +37,6 @@ Para água tratada e esgoto, quer acelerar concessões (quando uma empresa priva
         pagina: 47,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "moradia-lula-mcmv-direito-cidade-saneamento",
@@ -79,7 +77,5 @@ Cita também o Periferia Viva, que urbaniza favelas e regulariza o documento de 
         pagina: 46,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

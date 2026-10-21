@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Segurança pública. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Segurança pública. Linguagem simples.
 export const seguranca: Proposta[] = [
   {
     id: "seguranca-flavio-brasil-sem-medo",
@@ -51,8 +51,6 @@ Promete dobrar o dinheiro federal para segurança e instalar mais de 1 milhão d
         pagina: 16,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "seguranca-lula-susp-ministerio",
@@ -108,7 +106,5 @@ Quer reforçar os presídios federais para isolar chefes de facção e manter o 
         pagina: 30,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];

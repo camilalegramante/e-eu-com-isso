@@ -6,7 +6,7 @@ import {
   selecionarTemas,
   temasSelecionadosSemConteudo,
 } from "@/lib/personalization";
-import { TEMAS_COM_CONTEUDO } from "@/content/temas";
+import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import type { Proposta } from "@/lib/types";
 
@@ -29,20 +29,34 @@ describe("selecionarTemas", () => {
     expect(temas.map((t) => t.id).sort()).toEqual([...TEMAS_COM_CONTEUDO].sort());
   });
 
-  it("intersecta a seleção com os temas com conteúdo", () => {
+  // Hoje todos os temas têm conteúdo; estes dois só rodam enquanto houver
+  // algum tema cadastrado sem conteúdo.
+  const semConteudo = TEMAS.find((t) => !TEMAS_COM_CONTEUDO.includes(t.id));
+
+  it.skipIf(!semConteudo)("intersecta a seleção com os temas com conteúdo", () => {
     const temas = selecionarTemas({
       perfis: [],
-      interesses: ["saude", "transporte"], // transporte ainda sem conteúdo
+      interesses: ["saude", semConteudo!.id],
     });
     expect(temas.map((t) => t.id)).toEqual(["saude"]);
   });
 
-  it("expõe temas selecionados ainda sem conteúdo", () => {
+  it.skipIf(!semConteudo)("expõe temas selecionados ainda sem conteúdo", () => {
     const faltando = temasSelecionadosSemConteudo({
       perfis: [],
-      interesses: ["saude", "transporte"],
+      interesses: ["saude", semConteudo!.id],
     });
-    expect(faltando.map((t) => t.id)).toEqual(["transporte"]);
+    expect(faltando.map((t) => t.id)).toEqual([semConteudo!.id]);
+  });
+
+  it("com todos os temas publicados, não há pendências", () => {
+    const faltando = temasSelecionadosSemConteudo({
+      perfis: [],
+      interesses: TEMAS.map((t) => t.id),
+    });
+    expect(faltando.map((t) => t.id)).toEqual(
+      TEMAS.filter((t) => !TEMAS_COM_CONTEUDO.includes(t.id)).map((t) => t.id),
+    );
   });
 
   it("não lista pendências quando a pessoa escolhe ver tudo", () => {

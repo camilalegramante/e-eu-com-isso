@@ -72,6 +72,64 @@ const CORES: Record<string, CorTema> = {
     borda: "border-fuchsia-600",
     bordaEsquerda: "border-l-fuchsia-600",
   },
+  // Temas adicionados depois: algumas cores se repetem (16 temas, poucas
+  // cores que não lembram partidos nem candidaturas).
+  "direitos-trabalhistas": {
+    fundo: "bg-indigo-50",
+    icone: "bg-indigo-600 text-white",
+    texto: "text-indigo-600",
+    borda: "border-indigo-600",
+    bordaEsquerda: "border-l-indigo-600",
+  },
+  "meio-ambiente": {
+    fundo: "bg-cyan-50",
+    icone: "bg-cyan-600 text-white",
+    texto: "text-cyan-700",
+    borda: "border-cyan-600",
+    bordaEsquerda: "border-l-cyan-600",
+  },
+  "agricultura": {
+    fundo: "bg-yellow-50",
+    icone: "bg-yellow-500 text-white",
+    texto: "text-yellow-700",
+    borda: "border-yellow-500",
+    bordaEsquerda: "border-l-yellow-500",
+  },
+  "transporte": {
+    fundo: "bg-blue-50",
+    icone: "bg-blue-700 text-white",
+    texto: "text-blue-700",
+    borda: "border-blue-700",
+    bordaEsquerda: "border-l-blue-700",
+  },
+  "empreendedorismo": {
+    fundo: "bg-amber-50",
+    icone: "bg-amber-600 text-white",
+    texto: "text-amber-700",
+    borda: "border-amber-600",
+    bordaEsquerda: "border-l-amber-600",
+  },
+  "tecnologia": {
+    fundo: "bg-slate-50",
+    icone: "bg-slate-600 text-white",
+    texto: "text-slate-600",
+    borda: "border-slate-600",
+    bordaEsquerda: "border-l-slate-600",
+  },
+  "cultura": {
+    fundo: "bg-purple-50",
+    icone: "bg-purple-600 text-white",
+    texto: "text-purple-600",
+    borda: "border-purple-600",
+    bordaEsquerda: "border-l-purple-600",
+  },
+  "diversidade": {
+    fundo: "bg-fuchsia-50",
+    icone: "bg-fuchsia-500 text-white",
+    texto: "text-fuchsia-600",
+    borda: "border-fuchsia-500",
+    bordaEsquerda: "border-l-fuchsia-500",
+  },
 };
 
 const PADRAO: CorTema = {

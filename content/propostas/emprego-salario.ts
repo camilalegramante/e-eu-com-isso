@@ -1,6 +1,6 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Emprego e salário. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
+// Tema: Emprego e salário. Linguagem simples.
 export const empregoSalario: Proposta[] = [
   {
     id: "emprego-salario-flavio-trabalho-que-compensa",
@@ -50,8 +50,6 @@ Também promete criar um banco nacional de vagas e deixar quem recebe ajuda do g
         pagina: 45,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
   {
     id: "emprego-salario-lula-valorizar-trabalho",
@@ -114,7 +112,5 @@ Também quer criar regras para quem trabalha por aplicativo e mudar leis trabalh
         pagina: 77,
       },
     ],
-    statusRevisao: "aprovado",
-    revisadoEm: "2026-10-21",
   },
 ];
