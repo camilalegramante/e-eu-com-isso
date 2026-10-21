@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUp,
   Briefcase,
   Bus,
   Check,
@@ -62,6 +63,7 @@ const REGISTRO: Record<string, LucideIcon> = {
   SearchX,
   ArrowRight,
   ArrowLeft,
+  ArrowUp,
   Check,
   ChevronDown,
   Share2,

@@ -86,8 +86,9 @@ export function ShareBar({
 }
 
 /**
- * Barra fixa no rodapé da tela, só no celular (ao alcance do polegar).
- * Aparece depois que a pessoa começa a rolar, para não cobrir o início.
+ * Barra fixa no rodapé da tela, só no celular (ao alcance do polegar), com
+ * o botão "Topo" flutuando logo acima, no canto direito. Os dois aparecem
+ * depois que a pessoa começa a rolar, para não cobrir o início.
  */
 export function ShareDock({ titulo }: { titulo: string }) {
   const { copiado, podeCompartilhar, copiar, compartilhar } =
@@ -101,43 +102,67 @@ export function ShareDock({ titulo }: { titulo: string }) {
     return () => window.removeEventListener("scroll", atualizar);
   }, []);
 
+  // Sem behavior explícito: segue o scroll-behavior do CSS (suave, ou
+  // instantâneo para quem pediu menos movimento).
+  const voltarAoTopo = () => window.scrollTo({ top: 0 });
+
   return (
-    <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 px-4 pt-3 backdrop-blur transition-transform duration-200 sm:hidden ${
-        visivel ? "translate-y-0" : "pointer-events-none translate-y-full"
-      }`}
-      style={{
-        paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
-        paddingLeft: "max(1rem, env(safe-area-inset-left, 0px))",
-        paddingRight: "max(1rem, env(safe-area-inset-right, 0px))",
-      }}
-      aria-hidden={!visivel}
-    >
-      <div className="flex gap-2">
-        {podeCompartilhar && (
+    <>
+      <button
+        type="button"
+        onClick={voltarAoTopo}
+        tabIndex={visivel ? 0 : -1}
+        aria-hidden={!visivel}
+        aria-label="Voltar ao topo"
+        // Acima da barra: altura da barra (~4.6rem) + respiro + área segura.
+        style={{
+          bottom: "calc(5.5rem + env(safe-area-inset-bottom, 0px))",
+          right: "max(1rem, env(safe-area-inset-right, 0px))",
+        }}
+        className={`fixed z-40 inline-flex min-h-11 items-center gap-1.5 rounded-full border border-ink/20 bg-surface px-4 text-sm font-medium text-ink shadow-md transition sm:hidden motion-safe:active:scale-[0.98] ${
+          visivel ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+        }`}
+      >
+        <Icon name="ArrowUp" className="h-4 w-4" />
+        <span aria-hidden>Topo</span>
+      </button>
+      <div
+        className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 px-4 pt-3 backdrop-blur transition-transform duration-200 sm:hidden ${
+          visivel ? "translate-y-0" : "pointer-events-none translate-y-full"
+        }`}
+        style={{
+          paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
+          paddingLeft: "max(1rem, env(safe-area-inset-left, 0px))",
+          paddingRight: "max(1rem, env(safe-area-inset-right, 0px))",
+        }}
+        aria-hidden={!visivel}
+      >
+        <div className="flex gap-2">
+          {podeCompartilhar && (
+            <button
+              type="button"
+              onClick={compartilhar}
+              tabIndex={visivel ? 0 : -1}
+              className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-paper transition motion-safe:active:scale-[0.98]"
+            >
+              <Icon name="Share2" className="h-4 w-4" />
+              Compartilhar
+            </button>
+          )}
           <button
             type="button"
-            onClick={compartilhar}
+            onClick={copiar}
             tabIndex={visivel ? 0 : -1}
-            className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-paper transition motion-safe:active:scale-[0.98]"
+            aria-live="polite"
+            className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 bg-surface px-4 text-sm font-medium text-ink transition motion-safe:active:scale-[0.98] ${
+              podeCompartilhar ? "" : "flex-1"
+            }`}
           >
-            <Icon name="Share2" className="h-4 w-4" />
-            Compartilhar
+            <Icon name={copiado ? "Check" : "Link2"} className="h-4 w-4" />
+            {copiado ? "Copiado!" : "Copiar link"}
           </button>
-        )}
-        <button
-          type="button"
-          onClick={copiar}
-          tabIndex={visivel ? 0 : -1}
-          aria-live="polite"
-          className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 bg-surface px-4 text-sm font-medium text-ink transition motion-safe:active:scale-[0.98] ${
-            podeCompartilhar ? "" : "flex-1"
-          }`}
-        >
-          <Icon name={copiado ? "Check" : "Link2"} className="h-4 w-4" />
-          {copiado ? "Copiado!" : "Copiar link"}
-        </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
