@@ -48,11 +48,6 @@ export function CandidateColumn({
         <div className="mt-3 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <LabelTag tipo={proposta.tipoAfirmacao} />
-            {proposta.statusRevisao !== "aprovado" && (
-              <span className="rounded-full border border-brand/40 bg-brand-soft px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-brand-ink">
-                Em revisão
-              </span>
-            )}
           </div>
 
           <p className="font-medium text-ink">{proposta.titulo}</p>
