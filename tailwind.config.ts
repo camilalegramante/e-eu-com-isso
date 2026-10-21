@@ -20,9 +20,11 @@ const config: Config = {
           faint: "#7A756E",
         },
         line: "#E8E2D8",
-        // Cores NEUTRAS e equivalentes para as candidaturas (nao-partidarias).
-        candA: { DEFAULT: "#0F766E", soft: "#D7ECE9", ink: "#0A4A44" },
-        candB: { DEFAULT: "#4338CA", soft: "#DEDBF7", ink: "#2E2689" },
+        // Cores das candidaturas: verde (candA) e azul-claro (candB), sem
+        // relação com a identidade dos partidos. O azul é claro para não se
+        // confundir com o azul-escuro do ícone do site.
+        candA: { DEFAULT: "#15803D", soft: "#DCFCE7", ink: "#14532D" },
+        candB: { DEFAULT: "#38BDF8", soft: "#E0F2FE", ink: "#075985" },
         brand: { DEFAULT: "#B45309", soft: "#F6E8D5", ink: "#7C3A06" },
       },
       maxWidth: {

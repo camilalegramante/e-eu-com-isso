@@ -1,6 +1,6 @@
 // Uma cor por tema, só para ajudar a reconhecer o assunto (não é nota nem
 // avaliação). Evita vermelho, verde-amarelo e as cores das candidaturas
-// (candA teal, candB índigo), para nenhum tema "parecer" de um lado.
+// (candA verde, candB azul-claro), para nenhum tema "parecer" de um lado.
 // Classes escritas por extenso para o Tailwind encontrá-las.
 export interface CorTema {
   /** Fundo bem claro (faixa do título). */
@@ -24,11 +24,11 @@ const CORES: Record<string, CorTema> = {
     bordaEsquerda: "border-l-orange-500",
   },
   "emprego-salario": {
-    fundo: "bg-sky-50",
-    icone: "bg-sky-600 text-white",
-    texto: "text-sky-600",
-    borda: "border-sky-600",
-    bordaEsquerda: "border-l-sky-600",
+    fundo: "bg-stone-100",
+    icone: "bg-stone-600 text-white",
+    texto: "text-stone-600",
+    borda: "border-stone-600",
+    bordaEsquerda: "border-l-stone-600",
   },
   saude: {
     fundo: "bg-pink-50",

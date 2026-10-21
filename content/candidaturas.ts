@@ -9,7 +9,7 @@ export const CANDIDATURAS: Candidatura[] = [
     id: "flavio",
     nome: "Flávio Bolsonaro",
     partido: "PL",
-    corToken: "neutra-1",
+    corToken: "neutra-2", // azul
     planoDeGoverno: {
       titulo: "Plano de Governo — Flávio Bolsonaro (PL)",
       url: "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pl/@@display-file/file/proposta-pl.pdf",
@@ -20,7 +20,7 @@ export const CANDIDATURAS: Candidatura[] = [
     id: "lula",
     nome: "Lula",
     partido: "PT",
-    corToken: "neutra-2",
+    corToken: "neutra-1", // verde
     planoDeGoverno: {
       titulo: "Programa de Governo — Lula (PT)",
       url: "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt/@@display-file/file/proposta-pt.pdf",

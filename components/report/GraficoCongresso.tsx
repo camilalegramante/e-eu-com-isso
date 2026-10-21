@@ -43,8 +43,8 @@ const CASAS: Record<
 
 // Cores neutras das candidaturas (as mesmas dos cards), nunca as dos partidos.
 const GRUPOS = [
-  { id: "flavio", rotulo: "Apoiam Flávio", cor: "bg-candA" },
-  { id: "lula", rotulo: "Apoiam Lula", cor: "bg-candB" },
+  { id: "flavio", rotulo: "Apoiam Flávio", cor: "bg-candB" },
+  { id: "lula", rotulo: "Apoiam Lula", cor: "bg-candA" },
   { id: "outros", rotulo: "Outros partidos", cor: "bg-ink/35" },
 ] as const;
 
