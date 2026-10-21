@@ -70,73 +70,85 @@ export function Onboarding() {
     <div className="mx-auto max-w-readable px-5 py-10">
       <Stepper passo={passo} onIr={setPasso} />
 
-      {/* A key reinicia o fade a cada troca de passo. */}
-      <div key={passo} className="anim-entrar">
-        {passo === 0 && (
-          <fieldset className="mt-8">
-            <legend className="font-display text-2xl font-semibold text-ink">
-              Qual dessas opções tem a ver com você?
-            </legend>
-            <p className="mt-2 text-ink-soft">
-              Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {PERFIS.map((p) => (
+      {/* Os três passos ficam empilhados na mesma célula do grid e só o
+          atual aparece: a área tem sempre a altura do passo mais alto, então
+          nada "pula" ao avançar ou voltar. Os ocultos ficam inertes (sem
+          foco nem leitura). O fade roda ao trocar de passo. */}
+      <div className="grid">
+        {[
+          (
+            <fieldset className="mt-8">
+              <legend className="font-display text-2xl font-semibold text-ink">
+                Qual dessas opções tem a ver com você?
+              </legend>
+              <p className="mt-2 text-ink-soft">
+                Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {PERFIS.map((p) => (
+                  <Chip
+                    key={p.id}
+                    selected={perfis.includes(p.id)}
+                    onClick={() => togglePerfil(p.id)}
+                  >
+                    {p.rotulo}
+                  </Chip>
+                ))}
+              </div>
+            </fieldset>
+          ),
+          (
+            <fieldset className="mt-8">
+              <legend className="font-display text-2xl font-semibold text-ink">
+                O que mais importa pra você?
+              </legend>
+              <p className="mt-2 text-ink-soft">
+                Escolha os assuntos que quer entender melhor.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
                 <Chip
-                  key={p.id}
-                  selected={perfis.includes(p.id)}
-                  onClick={() => togglePerfil(p.id)}
+                  selected={verTudo}
+                  onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
+                  icon="Sparkles"
                 >
-                  {p.rotulo}
+                  Quero ver tudo
                 </Chip>
-              ))}
-            </div>
-          </fieldset>
-        )}
-
-        {passo === 1 && (
-          <fieldset className="mt-8">
-            <legend className="font-display text-2xl font-semibold text-ink">
-              O que mais importa pra você?
-            </legend>
-            <p className="mt-2 text-ink-soft">
-              Escolha os assuntos que quer entender melhor.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Chip
-                selected={verTudo}
-                onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
-                icon="Sparkles"
-              >
-                Quero ver tudo
-              </Chip>
-              {TEMAS_DISPONIVEIS.map((t) => (
-                <Chip
-                  key={t.id}
-                  selected={!verTudo && interesses.includes(t.id)}
-                  onClick={() => toggleInteresse(t.id)}
-                  icon={t.icone}
-                  iconClassName={corDoTema(t.id).texto}
-                >
-                  {t.rotulo}
-                </Chip>
-              ))}
-            </div>
-          </fieldset>
-        )}
-
-        {passo === 2 && (
-          <Revisao
-            perfis={perfis}
-            interesses={interesses}
-            verTudo={verTudo}
-            onEditarPerfil={() => setPasso(0)}
-            onEditarInteresses={() => setPasso(1)}
-          />
-        )}
+                {TEMAS_DISPONIVEIS.map((t) => (
+                  <Chip
+                    key={t.id}
+                    selected={!verTudo && interesses.includes(t.id)}
+                    onClick={() => toggleInteresse(t.id)}
+                    icon={t.icone}
+                    iconClassName={corDoTema(t.id).texto}
+                  >
+                    {t.rotulo}
+                  </Chip>
+                ))}
+              </div>
+            </fieldset>
+          ),
+          (
+            <Revisao
+              perfis={perfis}
+              interesses={interesses}
+              verTudo={verTudo}
+              onEditarPerfil={() => setPasso(0)}
+              onEditarInteresses={() => setPasso(1)}
+            />
+          ),
+        ].map((conteudo, i) => (
+          <div
+            key={PASSOS[i]}
+            className={`[grid-area:1/1] ${i === passo ? "anim-entrar" : "invisible"}`}
+            aria-hidden={i !== passo}
+            inert={i !== passo}
+          >
+            {conteudo}
+          </div>
+        ))}
       </div>
 
-      <div className="mt-10 flex items-center justify-between gap-4">
+      <div className="mt-10 flex min-h-12 items-center justify-between gap-4">
         <button
           type="button"
           onClick={voltar}
@@ -313,7 +325,11 @@ function ResumoBloco({
           ))}
         </ul>
       ) : (
-        <p className="mt-3 text-sm text-ink-faint">{vazio}</p>
+        // Mesma altura de uma linha de chips, para a revisão não crescer
+        // quando aparece o primeiro item.
+        <p className="mt-3 flex min-h-7 items-center text-sm text-ink-faint">
+          {vazio}
+        </p>
       )}
     </div>
   );
