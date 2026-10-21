@@ -71,6 +71,8 @@ export function CandidateColumn({
 
           {!impacto && resumo}
 
+          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
+
           {(impacto || temCondicoes || temIncertezas) && (
             <details className="group border-t border-line pt-3">
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 py-2 text-sm font-medium text-ink transition-opacity active:opacity-60">
@@ -109,9 +111,7 @@ export function CandidateColumn({
             </details>
           )}
 
-          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
-
-          {viabilidade && <ViabilidadeSection viabilidade={viabilidade} />}
+          {viabilidade &&<ViabilidadeSection viabilidade={viabilidade} />}
 
           <SourceList fontes={proposta.fontes} candidatura={candidatura} />
         </div>

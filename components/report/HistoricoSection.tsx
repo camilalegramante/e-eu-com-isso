@@ -24,29 +24,41 @@ export function formatarDataAcao(iso: string): string {
 }
 
 export function HistoricoSection({ pontos }: { pontos: PontoDeAtencao[] }) {
+  const temPontos = pontos.length > 0;
   return (
     // Recolhido e sem contagem no título: um número aqui viraria placar entre
-    // candidaturas. Sem caixas internas (no celular, só divisores).
-    <details className="group border-t border-line pt-3">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 py-2 text-sm font-semibold text-ink transition-opacity active:opacity-60">
-        <span className="flex items-center gap-1.5">
-          <Icon name="History" className="h-4 w-4 shrink-0 text-brand" />
-          O histórico combina com a proposta?
+    // candidaturas. O título é uma faixa que vai de borda a borda da coluna
+    // (margem negativa = padding do card): destaca sem virar caixa dentro de
+    // caixa e sem roubar largura do texto no celular.
+    <details className="group">
+      <summary className="-mx-4 flex min-h-14 cursor-pointer list-none items-center gap-3 border-y border-brand/25 bg-brand-soft px-4 py-3 transition-opacity active:opacity-60 sm:-mx-5 sm:px-5">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-white">
+          <Icon name="History" className="h-5 w-5" />
         </span>
-        <span className="text-ink-faint transition group-open:rotate-180" aria-hidden>
+        <span className="min-w-0 flex-1">
+          <span className="block text-base font-semibold leading-snug text-ink">
+            O histórico combina com a proposta?
+          </span>
+          <span className="mt-0.5 block text-sm text-brand-ink">
+            {temPontos
+              ? "Veja o que o candidato já fez ou disse sobre isso"
+              : "Nenhum ponto registrado até agora"}
+          </span>
+        </span>
+        <span className="text-brand-ink transition group-open:rotate-180" aria-hidden>
           ▾
         </span>
       </summary>
 
-      {pontos.length === 0 ? (
-        <p className="pb-3 text-sm text-ink-soft">
+      {!temPontos ? (
+        <p className="pt-3 text-sm text-ink-soft">
           Não registramos pontos de atenção sobre esta proposta. Isso não quer
           dizer que não existam: a lista não é completa.
         </p>
       ) : (
-        <ul className="divide-y divide-line pb-1">
+        <ul className="divide-y divide-line">
           {pontos.map((p) => (
-            <li key={p.id} className="space-y-2.5 py-3 text-sm first:pt-1">
+            <li key={p.id} className="space-y-2.5 py-3 text-sm last:pb-0">
               <div>
                 <p className="font-semibold text-ink">O plano diz</p>
                 <p className="mt-0.5 text-ink-soft">{p.oQuePlanoDiz}</p>

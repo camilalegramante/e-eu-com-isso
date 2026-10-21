@@ -35,6 +35,13 @@ describe("HistoricoSection", () => {
   it("sem pontos, avisa que a lista não é completa", () => {
     const html = renderToStaticMarkup(<HistoricoSection pontos={[]} />);
     expect(html).toContain("a lista não é completa");
+    expect(html).toContain("Nenhum ponto registrado até agora");
+  });
+
+  it("com pontos, o título convida a abrir (sem contagem)", () => {
+    const html = renderToStaticMarkup(<HistoricoSection pontos={[EXEMPLO]} />);
+    expect(html).toContain("Veja o que o candidato já fez ou disse sobre isso");
+    expect(html).not.toMatch(/\(\d+\)/);
   });
 
   it("mostra os fatos, a análise rotulada, o outro lado e a fonte", () => {
