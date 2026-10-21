@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { CtaInicio } from "@/components/site/CtaInicio";
 import { Icon } from "@/components/ui/Icon";
 import { corDoTema } from "@/components/ui/coresTema";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
@@ -13,11 +13,11 @@ const PASSOS = [
     // Cor só decorativa (mesma paleta dos temas).
     cor: corDoTema("custo-de-vida"),
     titulo: "Conte quem é você",
-    texto: "Marque o que tem a ver com a sua vida — estudante, CLT, aposentado…",
+    texto: "Marque o que tem a ver com a sua vida: estudante, CLT, aposentado…",
   },
   {
     icone: "Sparkles",
-    cor: corDoTema("emprego-salario"),
+    cor: corDoTema("saude"),
     titulo: "Escolha os temas",
     texto: "Saúde, custo de vida, segurança, educação e mais.",
   },
@@ -36,7 +36,7 @@ export default function HomePage() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader esconderComecarNoCelular />
       <main>
         {/* Hero */}
         {/* No celular, 16px entre as seções (py-2 + py-2). O período da
@@ -49,14 +49,8 @@ export default function HomePage() {
             <p className="mt-5 text-xl leading-relaxed text-ink-soft">
               {SITE.tagline} Você não precisa entender de política.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link
-                href="/comecar"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
-              >
-                Descobrir o que importa pra mim
-                <Icon name="ArrowRight" className="h-5 w-5" />
-              </Link>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <CtaInicio />
               <span className="text-sm text-ink-faint">
                 Gratuito · sem cadastro · com fontes
               </span>
@@ -65,7 +59,7 @@ export default function HomePage() {
         </section>
 
         {/* Como funciona */}
-        <section className="mx-auto max-w-content px-4 py-2 sm:px-5 sm:py-10">
+        <section className="mx-auto max-w-content px-4 py-4 sm:px-5 sm:py-10">
           <div className="grid gap-4 sm:grid-cols-3">
             {PASSOS.map((p, i) => (
               <div
@@ -93,7 +87,7 @@ export default function HomePage() {
 
         {/* Comparando */}
         <section className="mx-auto max-w-content px-4 py-2 sm:px-5 sm:py-10">
-          <div className="rounded-xl2 border border-line bg-surface p-6 sm:p-8">
+          <div className="rounded-xl2 border border-line bg-surface p-5 sm:p-8">
             <h2 className="font-display text-2xl font-semibold text-ink">
               Quem está sendo comparado
             </h2>
@@ -101,25 +95,28 @@ export default function HomePage() {
               As duas candidaturas do 2º turno, com os mesmos critérios de
               apresentação, detalhamento e fontes para ambas.
             </p>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
               {CANDIDATURAS_ORDENADAS.map((c) => (
+                // Sem card interno: só a barra na cor neutra da candidatura.
                 <div
                   key={c.id}
-                  className={`anim-ao-ver relative overflow-hidden rounded-xl2 border border-line bg-paper p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 ${
+                  className={`anim-ao-ver border-l-4 pl-4 ${
                     c.corToken === "neutra-1"
-                      ? "before:bg-candA"
-                      : "before:bg-candB"
+                      ? "border-l-candA"
+                      : "border-l-candB"
                   }`}
                 >
                   <p className="font-display text-lg font-semibold text-ink">
-                    {c.nome}
+                    {c.nome}{" "}
+                    <span className="font-sans text-sm font-medium text-ink-faint">
+                      {c.partido}
+                    </span>
                   </p>
-                  <p className="text-sm text-ink-faint">{c.partido}</p>
                   <a
                     href={c.planoDeGoverno.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 text-sm text-ink-soft underline hover:text-ink"
+                    className="mt-1 inline-flex min-h-11 items-center gap-1.5 text-sm text-ink-soft underline hover:text-ink"
                   >
                     <Icon name="FileText" className="h-4 w-4" />
                     Plano de governo
@@ -132,35 +129,38 @@ export default function HomePage() {
 
         {/* Temas */}
         <section className="mx-auto max-w-content px-4 pb-10 pt-2 sm:px-5 sm:py-10">
-          <h2 className="font-display text-2xl font-semibold text-ink">
-            Assuntos do seu dia a dia
-          </h2>
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {temasComConteudo.map((t) => (
-              <li
-                key={t.id}
-                className="anim-ao-ver inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft"
-              >
-                <Icon
-                  name={t.icone}
-                  className={`h-4 w-4 ${corDoTema(t.id).texto}`}
-                />
-                {t.rotulo}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <Link
-              href="/comecar"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-base font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
-            >
-              Montar meu relatório
-              <Icon name="ArrowRight" className="h-5 w-5" />
-            </Link>
+          <div className="rounded-xl2 border border-line bg-surface p-5 sm:p-8">
+            <h2 className="font-display text-2xl font-semibold text-ink">
+              Assuntos do seu dia a dia
+            </h2>
+            {/* Lista informativa, não seleção: sem borda nem formato de chip,
+                para não parecer que dá para tocar e escolher aqui. */}
+            <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-4 sm:grid-cols-4 sm:gap-x-4">
+              {temasComConteudo.map((t) => {
+                const cor = corDoTema(t.id);
+                return (
+                  <li
+                    key={t.id}
+                    className="anim-ao-ver flex items-center gap-2 text-sm font-medium text-ink"
+                  >
+                    <span
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-9 sm:w-9 ${cor.fundo} ${cor.texto}`}
+                      aria-hidden
+                    >
+                      <Icon name={t.icone} className="h-4 w-4" />
+                    </span>
+                    <span className="min-w-0">{t.rotulo}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </section>
       </main>
       <SiteFooter />
+      {/* Espaço para o botão fixo (CtaInicio, só no celular) não cobrir o
+          fim do rodapé. */}
+      <div className="h-20 sm:hidden" aria-hidden />
     </>
   );
 }
