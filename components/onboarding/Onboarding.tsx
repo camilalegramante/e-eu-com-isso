@@ -70,10 +70,11 @@ export function Onboarding() {
     <div className="mx-auto max-w-readable px-5 py-10">
       <Stepper passo={passo} onIr={setPasso} />
 
-      {/* Os três passos ficam empilhados na mesma célula do grid e só o
-          atual aparece: a área tem sempre a altura do passo mais alto, então
-          nada "pula" ao avançar ou voltar. Os ocultos ficam inertes (sem
-          foco nem leitura). O fade roda ao trocar de passo. */}
+      {/* No desktop, os três passos ficam empilhados na mesma célula do grid
+          e só o atual aparece: a área tem a altura do passo mais alto, então
+          nada "pula" ao avançar ou voltar. No celular, os ocultos saem do
+          layout para o botão ficar logo abaixo do conteúdo. Os ocultos ficam
+          inertes (sem foco nem leitura). O fade roda ao trocar de passo. */}
       <div className="grid">
         {[
           (
@@ -139,7 +140,7 @@ export function Onboarding() {
         ].map((conteudo, i) => (
           <div
             key={PASSOS[i]}
-            className={`[grid-area:1/1] ${i === passo ? "anim-entrar" : "invisible"}`}
+            className={`[grid-area:1/1] ${i === passo ? "anim-entrar" : "hidden sm:block sm:invisible"}`}
             aria-hidden={i !== passo}
             inert={i !== passo}
           >
@@ -148,7 +149,7 @@ export function Onboarding() {
         ))}
       </div>
 
-      <div className="mt-10 flex min-h-12 items-center justify-between gap-4">
+      <div className="mt-6 flex min-h-12 sm:mt-10 items-center justify-between gap-4">
         <button
           type="button"
           onClick={voltar}
