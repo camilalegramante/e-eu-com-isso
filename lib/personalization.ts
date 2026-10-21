@@ -66,21 +66,24 @@ export function ehRelevanteParaPerfil(
   return proposta.relevantePara.some((p) => ativos.includes(p));
 }
 
-/** Frase curta de ênfase ("como você marcou ..."), ou null se não houver. */
+/**
+ * Frase curta de ênfase do tema para o perfil marcado, ou null. Une os perfis
+ * de todas as candidaturas do tema, para aparecer uma vez só e igual para
+ * todas (nunca "esta proposta é mais pra você que a outra").
+ */
 export function motivoRelevancia(
-  proposta: Proposta,
+  propostas: Proposta[],
   perfis: string[],
 ): string | null {
   const ativos = perfisAtivos(perfis);
-  const casados = (proposta.relevantePara ?? []).filter((p) =>
-    ativos.includes(p),
-  );
+  const relevantes = new Set(propostas.flatMap((p) => p.relevantePara ?? []));
+  const casados = ativos.filter((p) => relevantes.has(p));
   if (casados.length === 0) return null;
   const rotulos = casados
     .map((id) => getPerfil(id)?.rotulo)
     .filter((r): r is string => Boolean(r));
   if (rotulos.length === 0) return null;
-  return `Pode te afetar como ${rotulos.map((r) => `"${r}"`).join(" e ")}.`;
+  return `Este tema pode te afetar como ${rotulos.map((r) => `"${r}"`).join(" e ")}.`;
 }
 
 export interface ColunaComparacao {

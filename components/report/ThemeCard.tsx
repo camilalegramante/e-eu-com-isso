@@ -1,18 +1,24 @@
 import { Icon } from "@/components/ui/Icon";
 import { CandidateColumn } from "@/components/report/CandidateColumn";
-import { montarComparacao } from "@/lib/personalization";
+import { montarComparacao, motivoRelevancia } from "@/lib/personalization";
 import type { Tema } from "@/lib/types";
 
 export function ThemeCard({ tema, perfis }: { tema: Tema; perfis: string[] }) {
   const colunas = montarComparacao(tema.id);
+  const motivo = motivoRelevancia(
+    colunas.flatMap((c) => (c.proposta ? [c.proposta] : [])),
+    perfis,
+  );
 
   return (
     <section
       id={`tema-${tema.id}`}
-      className="scroll-mt-24 rounded-xl2 border border-line bg-paper p-5 sm:p-6"
+      className="scroll-mt-24 border-t border-line pt-6 sm:rounded-xl2 sm:border sm:bg-paper sm:p-6"
       aria-labelledby={`titulo-${tema.id}`}
     >
-      {/* Título e colunas entram ao aparecer na tela (CSS, .anim-ao-ver). */}
+      {/* No celular o tema não é um card (só um divisor), para não empilhar
+          caixas e sobrar largura para o texto. Título e colunas entram ao
+          aparecer na tela (CSS, .anim-ao-ver). */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="anim-ao-ver mb-1 flex items-start gap-3 sm:col-span-2">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ink text-paper">
@@ -28,6 +34,9 @@ export function ThemeCard({ tema, perfis }: { tema: Tema; perfis: string[] }) {
             {tema.resumoNeutro && (
               <p className="mt-1 text-sm text-ink-soft">{tema.resumoNeutro}</p>
             )}
+            {motivo && (
+              <p className="mt-2 text-sm font-medium text-brand">{motivo}</p>
+            )}
           </div>
         </div>
 
@@ -37,7 +46,6 @@ export function ThemeCard({ tema, perfis }: { tema: Tema; perfis: string[] }) {
             <CandidateColumn
               candidatura={c.candidatura}
               proposta={c.proposta}
-              perfis={perfis}
             />
           </div>
         ))}

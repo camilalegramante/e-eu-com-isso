@@ -23,7 +23,7 @@ export function ViabilidadeSection({
   return (
     <section
       aria-label="Viabilidade (análise)"
-      className="rounded-lg border border-line bg-paper/60 p-3"
+      className="border-t border-line pt-3"
     >
       <div className="flex items-center justify-between gap-2">
         <h5 className="flex items-center gap-1.5 text-sm font-semibold text-ink">
@@ -41,7 +41,7 @@ export function ViabilidadeSection({
           return (
             <li key={l.chave}>
               <details className="group">
-                <summary className="flex min-h-11 cursor-pointer transition-colors active:bg-line/40 list-none items-center gap-2.5 py-2">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2.5 py-2 transition-opacity active:opacity-60">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-ink-soft">
                     <Icon name={l.icone} className="h-3.5 w-3.5" />
                   </span>
@@ -61,7 +61,7 @@ export function ViabilidadeSection({
                     ▾
                   </span>
                 </summary>
-                <p className="pb-3 pl-8 text-sm text-ink-soft">
+                <p className="pb-3 text-sm text-ink-soft sm:pl-8">
                   {viabilidade[l.chave]}
                 </p>
               </details>

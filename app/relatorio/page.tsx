@@ -79,7 +79,7 @@ export default async function RelatorioPage({
   return (
     <>
       <SiteHeader />
-      <main className="mx-auto max-w-content px-5 py-10">
+      <main className="mx-auto max-w-content px-4 py-10 sm:px-5">
         {/* Cabeçalho do relatório */}
         <div className="max-w-readable">
           <p className="text-sm font-medium uppercase tracking-wide text-brand">
@@ -104,23 +104,36 @@ export default async function RelatorioPage({
         {/* Aviso de integridade */}
         <div className="mt-6 flex max-w-readable items-start gap-3 rounded-xl2 border border-line bg-surface p-4 text-sm text-ink-soft">
           <Icon name="Info" className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-          <div className="space-y-2">
-            <p>
-              Este site{" "}
-              <strong className="text-ink">não indica em quem votar</strong>.
-              Uma proposta é um plano, não algo que já está valendo. Toque em
-              “Resumo” para ver o que pode mudar e o que ainda falta.
-            </p>
-            <p>
-              Em “Dá pra sair do papel?”, os mesmos 4 pontos valem para todas as
-              propostas. É uma análise dos obstáculos, não uma nota.{" "}
-              <Link href="/sobre#viabilidade" className="underline hover:text-ink">
-                Entenda
-              </Link>
-              .
-            </p>
-          </div>
+          <p>
+            Este site{" "}
+            <strong className="text-ink">não indica em quem votar</strong>.
+            Proposta é plano, não algo que já está valendo.{" "}
+            <Link href="/sobre" className="underline hover:text-ink">
+              Como analisamos
+            </Link>
+            .
+          </p>
         </div>
+
+        {/* Atalhos para cada tema: quem escolhe "ver tudo" recebe vários. */}
+        {temas.length > 1 && (
+          <nav aria-label="Temas do relatório" className="mt-6">
+            <p className="text-sm font-medium text-ink">Ir para o tema:</p>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {temas.map((t) => (
+                <li key={t.id}>
+                  <a
+                    href={`#tema-${t.id}`}
+                    className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-sm font-medium text-ink-soft transition motion-safe:active:scale-[0.98] hover:border-ink/40 hover:text-ink"
+                  >
+                    <Icon name={t.icone} className="h-4 w-4 shrink-0" />
+                    {t.rotulo}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         <div className="mt-6 max-w-readable">
           <CongressoPanel />
