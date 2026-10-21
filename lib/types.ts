@@ -16,8 +16,6 @@ export type TipoAfirmacao =
   | "previsao-incerta" // efeito futuro condicional
   | "nao-localizado"; // não encontramos proposta documentada sobre o tema
 
-export type StatusRevisao = "rascunho" | "em-revisao" | "aprovado";
-
 export type CorToken = "neutra-1" | "neutra-2";
 
 export interface Fonte {
@@ -59,9 +57,6 @@ export interface Proposta {
   relevantePara?: string[];
   /** >= 1 fonte obrigatória quando tipoAfirmacao != 'nao-localizado'. */
   fontes: Fonte[];
-  statusRevisao: StatusRevisao;
-  /** Data da última revisão editorial, em ISO. */
-  revisadoEm?: string;
 }
 
 // Leitura de viabilidade de uma proposta (análise, NÃO fato e NÃO nota).

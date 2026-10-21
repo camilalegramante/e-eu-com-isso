@@ -15,11 +15,10 @@ resumido com fidelidade e **revisado manualmente** antes de ir ao ar.
 As fontes primárias (PDFs dos planos) ficam em `/public/fontes/` e são
 referenciadas por URL + número de página.
 
-## Fluxo de revisão (obrigatório)
+## Revisão
 
-Toda proposta nasce `statusRevisao: "rascunho"`. Ela só pode virar `"aprovado"`
-depois que uma pessoa confirmar os 7 critérios abaixo. Itens não aprovados
-**não aparecem** em produção (só em desenvolvimento, com selo "DEMONSTRATIVO").
+Não há campo de status: tudo o que está em `content/propostas/` é publicado.
+A revisão humana usa o checklist abaixo, sobre o site no ar.
 
 ### Checklist por proposta
 
@@ -37,10 +36,8 @@ depois que uma pessoa confirmar os 7 critérios abaixo. Itens não aprovados
 6. **Paridade:** o tema foi preenchido para **todas** as candidaturas? Quando uma
    não trata do assunto, cria-se entrada `nao-localizado` — nunca se omite em silêncio
    nem se infere posição a partir da ausência.
-7. `statusRevisao: "aprovado"` e `revisadoEm` preenchidos (YYYY-MM-DD).
-
-Um teste automatizado (`tests/conteudo.test.ts`) falha se: um item `aprovado`
-não tiver fonte; uma fonte tiver URL malformada; um tema publicado não tiver
+Um teste automatizado (`tests/conteudo.test.ts`) falha se: uma proposta
+(fora `nao-localizado`) não tiver fonte; uma fonte tiver URL malformada; um tema publicado não tiver
 paridade entre as candidaturas.
 
 ## Template de proposta
@@ -67,8 +64,6 @@ paridade entre as candidaturas.
       pagina: 71,
     },
   ],
-  statusRevisao: "rascunho",
-  revisadoEm: "2026-10-21",
 }
 ```
 

@@ -3,7 +3,6 @@ import { LabelTag } from "@/components/report/LabelTag";
 import { SourceList } from "@/components/report/SourceList";
 import { ViabilidadeSection } from "@/components/report/ViabilidadeSection";
 import { getViabilidade } from "@/content/viabilidade";
-import { MOSTRAR_RASCUNHOS } from "@/lib/site";
 import type { Candidatura, Proposta } from "@/lib/types";
 
 const ACENTO: Record<Candidatura["corToken"], string> = {
@@ -18,12 +17,7 @@ export function CandidateColumn({
   candidatura: Candidatura;
   proposta: Proposta | null;
 }) {
-  const liberada =
-    !!proposta && (proposta.statusRevisao === "aprovado" || MOSTRAR_RASCUNHOS);
-  const exibivel = liberada && proposta.tipoAfirmacao !== "nao-localizado";
-  // Rascunho oculto não exibe nada (só o link do plano): não pode virar
-  // "Não consta", pois seria afirmar uma ausência que ainda não foi conferida.
-  const emRevisao = !!proposta && !liberada;
+  const exibivel = !!proposta && proposta.tipoAfirmacao !== "nao-localizado";
 
   const viabilidade = proposta ? getViabilidade(proposta.id) : undefined;
   const impacto = proposta?.impactoCotidiano;
@@ -117,7 +111,7 @@ export function CandidateColumn({
 
           <SourceList fontes={proposta.fontes} candidatura={candidatura} />
         </div>
-      ) : emRevisao ? null : (
+      ) : (
         <div className="mt-3 space-y-2">
           <LabelTag tipo="nao-localizado" />
           <p className="text-sm text-ink-soft">

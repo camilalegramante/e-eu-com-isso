@@ -16,8 +16,8 @@ npm install
 npm run dev     # http://localhost:3000
 ```
 
-Em desenvolvimento, o conteúdo em `rascunho`/`em-revisao` aparece com o selo
-**“Em revisão”**. Em produção, só aparece conteúdo com `statusRevisao: "aprovado"`.
+Todo o conteúdo em `content/propostas/` aparece igual em desenvolvimento e em
+produção (não há etapa de rascunho no código).
 
 Outros comandos:
 
@@ -40,13 +40,12 @@ tests/          Vitest: url-state, personalization, integridade editorial
 
 ## Fluxo editorial (importante)
 
-Todo conteúdo político está em `content/` e **nasce como `rascunho`**. Ele só
-vai ao ar depois de revisão humana. Veja o checklist em
+Todo conteúdo político está em `content/`. O que está no arquivo vai ao ar;
+a revisão humana é feita sobre o site publicado. Veja o checklist em
 [`content/README.md`](content/README.md).
 
-Para **publicar** uma proposta depois de revisada: mude seu
-`statusRevisao` para `"aprovado"` e atualize `revisadoEm`. Para adicionar um
-tema novo ao relatório, inclua-o em `TEMAS_COM_CONTEUDO` (em `content/temas.ts`).
+Para adicionar um tema novo ao relatório, inclua-o em `TEMAS_COM_CONTEUDO`
+(em `content/temas.ts`).
 
 O teste `tests/conteudo.test.ts` falha se um item publicado ficar sem fonte,
 com URL malformada, ou se um tema perder a paridade entre as candidaturas.

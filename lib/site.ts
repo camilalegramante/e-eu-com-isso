@@ -19,11 +19,3 @@ export const SITE = {
   atualizadoEm: "21 de outubro de 2026",
   url: resolverUrl(),
 };
-
-// Produção só exibe conteúdo aprovado editorialmente; em desenvolvimento
-// os rascunhos aparecem com selo, para permitir revisão. Para revisar os
-// rascunhos num deploy (ex.: ambiente de homologação privado), defina
-// NEXT_PUBLIC_SHOW_DRAFTS=true nas variáveis de ambiente.
-export const MOSTRAR_RASCUNHOS =
-  process.env.NODE_ENV !== "production" ||
-  process.env.NEXT_PUBLIC_SHOW_DRAFTS === "true";

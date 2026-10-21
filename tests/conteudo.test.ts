@@ -30,10 +30,10 @@ describe("integridade editorial do conteúdo", () => {
     }
   });
 
-  it("item aprovado nunca fica sem fonte", () => {
+  it("proposta publicada nunca fica sem fonte", () => {
     for (const p of TODAS_PROPOSTAS) {
-      if (p.statusRevisao === "aprovado" && p.tipoAfirmacao !== "nao-localizado") {
-        expect(p.fontes.length, `aprovado sem fonte: ${p.id}`).toBeGreaterThanOrEqual(1);
+      if (p.tipoAfirmacao !== "nao-localizado") {
+        expect(p.fontes.length, `sem fonte: ${p.id}`).toBeGreaterThanOrEqual(1);
       }
     }
   });
