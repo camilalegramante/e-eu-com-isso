@@ -146,13 +146,9 @@ export function Onboarding() {
           <Icon name="ArrowLeft" className="h-4 w-4" /> Voltar
         </button>
 
-        {/* Sem tema escolhido não há como seguir: no lugar do botão, diz o
-            que falta (a partir do passo dos temas). */}
-        {passo >= 1 && semTema ? (
-          <p className="text-right text-sm text-ink-faint" aria-live="polite">
-            Escolha ao menos um tema para continuar.
-          </p>
-        ) : passo < PASSOS.length - 1 ? (
+        {/* Sem tema escolhido não há como seguir: a partir do passo dos
+            temas, o botão só aparece depois de marcar ao menos um. */}
+        {passo >= 1 && semTema ? null : passo < PASSOS.length - 1 ? (
           <button
             type="button"
             onClick={avancar}
@@ -189,13 +185,20 @@ function Stepper({
         const estado =
           i === passo ? "atual" : i < passo ? "feito" : "futuro";
         return (
-          <li key={rotulo} className="flex flex-1 items-center gap-2">
+          // Só os passos com linha depois crescem; o último fica do tamanho
+          // do círculo, senão sobra espaço à direita e a barra descentraliza.
+          <li
+            key={rotulo}
+            className={`flex items-center gap-2 ${
+              i < PASSOS.length - 1 ? "flex-1" : ""
+            }`}
+          >
             <button
               type="button"
               onClick={() => onIr(i)}
               aria-current={estado === "atual" ? "step" : undefined}
               aria-label={`Passo ${i + 1}: ${rotulo}`}
-              className="flex min-h-11 min-w-11 items-center gap-2 text-left transition-opacity active:opacity-60"
+              className="flex min-h-11 min-w-11 items-center justify-center gap-2 text-left transition-opacity active:opacity-60 sm:justify-start"
             >
               <span
                 className={[

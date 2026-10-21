@@ -1,7 +1,6 @@
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import { propostasDoTema } from "@/content/propostas";
-import { PERFIL_NEUTRO } from "@/content/perfis";
 import { getPerfil } from "@/lib/catalogs";
 import {
   TODOS_OS_TEMAS,
@@ -51,19 +50,13 @@ export function temasSelecionadosSemConteudo(selecao: SelecaoUsuario): Tema[] {
   return TEMAS.filter((t) => ids.has(t.id) && !TEMAS_COM_CONTEUDO_SET.has(t.id));
 }
 
-/** Perfis "ativos" para ênfase (ignora o perfil neutro "prefiro não responder"). */
-export function perfisAtivos(perfis: string[]): string[] {
-  return perfis.filter((p) => p !== PERFIL_NEUTRO);
-}
-
 /** A proposta tem relação de ênfase com algum dos perfis selecionados? */
 export function ehRelevanteParaPerfil(
   proposta: Proposta,
   perfis: string[],
 ): boolean {
-  const ativos = perfisAtivos(perfis);
-  if (ativos.length === 0 || !proposta.relevantePara) return false;
-  return proposta.relevantePara.some((p) => ativos.includes(p));
+  if (perfis.length === 0 || !proposta.relevantePara) return false;
+  return proposta.relevantePara.some((p) => perfis.includes(p));
 }
 
 /**
@@ -75,9 +68,8 @@ export function motivoRelevancia(
   propostas: Proposta[],
   perfis: string[],
 ): string | null {
-  const ativos = perfisAtivos(perfis);
   const relevantes = new Set(propostas.flatMap((p) => p.relevantePara ?? []));
-  const casados = ativos.filter((p) => relevantes.has(p));
+  const casados = perfis.filter((p) => relevantes.has(p));
   if (casados.length === 0) return null;
   const rotulos = casados
     .map((id) => getPerfil(id)?.rotulo)

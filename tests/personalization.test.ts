@@ -79,7 +79,8 @@ describe("ehRelevanteParaPerfil", () => {
     expect(ehRelevanteParaPerfil(proposta, ["clt"])).toBe(true);
   });
 
-  it("ignora o perfil neutro 'nao-responder'", () => {
+  // Opção removida ("Pular" a substitui); links antigos não podem dar ênfase.
+  it("ignora o antigo perfil 'nao-responder'", () => {
     expect(ehRelevanteParaPerfil(proposta, ["nao-responder"])).toBe(false);
   });
 
