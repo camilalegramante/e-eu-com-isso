@@ -7,9 +7,13 @@ export const educacao: Proposta[] = [
     temaId: "educacao",
     candidaturaId: "flavio",
     titulo: "Alfabetizar bem, ensino técnico e vale para escola e creche",
-    resumoFiel: `O plano quer ensinar a ler pelo método fônico (ligar cada som à sua letra) e pagar bons alunos para dar reforço aos colegas. O dinheiro para as escolas seria ligado às metas de aprendizagem, sem abandonar as regiões com mais dificuldade. Diz apoiar a escola em tempo integral e quer ampliar as escolas cívico-militares. Quando faltar vaga na rede pública, a família receberia um vale para matricular o filho em outra escola, e um vale-creche para usar em creche particular credenciada até surgir vaga pública. Também quer mais ensino técnico no ensino médio, junto com empresas. Na faculdade, o estudante só começaria a pagar o empréstimo quando estivesse empregado, com parcela de acordo com o salário.`,
+    resumoFiel: `O plano quer ensinar a ler pelo método fônico (ligar cada som à sua letra) e pagar bons alunos para dar reforço aos colegas. O dinheiro para as escolas seria ligado às metas de aprendizagem, sem abandonar as regiões com mais dificuldade. Diz apoiar a escola em tempo integral e quer ampliar as escolas cívico-militares.
+
+Quando faltar vaga na rede pública, a família receberia um vale para matricular o filho em outra escola. Também receberia um vale-creche para usar em creche particular credenciada até surgir vaga pública.
+
+Quer mais ensino técnico no ensino médio, junto com empresas. Na faculdade, o estudante só começaria a pagar o empréstimo quando estivesse empregado, com parcela de acordo com o salário.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `A família poderia ter mais opções de escola e creche quando faltasse vaga pública, e o jovem poderia sair do ensino médio já com uma profissão. Depende de como os vales seriam pagos e das parcerias com empresas.`,
+    impactoCotidiano: `A família poderia ter mais opções de escola e creche quando faltasse vaga pública. O jovem poderia sair do ensino médio já com uma profissão. Depende de como os vales seriam pagos e das parcerias com empresas.`,
     condicoes: [
       `Dependeria de aprovação no Congresso e de dinheiro no orçamento para os vales e o novo empréstimo da faculdade`,
       `Ter escolas e creches particulares cadastradas para aceitar o vale`,
@@ -59,9 +63,13 @@ export const educacao: Proposta[] = [
     temaId: "educacao",
     candidaturaId: "lula",
     titulo: "Pé-de-Meia, mais creches e vagas em faculdades e institutos",
-    resumoFiel: `O plano quer manter e reforçar o Pé-de-Meia, programa que já existe e ajuda jovens pobres do ensino médio a não largar a escola por falta de dinheiro. Promete apoiar estados e cidades para ter mais creches e mais escolas de tempo integral, e chegar à meta de 80% das crianças alfabetizadas na idade certa. Também quer mais institutos federais (escolas públicas de ensino técnico), mais vagas em faculdades públicas e mais apoio com moradia e alimentação para quem está na faculdade.`,
+    resumoFiel: `O plano quer manter e reforçar o Pé-de-Meia, programa que já existe e ajuda jovens pobres do ensino médio a não largar a escola por falta de dinheiro.
+
+Promete apoiar estados e cidades para ter mais creches e mais escolas de tempo integral. Quer chegar à meta de 80% das crianças alfabetizadas na idade certa.
+
+Também quer mais institutos federais (escolas públicas de ensino técnico), mais vagas em faculdades públicas e mais apoio com moradia e alimentação para quem está na faculdade.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `Jovens no ensino médio poderiam seguir recebendo a bolsa para não largar os estudos, e famílias poderiam achar vaga em creche com mais facilidade. Depende do ritmo das obras e de o dinheiro continuar.`,
+    impactoCotidiano: `Jovens no ensino médio poderiam seguir recebendo a bolsa para não largar os estudos. Famílias poderiam achar vaga em creche com mais facilidade. Depende do ritmo das obras e de o dinheiro continuar.`,
     condicoes: [
       `Dependeria de manter o dinheiro dos programas no orçamento todo ano`,
       `Dependeria de terminar as obras de creches, institutos e universidades`,

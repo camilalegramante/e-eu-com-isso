@@ -8,12 +8,16 @@ export const custoDeVida: Proposta[] = [
     temaId: "custo-de-vida",
     candidaturaId: "flavio",
     titulo: "Menos imposto e conta de luz mais barata",
-    resumoFiel: `O plano quer rever a reforma dos impostos que já foi aprovada, para cobrar menos imposto sobre o que se produz e se compra. Promete baixar o imposto da conta de luz e dos combustíveis. Também quer deixar a conta de luz mais simples, cortando aos poucos as taxas extras que vêm nela, e manter o desconto para quem tem menos (tarifa social). Para baratear a comida, fala em melhorar o transporte das colheitas, guardar mais safra em armazéns e ampliar o seguro para quem planta (Seguro Rural).`,
+    resumoFiel: `O plano quer rever a reforma dos impostos que já foi aprovada. A ideia é cobrar menos imposto sobre o que se produz e se compra.
+
+Promete baixar o imposto da conta de luz e dos combustíveis. Quer deixar a conta de luz mais simples, tirando aos poucos as taxas extras que vêm nela. E quer manter o desconto na luz para quem tem menos (tarifa social).
+
+Para a comida ficar mais barata, fala em melhorar o transporte das colheitas, guardar mais safra em armazéns e ampliar o seguro de quem planta (Seguro Rural).`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `Se as mudanças forem aprovadas, compras, conta de luz e combustível poderiam ficar mais baratos. O plano não diz quanto.`,
     condicoes: [
       `O Congresso precisa aprovar as mudanças nos impostos`,
-      `Ter dinheiro no orçamento para cobrar menos sem faltar em outras áreas`,
+      `O governo precisaria ter dinheiro para cobrar menos imposto sem faltar em outras áreas`,
     ],
     incertezas: [
       `O plano não diz quando isso aconteceria`,
@@ -57,14 +61,18 @@ export const custoDeVida: Proposta[] = [
     temaId: "custo-de-vida",
     candidaturaId: "lula",
     titulo: "Debater luz mais barata e proteger o preço dos combustíveis",
-    resumoFiel: `O que o plano diz que já foi feito: a reforma dos impostos sobre o consumo foi aprovada, a cesta básica vai ficar sem esses impostos e os mais pobres vão receber parte do imposto de volta (o chamado "cashback"). Diz também que quem ganha muito passou a pagar mais Imposto de Renda e quem ganha pouco, menos. E cita dois programas que já existem: o Luz do Povo (luz de graça para famílias do Cadastro Único que gastam até 80 kWh por mês) e o Gás do Povo (botijão de gás de graça para famílias de baixa renda).
+    resumoFiel: `O que o plano diz que já foi feito: a reforma dos impostos sobre as compras foi aprovada. A cesta básica vai ficar sem esses impostos. E os mais pobres vão receber parte do imposto de volta (o chamado "cashback").
 
-O que promete para o próximo mandato: abrir um debate sobre como baratear a conta de luz para casas e empresas, e continuar agindo para que altas de preço lá fora não cheguem aos combustíveis aqui. Também fala em consolidar a reforma dos impostos.`,
+Diz também que quem ganha muito passou a pagar mais Imposto de Renda, e quem ganha pouco, menos.
+
+Cita dois programas que já existem. O Luz do Povo dá luz de graça para famílias do Cadastro Único (a lista do governo de famílias de baixa renda) que gastam até 80 kWh por mês. O Gás do Povo dá botijão de gás de graça para famílias de baixa renda.
+
+O que promete para o próximo mandato: abrir um debate sobre como baratear a conta de luz de casas e empresas. E continuar agindo para que, quando o preço sobe lá fora, isso não chegue ao combustível aqui. Também fala em consolidar a reforma dos impostos.`,
     // Uma única entrada por candidatura e tema (ver lib/personalization.ts).
     // Mantida como "proposta-documentada" porque há compromissos para o
     // próximo mandato; o texto separa claramente o que já foi feito.
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `Os programas que já existem (Luz do Povo e Gás do Povo) poderiam continuar ajudando famílias de baixa renda, se forem mantidos. Sobre a conta de luz, o plano só promete um debate, então não é possível saber se ela ficaria mais barata nem quanto.`,
+    impactoCotidiano: `Se o Luz do Povo e o Gás do Povo forem mantidos, famílias de baixa renda poderiam continuar recebendo essa ajuda. Sobre a conta de luz, o plano só promete um debate. Não dá para saber se ela ficaria mais barata, nem quanto.`,
     condicoes: [
       `Dependeria de como a reforma dos impostos for aplicada nos próximos anos`,
       `Os programas Luz do Povo e Gás do Povo precisariam continuar tendo dinheiro no orçamento`,

@@ -7,7 +7,9 @@ export const saude: Proposta[] = [
     temaId: "saude",
     candidaturaId: "flavio",
     titulo: "Ficha de saúde digital, menos fila e prevenção",
-    resumoFiel: `O plano quer criar uma ficha de saúde digital única, ligada ao CPF. Médicos da rede pública e particular veriam seu histórico, com a sua autorização. Promete usar tecnologia para marcar consultas e exames mais rápido e corrigir a tabela do SUS (quanto o governo paga a hospitais e clínicas). Também quer ampliar o atendimento perto de casa (Saúde da Família), ampliar exames preventivos e manter a vacinação. Para quem mora longe, promete atendimento por vídeo (telessaúde). Para idosos, pessoas com deficiência e doentes crônicos, promete entrega de remédio em casa.`,
+    resumoFiel: `O plano quer criar uma ficha de saúde digital única, ligada ao CPF. Médicos da rede pública e particular veriam seu histórico, com a sua autorização. Promete usar tecnologia para marcar consultas e exames mais rápido e corrigir a tabela do SUS (quanto o governo paga a hospitais e clínicas).
+
+Também quer ampliar o atendimento perto de casa (Saúde da Família), ampliar exames preventivos e manter a vacinação. Para quem mora longe, promete atendimento por vídeo (telessaúde). Para idosos, pessoas com deficiência e doentes crônicos, promete entrega de remédio em casa.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `Pode ficar mais fácil marcar consulta. Você poderia evitar repetir exames, porque o médico veria seu histórico. Quem mora longe poderia ser atendido por vídeo. Isso depende de a tecnologia chegar a cada região.`,
     condicoes: [
@@ -59,7 +61,11 @@ export const saude: Proposta[] = [
     temaId: "saude",
     candidaturaId: "lula",
     titulo: "Reforçar o SUS, diminuir a fila e marcar consulta pelo celular",
-    resumoFiel: `O plano quer ampliar o atendimento perto de casa (Saúde da Família). Promete reforçar o programa Agora Tem Especialistas, que já existe, para diminuir a fila de consultas, exames e cirurgias, com uma fila única digital que atende primeiro quem está mais grave. Quer uma ficha de saúde única para marcar consulta no posto e ver resultado de exame pelo celular, e mais atendimento por vídeo (telessaúde). Promete manter a Farmácia Popular, que já existe, com remédios de graça, e passar a oferecer nela alguns exames, como os de pressão alta e diabetes. Também quer continuar ampliando a vacinação, inclusive nas escolas.`,
+    resumoFiel: `O plano quer ampliar o atendimento perto de casa (Saúde da Família). Promete reforçar o programa Agora Tem Especialistas, que já existe, para diminuir a fila de consultas, exames e cirurgias, com uma fila única digital que atende primeiro quem está mais grave.
+
+Quer uma ficha de saúde única para marcar consulta no posto e ver resultado de exame pelo celular, e mais atendimento por vídeo (telessaúde).
+
+Promete manter a Farmácia Popular, que já existe, com remédios de graça, e passar a oferecer nela alguns exames, como os de pressão alta e diabetes. Também quer continuar ampliando a vacinação, inclusive nas escolas.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `A espera por consulta, exame ou cirurgia poderia diminuir. Você poderia marcar consulta no posto e ver exames pelo celular. Isso depende de o dinheiro e as parcerias continuarem.`,
     condicoes: [

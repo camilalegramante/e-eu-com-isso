@@ -7,7 +7,11 @@ export const empregoSalario: Proposta[] = [
     temaId: "emprego-salario",
     candidaturaId: "flavio",
     titulo: "Baratear a contratação para ter mais carteira assinada",
-    resumoFiel: `O plano quer reduzir aos poucos o custo que a empresa tem para manter um funcionário, sem tirar direitos, para que mais gente tenha carteira assinada. Promete contratos mais baratos para jovens de 18 a 24 anos no primeiro emprego e para pessoas com 50 anos ou mais que estão sem trabalho há pelo menos 1 ano. Quer permitir que empresa e trabalhador combinem direto as condições de trabalho, como horários flexíveis, dentro da lei. Também promete criar um banco nacional de vagas e deixar quem recebe ajuda do governo voltar ao benefício sem fila depois do seguro-desemprego. Para quem trabalha por aplicativo, diz que vai manter essas oportunidades e proteger esses trabalhadores.`,
+    resumoFiel: `O plano quer reduzir aos poucos o custo que a empresa tem para manter um funcionário, sem tirar direitos, para que mais gente tenha carteira assinada. Promete contratos mais baratos para jovens de 18 a 24 anos no primeiro emprego e para pessoas com 50 anos ou mais que estão sem trabalho há pelo menos 1 ano.
+
+Quer permitir que empresa e trabalhador combinem direto as condições de trabalho, como horários flexíveis, dentro da lei.
+
+Também promete criar um banco nacional de vagas e deixar quem recebe ajuda do governo voltar ao benefício sem fila depois do seguro-desemprego. Para quem trabalha por aplicativo, diz que vai manter essas oportunidades e proteger esses trabalhadores.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `Para quem está sem emprego ou trabalha sem carteira, poderia ficar mais fácil ser contratado. Acordos diretos com a empresa poderiam trazer horários mais flexíveis, mas também mudar condições de trabalho. O efeito dependeria das regras e de como cada acordo for feito.`,
     condicoes: [
@@ -54,7 +58,11 @@ export const empregoSalario: Proposta[] = [
     temaId: "emprego-salario",
     candidaturaId: "lula",
     titulo: "Manter a valorização do salário mínimo e mais proteção no trabalho",
-    resumoFiel: `O plano promete manter a política de valorização do salário mínimo. Segundo o plano, essa política deu aumento acima da inflação nos últimos anos e também subiu aposentadorias e o BPC (benefício para idosos e pessoas com deficiência de baixa renda). Quer acabar com a escala 6x1 (seis dias de trabalho e um de folga) e reduzir a jornada para 40 horas por semana, sem cortar salário. Esse texto já foi aprovado na Câmara e falta o Senado. Também quer criar regras para quem trabalha por aplicativo e mudar leis trabalhistas que, segundo o plano, deixam o trabalho mais precário. E quer obrigar empresas com diferença de salário entre homens e mulheres a seguir um plano para reduzir essa diferença aos poucos.`,
+    resumoFiel: `O plano promete manter a política de valorização do salário mínimo. Segundo o plano, essa política deu aumento acima da inflação nos últimos anos e também subiu aposentadorias e o BPC (benefício para idosos e pessoas com deficiência de baixa renda).
+
+Quer acabar com a escala 6x1 (seis dias de trabalho e um de folga) e reduzir a jornada para 40 horas por semana, sem cortar salário. Esse texto já foi aprovado na Câmara e falta o Senado.
+
+Também quer criar regras para quem trabalha por aplicativo e mudar leis trabalhistas que, segundo o plano, deixam o trabalho mais precário. E quer obrigar empresas com diferença de salário entre homens e mulheres a seguir um plano para reduzir essa diferença aos poucos.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `Quem ganha salário mínimo ou recebe aposentadoria ou BPC poderia manter ou aumentar o poder de compra. Quem trabalha por aplicativo poderia passar a ter mais direitos, se uma lei for aprovada. As mudanças na jornada dependem de aprovação no Senado.`,
     condicoes: [
