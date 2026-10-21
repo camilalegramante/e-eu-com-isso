@@ -2,6 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  // hover: só em aparelhos com mouse. No celular, o hover "gruda" depois do
+  // toque (ex.: "Ver meu relatório" surgia cinza no lugar de "Avançar").
+  future: { hoverOnlyWhenSupported: true },
   theme: {
     extend: {
       fontFamily: {
