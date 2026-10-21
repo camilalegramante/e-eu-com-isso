@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { ThemeCard } from "@/components/report/ThemeCard";
 import { CongressoPanel } from "@/components/report/CongressoPanel";
-import { ShareBar } from "@/components/share/ShareBar";
+import { ShareBar, ShareDock } from "@/components/share/ShareBar";
 import { Icon } from "@/components/ui/Icon";
 import { decodeSelecao } from "@/lib/url-state";
 import {
@@ -16,6 +16,9 @@ import { getPerfil } from "@/lib/catalogs";
 import { SITE } from "@/lib/site";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+const TEXTO_COMPARTILHAR =
+  "Veja o que os candidatos propõem sobre os temas que importam pra você.";
 
 const candidaturasTexto = CANDIDATURAS_ORDENADAS.map(
   (c) => `${c.nome} (${c.partido})`,
@@ -39,11 +42,25 @@ export async function generateMetadata({
   const title = "Meu relatório";
   const description = `O que ${candidaturasTexto} documentaram sobre ${assunto}. Resumo com fontes, sem recomendação de voto.`;
 
+  // O openGraph da página substitui o do layout por inteiro, então a imagem
+  // de prévia precisa ser repetida aqui (é este link que as pessoas compartilham).
+  const imagem = { url: "/opengraph-image", width: 1200, height: 630, alt: SITE.nome };
+
   return {
     title,
     description,
-    openGraph: { title: `${title} · ${SITE.nome}`, description },
-    twitter: { title: `${title} · ${SITE.nome}`, description },
+    openGraph: {
+      type: "website",
+      title: `${title} · ${SITE.nome}`,
+      description,
+      images: [imagem],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} · ${SITE.nome}`,
+      description,
+      images: [imagem],
+    },
   };
 }
 
@@ -80,26 +97,33 @@ export default async function RelatorioPage({
               Seu perfil: {perfisLabels.join(", ")}.
             </p>
           )}
+          {/* No celular, o compartilhamento fica na barra fixa do rodapé. */}
+          <ShareBar titulo={TEXTO_COMPARTILHAR} className="mt-5 hidden sm:flex" />
         </div>
 
         {/* Aviso de integridade */}
         <div className="mt-6 flex max-w-readable items-start gap-3 rounded-xl2 border border-line bg-surface p-4 text-sm text-ink-soft">
           <Icon name="Info" className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-          <p>
-            Este site{" "}
-            <strong className="text-ink">não indica em quem votar</strong>. Uma
-            proposta é um plano, não algo que já está valendo — muita coisa
-            depende do Congresso e de dinheiro. Toque em “Aprofundar” para ver o
-            que ainda falta e confira sempre o plano de governo.
-          </p>
+          <div className="space-y-2">
+            <p>
+              Este site{" "}
+              <strong className="text-ink">não indica em quem votar</strong>.
+              Uma proposta é um plano, não algo que já está valendo. Toque em
+              “Resumo” para ver o que pode mudar e o que ainda falta.
+            </p>
+            <p>
+              Em “Dá pra sair do papel?”, os mesmos 4 pontos valem para todas as
+              propostas. É uma análise dos obstáculos, não uma nota.{" "}
+              <Link href="/sobre#viabilidade" className="underline hover:text-ink">
+                Entenda
+              </Link>
+              .
+            </p>
+          </div>
         </div>
 
         <div className="mt-6 max-w-readable">
           <CongressoPanel />
-        </div>
-
-        <div className="mt-6 max-w-readable">
-          <ShareBar titulo="Veja o que os candidatos propõem sobre os temas que importam pra você." />
         </div>
 
         {/* Conteúdo */}
@@ -118,11 +142,9 @@ export default async function RelatorioPage({
         {faltando.length > 0 && (
           <div className="mt-8 max-w-readable rounded-xl2 border border-dashed border-line bg-surface p-5 text-sm text-ink-soft">
             <p className="font-medium text-ink">
-              Estes temas que você escolheu ainda não estão disponíveis:
+              Ainda não temos conteúdo sobre:
             </p>
-            <p className="mt-1">
-              {faltando.map((t) => t.rotulo).join(", ")}. Eles entram em breve.
-            </p>
+            <p className="mt-1">{faltando.map((t) => t.rotulo).join(", ")}.</p>
           </div>
         )}
 
@@ -135,17 +157,23 @@ export default async function RelatorioPage({
             Cada pessoa pode montar o próprio relatório, com os temas da vida
             dela. Sem cadastro.
           </p>
-          <div className="mt-5 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/comecar"
-              className="rounded-full bg-paper px-5 py-2.5 text-sm font-medium text-ink hover:bg-paper/90"
-            >
-              Refazer com outros temas
-            </Link>
-          </div>
+          <ShareBar
+            titulo={TEXTO_COMPARTILHAR}
+            tom="escuro"
+            className="mt-5 justify-center"
+          />
+          <Link
+            href="/comecar"
+            className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-paper/80 underline underline-offset-2 hover:text-paper"
+          >
+            Refazer com outros temas
+          </Link>
         </div>
       </main>
       <SiteFooter />
+      {/* Espaço para a barra fixa de compartilhar não cobrir o rodapé no celular. */}
+      <div className="h-24 sm:hidden" aria-hidden />
+      <ShareDock titulo={TEXTO_COMPARTILHAR} />
     </>
   );
 }

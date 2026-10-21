@@ -24,8 +24,8 @@ export function CandidateColumn({
   const liberada =
     !!proposta && (proposta.statusRevisao === "aprovado" || MOSTRAR_RASCUNHOS);
   const exibivel = liberada && proposta.tipoAfirmacao !== "nao-localizado";
-  // Rascunho oculto não pode virar "Não consta": seria afirmar uma ausência
-  // que ainda não foi conferida.
+  // Rascunho oculto não exibe nada (só o link do plano): não pode virar
+  // "Não consta", pois seria afirmar uma ausência que ainda não foi conferida.
   const emRevisao = !!proposta && !liberada;
 
   const motivo = proposta ? motivoRelevancia(proposta, perfis) : null;
@@ -46,9 +46,13 @@ export function CandidateColumn({
 
       {exibivel && proposta ? (
         <div className="mt-3 space-y-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <LabelTag tipo={proposta.tipoAfirmacao} />
-          </div>
+          {/* "Está no plano" é o padrão de tudo que aparece aqui; só rotula o
+              que foge dele (ex.: histórico, interpretação). */}
+          {proposta.tipoAfirmacao !== "proposta-documentada" && (
+            <div className="flex flex-wrap items-center gap-2">
+              <LabelTag tipo={proposta.tipoAfirmacao} />
+            </div>
+          )}
 
           <p className="font-medium text-ink">{proposta.titulo}</p>
           <p className="whitespace-pre-line text-sm leading-relaxed text-ink-soft">
@@ -65,8 +69,8 @@ export function CandidateColumn({
             proposta.condicoes?.length ||
             proposta.incertezas?.length) && (
             <details className="group rounded-lg border border-line bg-paper/60">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
-                Aprofundar
+              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
+                Resumo
                 <span className="text-ink-faint transition group-open:rotate-180">
                   ▾
                 </span>
@@ -117,18 +121,7 @@ export function CandidateColumn({
 
           <SourceList fontes={proposta.fontes} />
         </div>
-      ) : emRevisao ? (
-        <div className="mt-3 space-y-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink-faint">
-            <Icon name="Info" className="h-3.5 w-3.5" />
-            Em revisão
-          </span>
-          <p className="text-sm text-ink-soft">
-            Ainda estamos conferindo o que este plano diz sobre o assunto. Até
-            lá, você pode consultar o plano completo no link abaixo.
-          </p>
-        </div>
-      ) : (
+      ) : emRevisao ? null : (
         <div className="mt-3 space-y-2">
           <LabelTag tipo="nao-localizado" />
           <p className="text-sm text-ink-soft">

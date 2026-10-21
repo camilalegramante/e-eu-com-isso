@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PERFIS } from "@/content/perfis";
-import { TEMAS } from "@/content/temas";
+import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
 import { hrefRelatorio } from "@/lib/url-state";
@@ -11,6 +11,8 @@ import { TODOS_OS_TEMAS } from "@/lib/types";
 import { getPerfil, getTema } from "@/lib/catalogs";
 
 const STORAGE_KEY = "eeci:selecao";
+// Só oferece temas que já têm conteúdo, para ninguém escolher algo vazio.
+const TEMAS_DISPONIVEIS = TEMAS.filter((t) => TEMAS_COM_CONTEUDO.includes(t.id));
 const PASSOS = ["Perfil", "Interesses", "Revisão"] as const;
 
 export function Onboarding() {
@@ -114,7 +116,7 @@ export function Onboarding() {
             >
               Quero ver tudo
             </Chip>
-            {TEMAS.map((t) => (
+            {TEMAS_DISPONIVEIS.map((t) => (
               <Chip
                 key={t.id}
                 selected={!verTudo && interesses.includes(t.id)}

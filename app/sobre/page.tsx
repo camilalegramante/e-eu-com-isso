@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 };
 
 const ROTULOS: { tipo: TipoAfirmacao; explica: string }[] = [
-  { tipo: "proposta-documentada", explica: "Está escrita no plano de governo registrado da candidatura." },
   { tipo: "historico", explica: "Ação ou decisão anterior já documentada." },
   { tipo: "interpretacao", explica: "Leitura do possível impacto da proposta — não é fala da candidatura." },
   { tipo: "previsao-incerta", explica: "Efeito futuro que depende de condições e pode não acontecer." },
@@ -72,8 +71,8 @@ export default function SobrePage() {
 
         <Secao titulo="Os rótulos que você vê">
           <p>
-            Para não confundir o que é proposta com o que é interpretação ou
-            incerteza, cada informação recebe um rótulo:
+            Tudo o que aparece no relatório está escrito no plano de governo
+            registrado da candidatura. Quando algo foge disso, recebe um rótulo:
           </p>
           <ul className="mt-4 space-y-3">
             {ROTULOS.map((r) => (

@@ -76,7 +76,28 @@ export interface Viabilidade {
   institucional?: string;
   /** Precisa estar dentro da Constituição e das leis. */
   juridica?: string;
+  /**
+   * Etiquetas factuais (vocabulário fixo, igual para todas as candidaturas):
+   * dizem o que a proposta exige, não a chance de dar certo.
+   */
+  etiquetas?: {
+    orcamento?: EtiquetaOrcamento;
+    parlamentar?: EtiquetaParlamentar;
+  };
 }
+
+export type EtiquetaOrcamento =
+  | "Gasto contínuo"
+  | "Reduz arrecadação"
+  | "Pouco gasto novo"
+  | "Custo não informado";
+
+/** Sempre a exigência mais alta citada no texto da viabilidade. */
+export type EtiquetaParlamentar =
+  | "Ação do governo"
+  | "Precisa de lei"
+  | "Muda a Constituição"
+  | "Não definido no plano";
 
 export interface Tema {
   id: string;

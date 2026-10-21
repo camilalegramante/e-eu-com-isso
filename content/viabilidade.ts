@@ -6,7 +6,8 @@ import { CONGRESSO, somaPorCampo } from "./congresso";
 // as candidaturas, de forma neutra, com base no que a própria proposta exige.
 // O critério "parlamentar" usa SEMPRE as mesmas frases para as duas
 // candidaturas (abaixo); só muda o que a proposta exige (ação do governo, lei
-// ou PEC). Números vêm de content/congresso.ts. Status editorial: aprovado (revisado em 2026-10-21).
+// ou PEC). As etiquetas usam o vocabulário fixo de lib/types.ts e mostram a
+// exigência mais alta citada no texto. Números vêm de content/congresso.ts. Status editorial: aprovado (revisado em 2026-10-21).
 
 const { regras } = CONGRESSO;
 const soma = somaPorCampo();
@@ -23,6 +24,7 @@ const GOVERNO_E_ORCAMENTO = `Boa parte pode ser feita pelo próprio governo, sem
 export const VIABILIDADE: Record<string, Viabilidade> = {
   // ---- Custo de vida e impostos ----
   "custo-de-vida-flavio-reforma-tributaria": {
+    etiquetas: { orcamento: "Reduz arrecadação", parlamentar: "Muda a Constituição" },
     orcamento:
       "Cobrar menos imposto reduz o que entra nos cofres; seria preciso mostrar de onde tirar esse dinheiro sem furar as regras de gastos.",
     parlamentar: `Parte da reforma dos impostos está na Constituição. ${PEC}`,
@@ -32,6 +34,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Parte da reforma está na Constituição; mudanças podem ser questionadas na Justiça.",
   },
   "custo-de-vida-lula-reforma-tributaria": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Não definido no plano" },
     orcamento:
       "Baixar a conta de luz ou segurar o preço dos combustíveis pode custar dinheiro público ou mexer nas contas das empresas de energia; o plano não diz como seria pago.",
     parlamentar: `O plano fala em abrir um debate, sem dizer se seria preciso lei nova. Se for, segue a mesma regra: ${LEI}`,
@@ -43,6 +46,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Emprego e salário ----
   "emprego-salario-flavio-trabalho-que-compensa": {
+    etiquetas: { orcamento: "Reduz arrecadação", parlamentar: "Precisa de lei" },
     orcamento:
       "Reduzir encargos sobre o salário pode diminuir o que entra para a Previdência; seria preciso dizer como compensar.",
     parlamentar: `Mudar regras do trabalho exige lei. ${LEI}`,
@@ -52,6 +56,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Mudanças trabalhistas costumam ser questionadas na Justiça do Trabalho e no STF.",
   },
   "emprego-salario-lula-valorizar-trabalho": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Muda a Constituição" },
     orcamento:
       "Aumento do salário mínimo acima da inflação também sobe aposentadorias e o BPC; esse gasto maior precisa caber nas regras de gastos.",
     parlamentar: `Reduzir a jornada mexe na Constituição. Segundo o plano, o texto já foi aprovado na Câmara e falta o Senado (${regras.senadoPec} de ${regras.senadoTotal} senadores). As outras mudanças nas leis do trabalho seguem a regra comum. ${LEI}`,
@@ -63,6 +68,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Saúde ----
   "saude-flavio-prontuario-digital-prevencao": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
     orcamento:
       "Corrigir a tabela do SUS e ampliar serviços é gasto que se repete e depende do orçamento.",
     parlamentar: GOVERNO_E_ORCAMENTO,
@@ -72,6 +78,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "A ficha digital precisa seguir a LGPD (lei que protege seus dados) e o sigilo médico.",
   },
   "saude-lula-sus-agora-tem-especialistas": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
     orcamento:
       "Ampliar atendimento e manter a Farmácia Popular é gasto que se repete e depende do orçamento.",
     parlamentar: GOVERNO_E_ORCAMENTO,
@@ -83,6 +90,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Segurança ----
   "seguranca-flavio-brasil-sem-medo": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Muda a Constituição" },
     orcamento:
       "Presídios, tropa de fronteira e mais de 1 milhão de câmeras custam caro e precisam estar no orçamento.",
     parlamentar: `Baixar a idade penal exige mudar a Constituição. ${PEC}`,
@@ -92,6 +100,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Há debate na Justiça sobre se a idade penal pode ser mudada mesmo por PEC. O STF já derrubou, em 2006, uma lei que proibia a progressão de regime em crimes hediondos. O reconhecimento facial precisa seguir a LGPD (lei que protege seus dados).",
   },
   "seguranca-lula-susp-ministerio": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Muda a Constituição" },
     orcamento:
       "O programa cita R$ 10 bilhões; manter e ampliar depende do orçamento.",
     parlamentar: `Criar o Ministério depende de aprovar a PEC da Segurança, já enviada ao Congresso. ${PEC}`,
@@ -103,6 +112,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Educação ----
   "educacao-flavio-alfabetizacao-voucher-tecnico": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
     orcamento:
       "Os vales para escola e creche são gasto que se repete e precisam de uma fonte de dinheiro definida.",
     parlamentar: `O vale-educação e o novo jeito de pagar a faculdade dependem de lei. ${LEI}`,
@@ -112,6 +122,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Usar dinheiro público em creche e escola particular pode ser questionado diante do dever do Estado com a escola pública.",
   },
   "educacao-lula-pe-de-meia-creches-ifs": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
     orcamento:
       "Pé-de-Meia, creches e mais institutos são gasto que se repete e dependem do orçamento.",
     parlamentar: GOVERNO_E_ORCAMENTO,
@@ -123,6 +134,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Moradia ----
   "moradia-flavio-caixa-casa-propria-saneamento": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
     orcamento:
       "Juros baixos no financiamento costumam exigir dinheiro do governo (subsídio) previsto no orçamento.",
     parlamentar: `Pode ser tocado pela Caixa e pelo governo. ${GOVERNO_E_ORCAMENTO}`,
@@ -132,6 +144,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "A regularização de imóveis precisa seguir as regras de posse e de meio ambiente.",
   },
   "moradia-lula-mcmv-direito-cidade-saneamento": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Ação do governo" },
     orcamento:
       "Minha Casa Minha Vida com juros baixos para quem ganha menos depende de subsídio e de orçamento todo ano.",
     parlamentar: GOVERNO_E_ORCAMENTO,
@@ -143,6 +156,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Previdência ----
   "previdencia-flavio-inss-sem-fila-fraudes": {
+    etiquetas: { orcamento: "Pouco gasto novo", parlamentar: "Precisa de lei" },
     orcamento:
       "É mais gestão do que gasto novo, mas melhorar o INSS exige investir em pessoal e sistemas.",
     parlamentar: `O pacote contra fraude pode precisar de medida provisória ou lei. ${LEI}`,
@@ -152,6 +166,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "Mudar os descontos do consignado precisa respeitar contratos e direitos que já existem.",
   },
   "previdencia-lula-fortalecimento-previdencia": {
+    etiquetas: { orcamento: "Custo não informado", parlamentar: "Precisa de lei" },
     orcamento:
       "Novas formas de contribuir e novas fontes de dinheiro mexem nas contas da Previdência; o plano não diz quais seriam.",
     parlamentar: `Mudar o financiamento da Previdência e as regras do trabalho por aplicativo exige lei. ${LEI}`,
@@ -163,6 +178,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
 
   // ---- Direitos das mulheres ----
   "direitos-mulheres-flavio-brasil-por-elas": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
     orcamento:
       "Central da Mulher, creches, vale-creche e abrigos são gasto que se repete e dependem do orçamento.",
     parlamentar: `Muito pode ser feito pelo próprio governo. Fazer agressores cumprirem a pena inteira na prisão exige lei. ${LEI}`,
@@ -172,6 +188,7 @@ export const VIABILIDADE: Record<string, Viabilidade> = {
       "A maior parte reforça proteções que já estão na lei. Proibir a saída antecipada da prisão pode ser questionado: o STF já derrubou, em 2006, uma regra parecida para crimes hediondos.",
   },
   "direitos-mulheres-lula-pacto-feminicidio-igualdade-salarial": {
+    etiquetas: { orcamento: "Gasto contínuo", parlamentar: "Precisa de lei" },
     orcamento:
       "Concluir as Casas da Mulher e os Centros de Referência depende de orçamento e de obras.",
     parlamentar: `Muito pode ser feito pelo próprio governo. Tornar obrigatórios os planos de igualdade salarial pode exigir mudar a lei. ${LEI}`,
