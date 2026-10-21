@@ -2,25 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { LabelTag } from "@/components/report/LabelTag";
 import { Icon } from "@/components/ui/Icon";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import { CONGRESSO } from "@/content/congresso";
 import { SITE } from "@/lib/site";
-import type { TipoAfirmacao } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Como funciona",
   description:
-    "Metodologia, fontes, significado dos rótulos, limitações e privacidade do E eu com isso?",
+    "Metodologia, fontes, limitações e privacidade do E eu com isso?",
 };
-
-const ROTULOS: { tipo: TipoAfirmacao; explica: string }[] = [
-  { tipo: "historico", explica: "Ação ou decisão anterior já documentada." },
-  { tipo: "interpretacao", explica: "Leitura do possível impacto da proposta — não é fala da candidatura." },
-  { tipo: "previsao-incerta", explica: "Efeito futuro que depende de condições e pode não acontecer." },
-  { tipo: "nao-localizado", explica: "Não foi localizada proposta documentada sobre o tema naquele plano. Não significa ser contra." },
-];
 
 export default function SobrePage() {
   return (
@@ -38,7 +29,7 @@ export default function SobrePage() {
         <Secao titulo="O que este site faz — e o que não faz">
           <ul className="space-y-2">
             <Item sim>Resume, com fidelidade, o que os planos de governo documentam.</Item>
-            <Item sim>Mostra o possível impacto no cotidiano, sempre rotulado como interpretação.</Item>
+            <Item sim>Mostra o possível impacto no cotidiano em “O que pode mudar pra você”: é uma leitura nossa, não uma promessa da candidatura.</Item>
             <Item sim>Liga cada informação à fonte original.</Item>
             <Item>Não recomenda voto, não dá notas e não cria ranking de candidatos.</Item>
             <Item>Não calcula “compatibilidade” entre você e uma candidatura.</Item>
@@ -67,21 +58,6 @@ export default function SobrePage() {
               </a>
             ))}
           </div>
-        </Secao>
-
-        <Secao titulo="Os rótulos que você vê">
-          <p>
-            Tudo o que aparece no relatório está escrito no plano de governo
-            registrado da candidatura. Quando algo foge disso, recebe um rótulo:
-          </p>
-          <ul className="mt-4 space-y-3">
-            {ROTULOS.map((r) => (
-              <li key={r.tipo} className="flex flex-col gap-1.5">
-                <LabelTag tipo={r.tipo} />
-                <span className="text-sm text-ink-soft">{r.explica}</span>
-              </li>
-            ))}
-          </ul>
         </Secao>
 
         <Secao titulo="“Dá pra sair do papel?” — como a viabilidade é avaliada" id="viabilidade">

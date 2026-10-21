@@ -110,7 +110,7 @@ export default async function RelatorioPage({
             <strong className="text-ink">não indica em quem votar</strong>.
             Proposta é plano, não algo que já está valendo.{" "}
             <Link href="/sobre" className="underline hover:text-ink">
-              Como analisamos
+              Como os dados são analisados
             </Link>
             .
           </p>
