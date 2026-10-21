@@ -112,6 +112,156 @@ export const PONTOS_DE_ATENCAO: PontoDeAtencao[] = [
       },
     ],
   },
+
+  // ---- Meio ambiente (pesquisa de 21/10/2026) ----
+  {
+    id: "historico-flavio-reserva-legal",
+    propostaId: "meio-ambiente-flavio-desmatamento-ilegal-licenca",
+    oQuePlanoDiz: `Promete zerar o desmatamento ilegal até 2029 e pagar a quem preserva mata nativa.`,
+    oQueHistoricoMostra: `Em abril de 2019, como senador, Flávio foi um dos autores, com Marcio Bittar, de um projeto de lei que acabava com a "reserva legal": a parte de mata nativa que cada propriedade rural é obrigada a manter. Os donos de terra só teriam de preservar margens de rios, nascentes e encostas. Em agosto de 2019, os próprios autores pediram a retirada do projeto, que nunca foi votado.`,
+    dataAcao: "2019-04-16",
+    tipoAcao: "projeto-de-lei",
+    porQueChamaAtencao: `Sem a reserva legal, derrubar boa parte da mata das fazendas poderia deixar de ser ilegal. Fica a dúvida sobre como essa ideia combinaria com a promessa de zerar o desmatamento ilegal e pagar a quem preserva.`,
+    outroLado: `Na época, Flávio disse: "A intenção é devolver ao proprietário rural o direito à sua terra". O projeto foi retirado pelos autores em 2019. Não encontramos explicação pública dele sobre a retirada.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 2.362/2019 (autoria, texto e retirada)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/136371",
+        tipo: "orgao-publico",
+        publicadoEm: "2019-04-16",
+      },
+      {
+        titulo: "Congresso em Foco — Projeto de Flávio Bolsonaro elimina reservas florestais em propriedades rurais",
+        url: "https://www.congressoemfoco.com.br/meio-ambiente/projeto-de-flavio-bolsonaro-elimina-reservas-florestais-em-propriedades-rurais/",
+        tipo: "jornalismo",
+        publicadoEm: "2019-04-25",
+      },
+    ],
+  },
+  {
+    id: "historico-lula-foz-do-amazonas",
+    propostaId: "meio-ambiente-lula-desmatamento-liquido-clima",
+    oQuePlanoDiz: `Promete aumentar a energia renovável e trocar aos poucos combustíveis fósseis, como gasolina e diesel, por biocombustíveis.`,
+    oQueHistoricoMostra: `Em fevereiro de 2025, Lula cobrou em público o Ibama para liberar a Petrobras a procurar petróleo na Foz do Amazonas, no mar do Amapá. Disse que o Ibama parecia "um órgão contra o governo". Em outubro de 2025, o Ibama deu a licença para perfurar um poço de pesquisa na região. A licença é só para pesquisa: produzir petróleo dependeria de novas licenças.`,
+    dataAcao: "2025-02-12",
+    tipoAcao: "declaracao",
+    porQueChamaAtencao: `O plano promete diminuir aos poucos o uso de combustíveis fósseis. Abrir uma nova região para procurar petróleo poderia aumentar a produção desses combustíveis por muitos anos. Fica a dúvida sobre como as duas coisas andariam juntas e em que prazo a troca aconteceria.`,
+    outroLado: `Lula disse que "a gente tem que utilizar o dinheiro do petróleo para consolidar a chamada transição energética" e que, "enquanto o mundo precisar, o Brasil não vai jogar fora uma riqueza que pode melhorar a própria vida do povo brasileiro".`,
+    fontes: [
+      {
+        titulo: "Jornal do Comércio (Folhapress) — Lula diz que quer explorar Foz do Amazonas e fala em lenga-lenga do Ibama",
+        url: "https://www.jornaldocomercio.com/economia/2025/02/1190949-lula-diz-que-quer-explorar-foz-do-amazonas-e-fala-em-lenga-lenga-do-ibama.html",
+        tipo: "jornalismo",
+        publicadoEm: "2025-02-12",
+      },
+      {
+        titulo: "Poder360 — Às vésperas da COP30, Lula defende perfuração na Foz do Amazonas",
+        url: "https://www.poder360.com.br/poder-governo/as-vesperas-da-cop30-lula-defende-perfuracao-na-foz-do-amazonas/",
+        tipo: "jornalismo",
+        publicadoEm: "2025-10-24",
+      },
+    ],
+  },
+
+  // ---- Saúde (pesquisa de 21/10/2026) ----
+  {
+    id: "historico-lula-bloqueio-farmacia-popular",
+    propostaId: "saude-lula-sus-agora-tem-especialistas",
+    oQuePlanoDiz: `Promete manter o Farmácia Popular com remédios de graça e ampliar os lugares onde se retira o remédio.`,
+    oQueHistoricoMostra: `Em julho de 2024, o governo Lula bloqueou parte do Orçamento para cumprir as regras de gastos. Na divisão desse bloqueio, o Farmácia Popular foi o programa mais atingido: R$ 1,7 bilhão ficou bloqueado. Bloquear não é cortar de vez: o dinheiro pode ser liberado depois.`,
+    dataAcao: "2024-07",
+    tipoAcao: "ato-de-governo",
+    porQueChamaAtencao: `A proposta promete manter e ampliar o Farmácia Popular. Em 2024, o próprio governo segurou parte da verba do programa para fechar as contas. Fica a dúvida sobre como o programa seria protegido de novos bloqueios.`,
+    outroLado: `O Ministério da Saúde disse: "Não haverá impacto no funcionamento do Farmácia Popular nem na sua projeção de crescimento". Explicou que o bloqueio atingiu uma reserva que seria usada em outra ação e que o valor poderia ser recomposto depois.`,
+    fontes: [
+      {
+        titulo: "Câmara dos Deputados — Decreto nº 12.120, de 30 de julho de 2024 (bloqueio no Orçamento)",
+        url: "https://www2.camara.leg.br/legin/fed/decret/2024/decreto-12120-30-julho-2024-796012-publicacaooriginal-172506-pe.html",
+        tipo: "legislacao",
+        publicadoEm: "2024-07-30",
+      },
+      {
+        titulo: "Poder360 — Bloqueio atinge Farmácia Popular, Auxílio Gás e Pé-de-meia",
+        url: "https://www.poder360.com.br/poder-economia/bloqueio-atinge-farmacia-popular-auxilio-gas-e-pe-de-meia/",
+        tipo: "jornalismo",
+        publicadoEm: "2024-08-09",
+      },
+      {
+        titulo: "Metrópoles — Governo Lula congela R$ 2,2 bi de Auxílio Gás e Farmácia Popular",
+        url: "https://www.metropoles.com/brasil/governo-lula-congela-r-22-bi-de-auxilio-gas-e-farmacia-popular",
+        tipo: "jornalismo",
+        publicadoEm: "2024-08-08",
+      },
+    ],
+  },
+
+  // ---- Custo de vida (pesquisa de 21/10/2026) ----
+  {
+    id: "historico-flavio-termicas-eletrobras",
+    propostaId: "custo-de-vida-flavio-reforma-tributaria",
+    oQuePlanoDiz: `Promete deixar a conta de luz mais barata, tirando aos poucos as taxas extras que vêm nela.`,
+    oQueHistoricoMostra: `Em junho de 2021, como senador, Flávio votou "Sim" na medida que permitiu privatizar a Eletrobras. O texto aprovado incluiu a contratação obrigatória de 8.000 MW de usinas térmicas a gás. Em 2023, o TCU disse que esse volume "não teve motivação", que não houve estudo oficial sobre o efeito na conta de luz e que a contratação geraria uma cobrança paga pelos consumidores.`,
+    dataAcao: "2021-06",
+    tipoAcao: "voto",
+    porQueChamaAtencao: `A proposta promete tirar aos poucos as taxas extras da conta de luz. O voto de 2021 ajudou a aprovar uma contratação que, segundo o TCU, seria paga pelos consumidores. A privatização era o tema principal da votação; as térmicas eram um trecho do texto. Fica a dúvida sobre como esse custo entraria na promessa de uma conta mais leve.`,
+    outroLado: `Não encontramos explicação pública de Flávio sobre esse voto. Na época, o governo e os relatores negaram que o texto aumentaria a conta de luz. As estimativas de custo para o consumidor vêm de entidades do setor, não de cálculo oficial.`,
+    fontes: [
+      {
+        titulo: "Congresso Nacional — Votações da MP 1.031/2021 (Eletrobras)",
+        url: "https://www.congressonacional.leg.br/materias/medidas-provisorias/-/mpv/146740/votacoes",
+        tipo: "orgao-publico",
+        publicadoEm: "2021-06-16",
+      },
+      {
+        titulo: "Agência Senado — Senado aprova MP que desestatiza Eletrobras",
+        url: "https://www12.senado.leg.br/noticias/materias/2021/06/17/senado-aprova-mp-que-desestatiza-eletrobras-texto-volta-para-camara",
+        tipo: "orgao-publico",
+        publicadoEm: "2021-06-17",
+      },
+      {
+        titulo: "TCU — Contratação de energia de reserva na privatização da Eletrobras deverá ser motivada",
+        url: "https://portal.tcu.gov.br/imprensa/noticias/contratacao-de-energia-de-reserva-na-privatizacao-da-eletrobras-devera-ser-motivada",
+        tipo: "orgao-publico",
+        publicadoEm: "2023-01-27",
+      },
+      {
+        titulo: "Money Times (Reuters) — Câmara aprova privatização da Eletrobras; governo nega impacto na tarifa",
+        url: "https://www.moneytimes.com.br/camara-aprova-privatizacao-da-eletrobras-governo-nega-impacto-na-tarifa/",
+        tipo: "jornalismo",
+        publicadoEm: "2021-06-21",
+      },
+    ],
+  },
+  {
+    id: "historico-lula-carvao-2040",
+    propostaId: "custo-de-vida-lula-reforma-tributaria",
+    oQuePlanoDiz: `Promete abrir um debate sobre como baratear a conta de luz de casas e empresas.`,
+    oQueHistoricoMostra: `Em janeiro de 2025, Lula vetou a contratação obrigatória de usinas a carvão, explicando que isso "impactaria os preços das tarifas de energia". Em novembro de 2025, o governo Lula sancionou outra lei que manteve a compra obrigatória de energia de usinas a carvão até 2040. O trecho foi incluído pelo Congresso; o governo decidiu não vetá-lo.`,
+    dataAcao: "2025-11",
+    tipoAcao: "ato-de-governo",
+    porQueChamaAtencao: `Dez meses depois de vetar a contratação de carvão por causa do custo na conta de luz, o governo manteve uma contratação parecida até 2040. A federação das indústrias de Minas Gerais estima um custo de mais de R$ 1 bilhão por ano (não é cálculo oficial). Fica a dúvida sobre como esse custo entraria no debate prometido sobre a conta de luz.`,
+    outroLado: `O ministro de Minas e Energia, Alexandre Silveira, disse que o país "precisa dessas fontes energéticas para dar segurança ao sistema". Na mesma lei, o governo vetou outros trechos que poderiam encarecer a conta de luz.`,
+    fontes: [
+      {
+        titulo: "Câmara dos Deputados — Veto à Lei 15.097/2025 (razões do veto ao carvão)",
+        url: "https://www2.camara.leg.br/legin/fed/lei/2025/lei-15097-10-janeiro-2025-796889-veto-174084-pl.html",
+        tipo: "legislacao",
+        publicadoEm: "2025-01-10",
+      },
+      {
+        titulo: "Poder360 — Governo mantém uso do carvão até 2040 na reforma do setor elétrico",
+        url: "https://www.poder360.com.br/poder-energia/governo-mantem-uso-do-carvao-ate-2040-na-reforma-do-setor-eletrico/",
+        tipo: "jornalismo",
+        publicadoEm: "2025-11-25",
+      },
+      {
+        titulo: "Correio Braziliense — MP do setor elétrico é sancionada (edição impressa, p. A10)",
+        url: "https://edicao.correiobraziliense.com.br/correiobraziliense/2025/11/26/13514b/pdf/A10-ECO-2611-DIG.pdf",
+        tipo: "jornalismo",
+        publicadoEm: "2025-11-26",
+      },
+    ],
+  },
 ];
 
 export function getPontosDeAtencao(propostaId: string): PontoDeAtencao[] {
