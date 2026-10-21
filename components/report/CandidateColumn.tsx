@@ -21,10 +21,12 @@ export function CandidateColumn({
   proposta: Proposta | null;
   perfis: string[];
 }) {
-  const exibivel =
-    proposta &&
-    (proposta.statusRevisao === "aprovado" || MOSTRAR_RASCUNHOS) &&
-    proposta.tipoAfirmacao !== "nao-localizado";
+  const liberada =
+    !!proposta && (proposta.statusRevisao === "aprovado" || MOSTRAR_RASCUNHOS);
+  const exibivel = liberada && proposta.tipoAfirmacao !== "nao-localizado";
+  // Rascunho oculto não pode virar "Não consta": seria afirmar uma ausência
+  // que ainda não foi conferida.
+  const emRevisao = !!proposta && !liberada;
 
   const motivo = proposta ? motivoRelevancia(proposta, perfis) : null;
   const viabilidade = proposta ? getViabilidade(proposta.id) : undefined;
@@ -119,6 +121,17 @@ export function CandidateColumn({
           {viabilidade && <ViabilidadeSection viabilidade={viabilidade} />}
 
           <SourceList fontes={proposta.fontes} />
+        </div>
+      ) : emRevisao ? (
+        <div className="mt-3 space-y-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink-faint">
+            <Icon name="Info" className="h-3.5 w-3.5" />
+            Em revisão
+          </span>
+          <p className="text-sm text-ink-soft">
+            Ainda estamos conferindo o que este plano diz sobre o assunto. Até
+            lá, você pode consultar o plano completo no link abaixo.
+          </p>
         </div>
       ) : (
         <div className="mt-3 space-y-2">

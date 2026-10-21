@@ -51,9 +51,6 @@ tema novo ao relatório, inclua-o em `TEMAS_COM_CONTEUDO` (em `content/temas.ts`
 O teste `tests/conteudo.test.ts` falha se um item publicado ficar sem fonte,
 com URL malformada, ou se um tema perder a paridade entre as candidaturas.
 
-> ⚠️ **Período eleitoral.** O 2º turno é em 25/10/2026. A recomendação é só
-> tornar o site público **após o 2º turno** e somente com conteúdo revisado e
-> marcado como `aprovado`.
 
 ## Publicar (Vercel)
 
