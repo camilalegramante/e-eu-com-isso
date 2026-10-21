@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:/Users/milaf/OneDrive/Documentos/Projects/e-eu-com-isso\" status)",
+      "Bash(command -v python python3 py pip pip3 node npx pdftotext)",
+      "Bash(pdftotext -layout proposta-lula.pdf lula.txt)",
+      "Bash(pdftotext -layout proposta-flavio.pdf flavio.txt)",
+      "Bash(pdftotext -layout -enc UTF-8 proposta-lula.pdf __TRACKED_VAR__/lula.txt)",
+      "Bash(pdftotext -layout -enc UTF-8 proposta-flavio.pdf __TRACKED_VAR__/flavio.txt)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}
