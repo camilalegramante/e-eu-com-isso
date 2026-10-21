@@ -81,6 +81,36 @@ export interface Viabilidade {
   };
 }
 
+// "O histórico combina com a proposta?" — ação anterior documentada do próprio
+// candidato que vai em outra direção do que o plano promete. Mostra os dois
+// fatos lado a lado; a conclusão fica com quem lê. Mesmos critérios para todas
+// as candidaturas (ver content/historico.ts).
+export type TipoAcao =
+  | "voto" // voto nominal registrado no Congresso
+  | "projeto-de-lei" // projeto de autoria do candidato
+  | "ato-parlamentar" // moção, homenagem ou outro ato como parlamentar
+  | "ato-de-governo" // decreto, medida ou ato de governo do candidato
+  | "declaracao"; // fala pública com registro confiável
+
+export interface PontoDeAtencao {
+  id: string;
+  /** Proposta (do mesmo candidato) com a qual o histórico é comparado. */
+  propostaId: string;
+  /** O que o plano promete, em uma frase. */
+  oQuePlanoDiz: string;
+  /** O que o candidato fez ou disse antes, de forma factual. */
+  oQueHistoricoMostra: string;
+  /** Data da ação, YYYY-MM-DD, YYYY-MM ou YYYY (só o que a fonte confirma). */
+  dataAcao: string;
+  tipoAcao: TipoAcao;
+  /** Por que o ponto chama atenção (análise, condicional, sem veredito). */
+  porQueChamaAtencao: string;
+  /** Justificativa pública do candidato para a ação, quando existir. */
+  outroLado?: string;
+  /** >= 1 fonte obrigatória. */
+  fontes: Fonte[];
+}
+
 export type EtiquetaOrcamento =
   | "Gasto contínuo"
   | "Reduz arrecadação"

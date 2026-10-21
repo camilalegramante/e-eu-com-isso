@@ -2,7 +2,9 @@ import { Icon } from "@/components/ui/Icon";
 import { LabelTag } from "@/components/report/LabelTag";
 import { SourceList } from "@/components/report/SourceList";
 import { ViabilidadeSection } from "@/components/report/ViabilidadeSection";
+import { HistoricoSection } from "@/components/report/HistoricoSection";
 import { getViabilidade } from "@/content/viabilidade";
+import { getPontosDeAtencao } from "@/content/historico";
 import type { Candidatura, Proposta } from "@/lib/types";
 
 const ACENTO: Record<Candidatura["corToken"], string> = {
@@ -106,6 +108,8 @@ export function CandidateColumn({
               </div>
             </details>
           )}
+
+          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
 
           {viabilidade && <ViabilidadeSection viabilidade={viabilidade} />}
 

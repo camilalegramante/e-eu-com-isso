@@ -104,6 +104,28 @@ export default function SobrePage() {
           </p>
         </Secao>
 
+        <Secao titulo="“O histórico combina com a proposta?”" id="historico">
+          <p>
+            Proposta não é garantia. Às vezes, o que o candidato já fez ou
+            disse vai em outra direção do que o plano promete. Quando isso
+            acontece, mostramos os dois fatos lado a lado, com as fontes. Quem
+            decide se há contradição é você.
+          </p>
+          <p>Um ponto só entra se cumprir todas estas regras, iguais para todas as candidaturas:</p>
+          <ul className="space-y-2">
+            <Item sim>É algo que o <strong>próprio candidato</strong> fez ou disse: um voto, um projeto de lei ou uma homenagem que ele propôs, um ato do governo dele ou uma declaração pública registrada. O que parentes, aliados ou o partido fizeram não conta.</Item>
+            <Item sim>Tem relação direta com uma proposta do plano, no mesmo tema.</Item>
+            <Item sim>Tem fonte que dá para conferir: órgãos oficiais ou veículos de jornalismo profissional.</Item>
+            <Item sim>Quando o candidato explicou publicamente o que fez, a explicação aparece junto.</Item>
+          </ul>
+          <p>
+            A lista <strong>não é completa</strong>. Se não aparece nenhum
+            ponto, isso não quer dizer que o histórico combina com a proposta.
+            Pessoas também mudam de ideia: um voto antigo não prova o que alguém
+            fará no futuro.
+          </p>
+        </Secao>
+
         <Secao titulo="Transparência eleitoral">
           <p>
             É o período do 2º turno das {SITE.eleicao.toLowerCase()}, marcado
