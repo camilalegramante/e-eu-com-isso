@@ -6,6 +6,7 @@ import { PERFIS } from "@/content/perfis";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
+import { FadeInContainer, FadeInItem } from "@/components/ui/AnimateIn";
 import { hrefRelatorio } from "@/lib/url-state";
 import { TODOS_OS_TEMAS } from "@/lib/types";
 import { getPerfil, getTema } from "@/lib/catalogs";
@@ -86,17 +87,18 @@ export function Onboarding() {
           <p className="mt-2 text-ink-soft">
             Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
+          <FadeInContainer className="mt-6 flex flex-wrap gap-2">
             {PERFIS.map((p) => (
-              <Chip
-                key={p.id}
-                selected={perfis.includes(p.id)}
-                onClick={() => togglePerfil(p.id)}
-              >
-                {p.rotulo}
-              </Chip>
+              <FadeInItem key={p.id}>
+                <Chip
+                  selected={perfis.includes(p.id)}
+                  onClick={() => togglePerfil(p.id)}
+                >
+                  {p.rotulo}
+                </Chip>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInContainer>
         </fieldset>
       )}
 
@@ -108,25 +110,28 @@ export function Onboarding() {
           <p className="mt-2 text-ink-soft">
             Escolha os assuntos que quer entender melhor.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <Chip
-              selected={verTudo}
-              onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
-              icon="Sparkles"
-            >
-              Quero ver tudo
-            </Chip>
-            {TEMAS_DISPONIVEIS.map((t) => (
+          <FadeInContainer className="mt-6 flex flex-wrap gap-2">
+            <FadeInItem>
               <Chip
-                key={t.id}
-                selected={!verTudo && interesses.includes(t.id)}
-                onClick={() => toggleInteresse(t.id)}
-                icon={t.icone}
+                selected={verTudo}
+                onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
+                icon="Sparkles"
               >
-                {t.rotulo}
+                Quero ver tudo
               </Chip>
+            </FadeInItem>
+            {TEMAS_DISPONIVEIS.map((t) => (
+              <FadeInItem key={t.id}>
+                <Chip
+                  selected={!verTudo && interesses.includes(t.id)}
+                  onClick={() => toggleInteresse(t.id)}
+                  icon={t.icone}
+                >
+                  {t.rotulo}
+                </Chip>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInContainer>
         </fieldset>
       )}
 
@@ -154,7 +159,7 @@ export function Onboarding() {
           <button
             type="button"
             onClick={avancar}
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper hover:bg-ink-soft"
+            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             {passo === 0 && perfis.length === 0 ? "Pular" : "Avançar"}
             <Icon name="ArrowRight" className="h-4 w-4" />
@@ -163,7 +168,7 @@ export function Onboarding() {
           <button
             type="button"
             onClick={verRelatorio}
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper hover:bg-ink-soft"
+            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             Ver meu relatório
             <Icon name="ArrowRight" className="h-4 w-4" />

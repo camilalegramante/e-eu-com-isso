@@ -67,7 +67,7 @@ export function ShareBar({
         <button
           type="button"
           onClick={compartilhar}
-          className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2 text-sm font-medium ${estilo.compartilhar}`}
+          className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] ${estilo.compartilhar}`}
         >
           <Icon name="Share2" className="h-4 w-4" />
           Compartilhar
@@ -76,7 +76,7 @@ export function ShareBar({
       <button
         type="button"
         onClick={copiar}
-        className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2 text-sm font-medium ${estilo.copiar}`}
+        className={`inline-flex min-h-11 items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] ${estilo.copiar}`}
       >
         <Icon name={copiado ? "Check" : "Link2"} className="h-4 w-4" />
         {copiado ? "Link copiado!" : "Copiar link"}
@@ -115,7 +115,7 @@ export function ShareDock({ titulo }: { titulo: string }) {
             type="button"
             onClick={compartilhar}
             tabIndex={visivel ? 0 : -1}
-            className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-paper"
+            className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 text-sm font-semibold text-paper transition motion-safe:active:scale-[0.98]"
           >
             <Icon name="Share2" className="h-4 w-4" />
             Compartilhar
@@ -126,7 +126,7 @@ export function ShareDock({ titulo }: { titulo: string }) {
           onClick={copiar}
           tabIndex={visivel ? 0 : -1}
           aria-live="polite"
-          className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 bg-surface px-4 text-sm font-medium text-ink ${
+          className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink/20 bg-surface px-4 text-sm font-medium text-ink transition motion-safe:active:scale-[0.98] ${
             podeCompartilhar ? "" : "flex-1"
           }`}
         >

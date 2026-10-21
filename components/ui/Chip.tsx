@@ -17,7 +17,7 @@ export function Chip({
       aria-pressed={selected}
       onClick={onClick}
       className={[
-        "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition",
+        "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98]",
         selected
           ? "border-ink bg-ink text-paper"
           : "border-line bg-surface text-ink-soft hover:border-ink/40 hover:text-ink",

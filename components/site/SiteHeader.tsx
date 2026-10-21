@@ -18,7 +18,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/comecar"
-            className="rounded-full bg-ink px-4 py-1.5 font-medium text-paper hover:bg-ink-soft"
+            className="rounded-full bg-ink px-4 py-1.5 font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             Começar
           </Link>

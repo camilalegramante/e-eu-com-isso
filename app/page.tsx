@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Icon } from "@/components/ui/Icon";
+import { FadeInContainer, FadeInItem } from "@/components/ui/AnimateIn";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import { SITE } from "@/lib/site";
@@ -48,7 +49,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/comecar"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-medium text-paper transition hover:bg-ink-soft"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-base font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
               >
                 Descobrir o que importa pra mim
                 <Icon name="ArrowRight" className="h-5 w-5" />
@@ -62,9 +63,9 @@ export default function HomePage() {
 
         {/* Como funciona */}
         <section className="mx-auto max-w-content px-5 py-10">
-          <div className="grid gap-4 sm:grid-cols-3">
+          <FadeInContainer className="grid gap-4 sm:grid-cols-3">
             {PASSOS.map((p, i) => (
-              <div
+              <FadeInItem
                 key={p.titulo}
                 className="rounded-xl2 border border-line bg-surface p-5"
               >
@@ -80,9 +81,9 @@ export default function HomePage() {
                   {p.titulo}
                 </h2>
                 <p className="mt-1 text-sm text-ink-soft">{p.texto}</p>
-              </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInContainer>
         </section>
 
         {/* Comparando */}
@@ -95,9 +96,9 @@ export default function HomePage() {
               As duas candidaturas do 2º turno, com os mesmos critérios de
               apresentação, detalhamento e fontes para ambas.
             </p>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            <FadeInContainer className="mt-5 grid gap-4 sm:grid-cols-2">
               {CANDIDATURAS_ORDENADAS.map((c) => (
-                <div
+                <FadeInItem
                   key={c.id}
                   className={`relative overflow-hidden rounded-xl2 border border-line bg-paper p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 ${
                     c.corToken === "neutra-1"
@@ -118,9 +119,9 @@ export default function HomePage() {
                     <Icon name="FileText" className="h-4 w-4" />
                     Plano de governo
                   </a>
-                </div>
+                </FadeInItem>
               ))}
-            </div>
+            </FadeInContainer>
           </div>
         </section>
 
@@ -129,21 +130,22 @@ export default function HomePage() {
           <h2 className="font-display text-2xl font-semibold text-ink">
             Assuntos do seu dia a dia
           </h2>
-          <ul className="mt-5 flex flex-wrap gap-2">
+          <FadeInContainer as="ul" className="mt-5 flex flex-wrap gap-2">
             {temasComConteudo.map((t) => (
-              <li
+              <FadeInItem
+                as="li"
                 key={t.id}
                 className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft"
               >
                 <Icon name={t.icone} className="h-4 w-4" />
                 {t.rotulo}
-              </li>
+              </FadeInItem>
             ))}
-          </ul>
+          </FadeInContainer>
           <div className="mt-8">
             <Link
               href="/comecar"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-base font-medium text-paper hover:bg-ink-soft"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-base font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
             >
               Montar meu relatório
               <Icon name="ArrowRight" className="h-5 w-5" />
