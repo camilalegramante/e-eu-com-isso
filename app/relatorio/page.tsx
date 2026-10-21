@@ -194,7 +194,7 @@ function EstadoVazio() {
       <div className="mt-5">
         <Link
           href="/comecar"
-          className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper hover:bg-ink-soft"
+          className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
         >
           Escolher meus temas
           <Icon name="ArrowRight" className="h-4 w-4" />

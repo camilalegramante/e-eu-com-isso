@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import { SITE } from "@/lib/site";
 import { Analytics } from "@/components/site/Analytics";
@@ -16,6 +16,16 @@ const display = Fraunces({
   display: "swap",
   weight: ["400", "500", "600", "700"],
 });
+
+// viewport-fit=cover ativa env(safe-area-inset-*) (ex.: barra fixa de
+// compartilhar acima da barra inferior do iPhone). Sem bloquear o zoom.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#FBF9F5",
+  colorScheme: "light",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

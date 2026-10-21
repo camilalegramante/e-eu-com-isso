@@ -14,7 +14,7 @@ export default function GlobalError({
           background: "#FBF9F5",
           color: "#1C1B1A",
           display: "flex",
-          minHeight: "100vh",
+          minHeight: "100svh",
           alignItems: "center",
           justifyContent: "center",
           padding: "24px",

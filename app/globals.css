@@ -8,10 +8,29 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
 }
 
+/* Toque no celular: sem atraso de duplo toque e sem selecionar o texto do
+   botão ao segurar. Links continuam selecionáveis (citações, fontes). */
+button,
+a,
+summary,
+[role="tab"] {
+  touch-action: manipulation;
+}
+button,
+summary,
+[role="tab"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 body {
+  /* Com viewport-fit=cover, mantém o conteúdo fora do notch na horizontal. */
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -32,23 +51,24 @@ body {
   }
 }
 
-@keyframes crescer {
+@keyframes abrir {
   from {
-    transform: scaleX(0);
+    opacity: 0;
+    transform: translateY(-4px);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Ao montar (ex.: opções da escolha de temas), em cascata pelo --i. */
+  /* Ao montar (ex.: cada passo da escolha de temas). Curto, sem atraso,
+     para nunca deixar opções invisíveis mas já clicáveis. */
   .anim-entrar {
-    animation: entrar 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--i, 0) * 60ms);
+    animation: entrar 250ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Barras que crescem a partir da esquerda. */
-  .anim-crescer {
-    transform-origin: left;
-    animation: crescer 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Conteúdo de um "Saiba mais" (<details>) ao abrir. Só opacidade e
+     posição; não anima altura nem o fechamento. */
+  details[open] > summary ~ * {
+    animation: abrir 180ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   /* Ao rolar: termina quando o topo do elemento já entrou 160px na tela,

@@ -33,7 +33,7 @@ export function CongressoPanel() {
       <GraficoCongresso />
 
       <details className="group mt-4 rounded-lg bg-paper">
-        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
+        <summary className="flex min-h-11 cursor-pointer transition-colors active:bg-line/40 list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
           Saiba mais
           <span
             className="text-ink-faint transition group-open:rotate-180"
@@ -87,7 +87,7 @@ export function CongressoPanel() {
                       name="ExternalLink"
                       className="mt-0.5 h-3.5 w-3.5 shrink-0"
                     />
-                    <span>{f.titulo}</span>
+                    <span className="min-w-0 [overflow-wrap:anywhere]">{f.titulo}</span>
                   </a>
                 </li>
               ))}

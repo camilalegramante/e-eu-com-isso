@@ -45,6 +45,8 @@ export function selecionarTemas(
 
 /** Temas que o usuário escolheu mas que ainda não têm conteúdo revisado. */
 export function temasSelecionadosSemConteudo(selecao: SelecaoUsuario): Tema[] {
+  // "Ver tudo" significa tudo o que está publicado, não uma lista de pendências.
+  if (selecao.interesses.includes(TODOS_OS_TEMAS)) return [];
   const ids = new Set(resolverInteresses(selecao.interesses));
   return TEMAS.filter((t) => ids.has(t.id) && !TEMAS_COM_CONTEUDO_SET.has(t.id));
 }

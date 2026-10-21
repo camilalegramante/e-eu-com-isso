@@ -13,12 +13,12 @@ export function SiteHeader() {
           E eu com isso?
         </Link>
         <nav className="flex items-center gap-5 text-sm">
-          <Link href="/sobre" className="text-ink-soft hover:text-ink">
+          <Link href="/sobre" className="inline-flex min-h-11 items-center text-ink-soft transition-opacity hover:text-ink active:opacity-60">
             Como funciona
           </Link>
           <Link
             href="/comecar"
-            className="rounded-full bg-ink px-4 py-1.5 font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
+            className="inline-flex min-h-11 items-center rounded-full bg-ink px-4 py-1.5 font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             Começar
           </Link>

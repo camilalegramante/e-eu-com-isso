@@ -12,8 +12,6 @@ import { getPerfil, getTema } from "@/lib/catalogs";
 
 // Chave usada por versões anteriores para guardar a seleção (só limpeza).
 const STORAGE_KEY = "eeci:selecao";
-// Atraso em cascata das opções (ver .anim-entrar em globals.css).
-const cascata = (i: number) => ({ "--i": i }) as React.CSSProperties;
 // Só oferece temas que já têm conteúdo, para ninguém escolher algo vazio.
 const TEMAS_DISPONIVEIS = TEMAS.filter((t) => TEMAS_COM_CONTEUDO.includes(t.id));
 const PASSOS = ["Perfil", "Interesses", "Revisão"] as const;
@@ -24,6 +22,7 @@ export function Onboarding() {
   const [perfis, setPerfis] = useState<string[]>([]);
   const [interesses, setInteresses] = useState<string[]>([]);
   const verTudo = interesses.includes(TODOS_OS_TEMAS);
+  const semTema = interesses.length === 0;
 
   // Cada relatório começa do zero. Apaga escolhas que versões anteriores
   // do site guardavam no navegador.
@@ -70,39 +69,39 @@ export function Onboarding() {
     <div className="mx-auto max-w-readable px-5 py-10">
       <Stepper passo={passo} onIr={setPasso} />
 
-      {passo === 0 && (
-        <fieldset className="mt-8">
-          <legend className="font-display text-2xl font-semibold text-ink">
-            Qual dessas opções tem a ver com você?
-          </legend>
-          <p className="mt-2 text-ink-soft">
-            Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {PERFIS.map((p, i) => (
-              <div key={p.id} className="anim-entrar" style={cascata(i)}>
+      {/* A key reinicia o fade a cada troca de passo. */}
+      <div key={passo} className="anim-entrar">
+        {passo === 0 && (
+          <fieldset className="mt-8">
+            <legend className="font-display text-2xl font-semibold text-ink">
+              Qual dessas opções tem a ver com você?
+            </legend>
+            <p className="mt-2 text-ink-soft">
+              Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {PERFIS.map((p) => (
                 <Chip
+                  key={p.id}
                   selected={perfis.includes(p.id)}
                   onClick={() => togglePerfil(p.id)}
                 >
                   {p.rotulo}
                 </Chip>
-              </div>
-            ))}
-          </div>
-        </fieldset>
-      )}
+              ))}
+            </div>
+          </fieldset>
+        )}
 
-      {passo === 1 && (
-        <fieldset className="mt-8">
-          <legend className="font-display text-2xl font-semibold text-ink">
-            O que mais importa pra você?
-          </legend>
-          <p className="mt-2 text-ink-soft">
-            Escolha os assuntos que quer entender melhor.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <div className="anim-entrar">
+        {passo === 1 && (
+          <fieldset className="mt-8">
+            <legend className="font-display text-2xl font-semibold text-ink">
+              O que mais importa pra você?
+            </legend>
+            <p className="mt-2 text-ink-soft">
+              Escolha os assuntos que quer entender melhor.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
               <Chip
                 selected={verTudo}
                 onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
@@ -110,38 +109,37 @@ export function Onboarding() {
               >
                 Quero ver tudo
               </Chip>
-            </div>
-            {TEMAS_DISPONIVEIS.map((t, i) => (
-              <div key={t.id} className="anim-entrar" style={cascata(i + 1)}>
+              {TEMAS_DISPONIVEIS.map((t) => (
                 <Chip
+                  key={t.id}
                   selected={!verTudo && interesses.includes(t.id)}
                   onClick={() => toggleInteresse(t.id)}
                   icon={t.icone}
                 >
                   {t.rotulo}
                 </Chip>
-              </div>
-            ))}
-          </div>
-        </fieldset>
-      )}
+              ))}
+            </div>
+          </fieldset>
+        )}
 
-      {passo === 2 && (
-        <Revisao
-          perfis={perfis}
-          interesses={interesses}
-          verTudo={verTudo}
-          onEditarPerfil={() => setPasso(0)}
-          onEditarInteresses={() => setPasso(1)}
-        />
-      )}
+        {passo === 2 && (
+          <Revisao
+            perfis={perfis}
+            interesses={interesses}
+            verTudo={verTudo}
+            onEditarPerfil={() => setPasso(0)}
+            onEditarInteresses={() => setPasso(1)}
+          />
+        )}
+      </div>
 
       <div className="mt-10 flex items-center justify-between gap-4">
         <button
           type="button"
           onClick={voltar}
           disabled={passo === 0}
-          className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-ink-soft hover:text-ink disabled:invisible"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-opacity hover:text-ink active:opacity-60 disabled:invisible"
         >
           <Icon name="ArrowLeft" className="h-4 w-4" /> Voltar
         </button>
@@ -150,7 +148,7 @@ export function Onboarding() {
           <button
             type="button"
             onClick={avancar}
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             {passo === 0 && perfis.length === 0 ? "Pular" : "Avançar"}
             <Icon name="ArrowRight" className="h-4 w-4" />
@@ -159,7 +157,8 @@ export function Onboarding() {
           <button
             type="button"
             onClick={verRelatorio}
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
+            disabled={semTema}
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100 disabled:hover:bg-ink"
           >
             Ver meu relatório
             <Icon name="ArrowRight" className="h-4 w-4" />
@@ -189,11 +188,11 @@ function Stepper({
               onClick={() => onIr(i)}
               aria-current={estado === "atual" ? "step" : undefined}
               aria-label={`Passo ${i + 1}: ${rotulo}`}
-              className="flex items-center gap-2 text-left"
+              className="flex min-h-11 min-w-11 items-center gap-2 text-left transition-opacity active:opacity-60"
             >
               <span
                 className={[
-                  "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold",
+                  "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold transition-colors duration-200",
                   estado === "atual"
                     ? "bg-ink text-paper"
                     : estado === "feito"
@@ -261,7 +260,7 @@ function Revisao({
         <ResumoBloco
           titulo="Seus interesses"
           itens={temasLabels}
-          vazio="Nenhum tema selecionado — será mostrada uma visão geral"
+          vazio="Nenhum tema selecionado. Escolha ao menos um para ver o relatório."
           onEditar={onEditarInteresses}
         />
       </div>
@@ -287,7 +286,7 @@ function ResumoBloco({
         <button
           type="button"
           onClick={onEditar}
-          className="text-sm font-medium text-brand underline hover:text-brand-ink"
+          className="-mx-2 inline-flex min-h-11 items-center px-2 text-sm font-medium text-brand underline transition-opacity hover:text-brand-ink active:opacity-60"
         >
           Editar
         </button>

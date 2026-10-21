@@ -35,8 +35,8 @@ export function CandidateColumn({
     <article
       className={`relative overflow-hidden rounded-xl2 border border-line bg-surface p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 ${ACENTO[candidatura.corToken]}`}
     >
-      <header className="flex items-baseline justify-between gap-2">
-        <h4 className="font-display text-lg font-semibold text-ink">
+      <header className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+        <h4 className="min-w-0 font-display text-lg font-semibold text-ink">
           {candidatura.nome}
         </h4>
         <span className="text-xs font-medium text-ink-faint">
@@ -54,7 +54,9 @@ export function CandidateColumn({
             </div>
           )}
 
-          <p className="font-medium text-ink">{proposta.titulo}</p>
+          <p className="font-medium text-ink [overflow-wrap:anywhere]">
+            {proposta.titulo}
+          </p>
           <p className="whitespace-pre-line text-sm leading-relaxed text-ink-soft">
             {proposta.resumoFiel}
           </p>
@@ -69,7 +71,7 @@ export function CandidateColumn({
             proposta.condicoes?.length ||
             proposta.incertezas?.length) && (
             <details className="group rounded-lg border border-line bg-paper/60">
-              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
+              <summary className="flex min-h-11 cursor-pointer transition-colors active:bg-line/40 list-none items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-ink">
                 Resumo
                 <span className="text-ink-faint transition group-open:rotate-180">
                   ▾
@@ -135,7 +137,7 @@ export function CandidateColumn({
         href={candidatura.planoDeGoverno.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft underline decoration-line underline-offset-2 hover:text-ink"
+        className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-ink-soft underline decoration-line underline-offset-2 hover:text-ink"
       >
         <Icon name="ExternalLink" className="h-4 w-4 shrink-0" />
         Ver o plano de governo completo ({candidatura.partido})

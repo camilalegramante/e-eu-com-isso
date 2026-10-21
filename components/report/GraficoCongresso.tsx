@@ -130,7 +130,7 @@ export function GraficoCongresso() {
             return (
               <li key={g.id}>
                 <details className="group rounded-lg border border-line bg-surface">
-                  <summary className="flex min-h-11 cursor-pointer list-none flex-col gap-2 px-3 py-3">
+                  <summary className="flex min-h-11 cursor-pointer transition-colors active:bg-line/40 list-none flex-col gap-2 px-3 py-3">
                     <span className="flex items-center justify-between gap-2 text-sm">
                       <span className="flex items-center gap-2 font-medium text-ink">
                         <span
@@ -157,10 +157,9 @@ export function GraficoCongresso() {
                       className="relative block h-3 rounded-full bg-paper"
                       aria-hidden
                     >
-                      {/* Cresce em CSS (.anim-crescer); a key reinicia ao trocar de Casa. */}
+                      {/* Sem animação: é um dado lido contra as marcas de maioria e PEC. */}
                       <span
-                        key={casa}
-                        className={`anim-crescer block h-full rounded-full ${g.cor}`}
+                        className={`block h-full rounded-full ${g.cor}`}
                         style={{ width: pct(somaGrupo[g.id]) }}
                       />
                       <span
@@ -197,10 +196,8 @@ export function GraficoCongresso() {
                             className="mt-1 h-2 overflow-hidden rounded-full bg-paper"
                             aria-hidden
                           >
-                            {/* Grupo fechado não é desenhado; a barra cresce ao abrir. */}
                             <div
-                              key={casa}
-                              className={`anim-crescer h-full ${g.cor}`}
+                              className={`h-full ${g.cor}`}
                               style={{
                                 width: `${(p.cadeiras / maiorPartido) * 100}%`,
                               }}

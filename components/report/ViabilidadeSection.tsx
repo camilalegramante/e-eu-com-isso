@@ -41,7 +41,7 @@ export function ViabilidadeSection({
           return (
             <li key={l.chave}>
               <details className="group">
-                <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2.5 py-2">
+                <summary className="flex min-h-11 cursor-pointer transition-colors active:bg-line/40 list-none items-center gap-2.5 py-2">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-surface text-ink-soft">
                     <Icon name={l.icone} className="h-3.5 w-3.5" />
                   </span>

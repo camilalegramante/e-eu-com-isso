@@ -44,6 +44,12 @@ describe("selecionarTemas", () => {
     });
     expect(faltando.map((t) => t.id)).toEqual(["transporte"]);
   });
+
+  it("não lista pendências quando a pessoa escolhe ver tudo", () => {
+    expect(
+      temasSelecionadosSemConteudo({ perfis: [], interesses: ["*"] }),
+    ).toEqual([]);
+  });
 });
 
 describe("montarComparacao", () => {

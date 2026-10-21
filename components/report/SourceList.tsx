@@ -19,10 +19,10 @@ export function SourceList({ fontes }: { fontes: Fonte[] }) {
               href={hrefFonte(f)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-start gap-1.5 text-sm text-ink-soft underline decoration-line underline-offset-2 hover:text-ink"
+              className="inline-flex items-start gap-1.5 py-1 text-sm text-ink-soft underline decoration-line underline-offset-2 hover:text-ink"
             >
               <Icon name="ExternalLink" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-              <span>
+              <span className="min-w-0 [overflow-wrap:anywhere]">
                 {f.titulo}
                 {f.pagina ? ` — página ${f.pagina}` : ""}
               </span>

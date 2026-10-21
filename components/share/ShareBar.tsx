@@ -106,7 +106,11 @@ export function ShareDock({ titulo }: { titulo: string }) {
       className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-surface/95 px-4 pt-3 backdrop-blur transition-transform duration-200 sm:hidden ${
         visivel ? "translate-y-0" : "pointer-events-none translate-y-full"
       }`}
-      style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
+      style={{
+        paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))",
+        paddingLeft: "max(1rem, env(safe-area-inset-left, 0px))",
+        paddingRight: "max(1rem, env(safe-area-inset-right, 0px))",
+      }}
       aria-hidden={!visivel}
     >
       <div className="flex gap-2">
