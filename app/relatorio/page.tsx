@@ -6,6 +6,7 @@ import { ThemeCard } from "@/components/report/ThemeCard";
 import { CongressoPanel } from "@/components/report/CongressoPanel";
 import { ShareBar, ShareDock } from "@/components/share/ShareBar";
 import { Icon } from "@/components/ui/Icon";
+import { corDoTema } from "@/components/ui/coresTema";
 import { decodeSelecao } from "@/lib/url-state";
 import {
   selecionarTemas,
@@ -126,7 +127,10 @@ export default async function RelatorioPage({
                     href={`#tema-${t.id}`}
                     className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line bg-surface px-3 text-sm font-medium text-ink-soft transition motion-safe:active:scale-[0.98] hover:border-ink/40 hover:text-ink"
                   >
-                    <Icon name={t.icone} className="h-4 w-4 shrink-0" />
+                    <Icon
+                      name={t.icone}
+                      className={`h-4 w-4 shrink-0 ${corDoTema(t.id).texto}`}
+                    />
                     {t.rotulo}
                   </a>
                 </li>
@@ -141,7 +145,7 @@ export default async function RelatorioPage({
 
         {/* Conteúdo */}
         {temas.length > 0 ? (
-          <div className="mt-10 space-y-6">
+          <div className="mt-10 space-y-10 sm:space-y-6">
             <h2 className="sr-only">Comparação por tema</h2>
             {temas.map((t) => (
               <ThemeCard key={t.id} tema={t} perfis={selecao.perfis} />

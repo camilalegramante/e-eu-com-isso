@@ -5,11 +5,14 @@ export function Chip({
   onClick,
   children,
   icon,
+  iconClassName = "",
 }: {
   selected: boolean;
   onClick: () => void;
   children: React.ReactNode;
   icon?: string;
+  /** Cor do ícone quando não selecionado (ex.: cor do tema). */
+  iconClassName?: string;
 }) {
   return (
     <button
@@ -24,7 +27,10 @@ export function Chip({
       ].join(" ")}
     >
       {icon ? (
-        <Icon name={icon} className="h-4 w-4 shrink-0" />
+        <Icon
+          name={icon}
+          className={`h-4 w-4 shrink-0 ${selected ? "" : iconClassName}`}
+        />
       ) : selected ? (
         <Icon name="Check" className="h-4 w-4 shrink-0" />
       ) : null}

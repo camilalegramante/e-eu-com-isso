@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Icon } from "@/components/ui/Icon";
+import { corDoTema } from "@/components/ui/coresTema";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import { SITE } from "@/lib/site";
@@ -9,16 +10,20 @@ import { SITE } from "@/lib/site";
 const PASSOS = [
   {
     icone: "Users",
+    // Cor só decorativa (mesma paleta dos temas).
+    cor: corDoTema("custo-de-vida"),
     titulo: "Conte quem é você",
     texto: "Marque o que tem a ver com a sua vida — estudante, CLT, aposentado…",
   },
   {
     icone: "Sparkles",
+    cor: corDoTema("emprego-salario"),
     titulo: "Escolha os temas",
     texto: "Saúde, custo de vida, segurança, educação e mais.",
   },
   {
     icone: "Scale",
+    cor: corDoTema("seguranca"),
     titulo: "Compare com fontes",
     texto: "Veja o que cada candidatura documentou, com link para o documento.",
   },
@@ -34,12 +39,11 @@ export default function HomePage() {
       <SiteHeader />
       <main>
         {/* Hero */}
-        <section className="mx-auto max-w-content px-5 pb-10 pt-14 sm:pt-20">
+        {/* No celular, 16px entre as seções (py-2 + py-2). O período da
+            eleição continua no rodapé e em /sobre. */}
+        <section className="mx-auto max-w-content px-4 pb-2 pt-8 sm:px-5 sm:pb-10 sm:pt-20">
           <div className="max-w-readable">
-            <p className="text-sm font-medium uppercase tracking-wide text-brand">
-              {SITE.eleicao} · 2º turno em {SITE.segundoTurno}
-            </p>
-            <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.05] text-ink sm:text-6xl">
+            <h1 className="font-display text-5xl font-semibold leading-[1.05] text-ink sm:text-6xl">
               E eu com isso?
             </h1>
             <p className="mt-5 text-xl leading-relaxed text-ink-soft">
@@ -61,15 +65,17 @@ export default function HomePage() {
         </section>
 
         {/* Como funciona */}
-        <section className="mx-auto max-w-content px-5 py-10">
+        <section className="mx-auto max-w-content px-4 py-2 sm:px-5 sm:py-10">
           <div className="grid gap-4 sm:grid-cols-3">
             {PASSOS.map((p, i) => (
               <div
                 key={p.titulo}
-                className="anim-ao-ver rounded-xl2 border border-line bg-surface p-5"
+                className={`anim-ao-ver rounded-xl2 border border-l-4 border-line bg-surface p-5 ${p.cor.bordaEsquerda}`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink">
+                  <span
+                    className={`flex h-9 w-9 items-center justify-center rounded-full ${p.cor.icone}`}
+                  >
                     <Icon name={p.icone} className="h-5 w-5" />
                   </span>
                   <span className="text-sm font-semibold text-ink-faint">
@@ -86,7 +92,7 @@ export default function HomePage() {
         </section>
 
         {/* Comparando */}
-        <section className="mx-auto max-w-content px-5 py-10">
+        <section className="mx-auto max-w-content px-4 py-2 sm:px-5 sm:py-10">
           <div className="rounded-xl2 border border-line bg-surface p-6 sm:p-8">
             <h2 className="font-display text-2xl font-semibold text-ink">
               Quem está sendo comparado
@@ -125,7 +131,7 @@ export default function HomePage() {
         </section>
 
         {/* Temas */}
-        <section className="mx-auto max-w-content px-5 py-10">
+        <section className="mx-auto max-w-content px-4 pb-10 pt-2 sm:px-5 sm:py-10">
           <h2 className="font-display text-2xl font-semibold text-ink">
             Assuntos do seu dia a dia
           </h2>
@@ -135,7 +141,10 @@ export default function HomePage() {
                 key={t.id}
                 className="anim-ao-ver inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft"
               >
-                <Icon name={t.icone} className="h-4 w-4" />
+                <Icon
+                  name={t.icone}
+                  className={`h-4 w-4 ${corDoTema(t.id).texto}`}
+                />
                 {t.rotulo}
               </li>
             ))}
