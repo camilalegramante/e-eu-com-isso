@@ -10,6 +10,7 @@ import { hrefRelatorio } from "@/lib/url-state";
 import { TODOS_OS_TEMAS } from "@/lib/types";
 import { getPerfil, getTema } from "@/lib/catalogs";
 
+// Chave usada por versões anteriores para guardar a seleção (só limpeza).
 const STORAGE_KEY = "eeci:selecao";
 // Atraso em cascata das opções (ver .anim-entrar em globals.css).
 const cascata = (i: number) => ({ "--i": i }) as React.CSSProperties;
@@ -24,26 +25,15 @@ export function Onboarding() {
   const [interesses, setInteresses] = useState<string[]>([]);
   const verTudo = interesses.includes(TODOS_OS_TEMAS);
 
-  // Restaura escolhas anteriores do navegador (sem servidor, sem dados pessoais).
+  // Cada relatório começa do zero. Apaga escolhas que versões anteriores
+  // do site guardavam no navegador.
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const dados = JSON.parse(raw) as { perfis?: string[]; interesses?: string[] };
-      if (Array.isArray(dados.perfis)) setPerfis(dados.perfis);
-      if (Array.isArray(dados.interesses)) setInteresses(dados.interesses);
-    } catch {
-      /* ignora armazenamento corrompido */
-    }
-  }, []);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ perfis, interesses }));
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
       /* ignora indisponibilidade de storage */
     }
-  }, [perfis, interesses]);
+  }, []);
 
   function togglePerfil(id: string) {
     setPerfis((atual) =>

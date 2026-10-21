@@ -7,7 +7,7 @@ condições e incertezas, e o link para a fonte original. **Não recomenda voto.
 
 - **Stack:** Next.js (App Router) · React · TypeScript (strict) · Tailwind CSS · lucide-react · Vitest.
 - **Sem backend e sem banco de dados.** O conteúdo é estático e versionado em `content/`.
-- **Sem cadastro e sem dados pessoais.** A seleção do usuário vive na URL (códigos de tema/perfil) e no `localStorage`.
+- **Sem cadastro e sem dados pessoais.** A seleção do usuário vive só na URL (códigos de tema/perfil); nada fica guardado no navegador.
 
 ## Rodar localmente
 
