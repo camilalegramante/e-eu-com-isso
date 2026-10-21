@@ -6,6 +6,7 @@ import { PERFIS } from "@/content/perfis";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
+import { corDoTema } from "@/components/ui/coresTema";
 import { hrefRelatorio } from "@/lib/url-state";
 import { TODOS_OS_TEMAS } from "@/lib/types";
 import { getPerfil, getTema } from "@/lib/catalogs";
@@ -115,6 +116,7 @@ export function Onboarding() {
                   selected={!verTudo && interesses.includes(t.id)}
                   onClick={() => toggleInteresse(t.id)}
                   icon={t.icone}
+                  iconClassName={corDoTema(t.id).texto}
                 >
                   {t.rotulo}
                 </Chip>
@@ -144,7 +146,13 @@ export function Onboarding() {
           <Icon name="ArrowLeft" className="h-4 w-4" /> Voltar
         </button>
 
-        {passo < PASSOS.length - 1 ? (
+        {/* Sem tema escolhido não há como seguir: no lugar do botão, diz o
+            que falta (a partir do passo dos temas). */}
+        {passo >= 1 && semTema ? (
+          <p className="text-right text-sm text-ink-faint" aria-live="polite">
+            Escolha ao menos um tema para continuar.
+          </p>
+        ) : passo < PASSOS.length - 1 ? (
           <button
             type="button"
             onClick={avancar}
@@ -157,8 +165,7 @@ export function Onboarding() {
           <button
             type="button"
             onClick={verRelatorio}
-            disabled={semTema}
-            className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100 disabled:hover:bg-ink"
+            className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-paper transition motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98] hover:bg-ink-soft"
           >
             Ver meu relatório
             <Icon name="ArrowRight" className="h-4 w-4" />
