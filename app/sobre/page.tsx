@@ -122,7 +122,8 @@ export default function SobrePage() {
             2026. No relatório há um painel com a composição do Congresso:
             somando as bancadas da Câmara, a base de Flávio reúne cerca de 291
             deputados e a de Lula, 124 (o MDB está dividido; PSD e PSDB liberaram
-            apoio). Lembrando: lei comum precisa de maioria simples (257 de 513 e
+            apoio). No Senado, são cerca de 50 senadores com Flávio e 15 com
+            Lula. Lembrando: lei comum precisa de maioria simples (257 de 513 e
             41 de 81), e mudar a Constituição precisa de 3/5 (308 e 49) — em dois
             turnos nas duas Casas.
           </p>

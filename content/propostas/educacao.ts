@@ -1,39 +1,39 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Educação e universidades. Status "rascunho". Linguagem simples.
+// Tema: Educação e universidades. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
 export const educacao: Proposta[] = [
   {
     id: "educacao-flavio-alfabetizacao-voucher-tecnico",
     temaId: "educacao",
     candidaturaId: "flavio",
     titulo: "Alfabetizar bem, ensino técnico e vale para escola e creche",
-    resumoFiel: `O plano quer focar em alfabetizar as crianças no começo da escola e ligar o dinheiro das escolas aos resultados de aprendizagem. Promete um vale para a família usar em escola ou creche particular quando faltar vaga na rede pública, ampliar o ensino técnico junto com empresas e mudar o jeito de pagar a faculdade: o aluno só começaria a pagar depois de empregado.`,
+    resumoFiel: `O plano quer ensinar a ler pelo método fônico (ligar cada som à sua letra) e pagar bons alunos para dar reforço aos colegas. O dinheiro para as escolas seria ligado às metas de aprendizagem, sem abandonar as regiões com mais dificuldade. Diz apoiar a escola em tempo integral e quer ampliar as escolas cívico-militares. Quando faltar vaga na rede pública, a família receberia um vale para matricular o filho em outra escola, e um vale-creche para usar em creche particular credenciada até surgir vaga pública. Também quer mais ensino técnico no ensino médio, junto com empresas. Na faculdade, o estudante só começaria a pagar o empréstimo quando estivesse empregado, com parcela de acordo com o salário.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `A família poderia ter mais opções de escola e creche quando faltasse vaga pública, e o jovem poderia sair do ensino médio já com uma profissão. Depende de como os vales seriam pagos e das parcerias com empresas.`,
     condicoes: [
-      `O Congresso e o orçamento precisam liberar os vales e o novo financiamento da faculdade`,
+      `Dependeria de aprovação no Congresso e de dinheiro no orçamento para os vales e o novo empréstimo da faculdade`,
       `Ter escolas e creches particulares cadastradas para aceitar o vale`,
     ],
     incertezas: [
       `O plano não diz o valor dos vales nem quem teria direito`,
-      `Não explica os prazos do novo jeito de pagar a faculdade`,
+      `Não diz o prazo exato nem a partir de qual salário a pessoa começaria a pagar a faculdade`,
     ],
     relevantePara: ["estudante", "casa-familia", "primeiro-emprego", "rural"],
     fontes: [
       {
-        titulo: "Escola Brasil por Elas e creche garantida",
-        url: "/fontes/proposta-flavio.pdf",
-        tipo: "plano-de-governo",
-        pagina: 20,
-      },
-      {
-        titulo: "Creche garantida para toda criança",
+        titulo: "Creche garantida para toda criança (vale-creche)",
         url: "/fontes/proposta-flavio.pdf",
         tipo: "plano-de-governo",
         pagina: 21,
       },
       {
         titulo: "Ensinar de verdade",
+        url: "/fontes/proposta-flavio.pdf",
+        tipo: "plano-de-governo",
+        pagina: 34,
+      },
+      {
+        titulo: "Alfabetização, reforço, escolas cívico-militares e tempo integral",
         url: "/fontes/proposta-flavio.pdf",
         tipo: "plano-de-governo",
         pagina: 35,
@@ -51,7 +51,7 @@ export const educacao: Proposta[] = [
         pagina: 37,
       },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
   {
@@ -59,16 +59,16 @@ export const educacao: Proposta[] = [
     temaId: "educacao",
     candidaturaId: "lula",
     titulo: "Pé-de-Meia, mais creches e vagas em faculdades e institutos",
-    resumoFiel: `O plano quer manter e reforçar o Pé-de-Meia, uma bolsa que paga o estudante do ensino médio para continuar estudando. Promete mais creches e escolas de tempo integral, a meta de alfabetizar mais crianças na idade certa, mais institutos federais (ensino técnico gratuito) e mais vagas e apoio (moradia e alimentação) para quem está na faculdade.`,
+    resumoFiel: `O plano quer manter e reforçar o Pé-de-Meia, programa que já existe e ajuda jovens pobres do ensino médio a não largar a escola por falta de dinheiro. Promete apoiar estados e cidades para ter mais creches e mais escolas de tempo integral, e chegar à meta de 80% das crianças alfabetizadas na idade certa. Também quer mais institutos federais (escolas públicas de ensino técnico), mais vagas em faculdades públicas e mais apoio com moradia e alimentação para quem está na faculdade.`,
     tipoAfirmacao: "proposta-documentada",
     impactoCotidiano: `Jovens no ensino médio poderiam seguir recebendo a bolsa para não largar os estudos, e famílias poderiam achar vaga em creche com mais facilidade. Depende do ritmo das obras e de o dinheiro continuar.`,
     condicoes: [
-      `Manter o dinheiro dos programas todo ano`,
-      `Terminar as obras de creches, institutos e universidades`,
+      `Dependeria de manter o dinheiro dos programas no orçamento todo ano`,
+      `Dependeria de terminar as obras de creches, institutos e universidades`,
     ],
     incertezas: [
-      `O plano não diz o valor futuro do Pé-de-Meia nem quem terá direito`,
-      `Não garante que as metas serão cumpridas no prazo`,
+      `O plano não diz o valor futuro do Pé-de-Meia nem as regras exatas para receber`,
+      `Não dá prazo para as obras nem para chegar à meta de 80%`,
     ],
     relevantePara: ["estudante", "casa-familia", "primeiro-emprego", "rural"],
     fontes: [
@@ -109,7 +109,7 @@ export const educacao: Proposta[] = [
         pagina: 33,
       },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
 ];

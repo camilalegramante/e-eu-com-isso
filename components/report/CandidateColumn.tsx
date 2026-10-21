@@ -56,7 +56,7 @@ export function CandidateColumn({
           </div>
 
           <p className="font-medium text-ink">{proposta.titulo}</p>
-          <p className="text-sm leading-relaxed text-ink-soft">
+          <p className="whitespace-pre-line text-sm leading-relaxed text-ink-soft">
             {proposta.resumoFiel}
           </p>
 

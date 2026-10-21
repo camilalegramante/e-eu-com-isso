@@ -1,17 +1,17 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Saúde pública. Status "rascunho". Linguagem simples.
+// Tema: Saúde pública. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
 export const saude: Proposta[] = [
   {
     id: "saude-flavio-prontuario-digital-prevencao",
     temaId: "saude",
     candidaturaId: "flavio",
     titulo: "Ficha de saúde digital, menos fila e prevenção",
-    resumoFiel: `O plano quer criar uma ficha de saúde digital única, ligada ao CPF, para o médico ver o seu histórico em qualquer lugar. Promete usar tecnologia para marcar consultas e exames mais rápido, ampliar o atendimento perto de casa (Saúde da Família), reforçar a prevenção e a vacinação, e levar atendimento por vídeo (telessaúde) e remédio em casa para quem mora longe.`,
+    resumoFiel: `O plano quer criar uma ficha de saúde digital única, ligada ao CPF. Médicos da rede pública e particular veriam seu histórico, com a sua autorização. Promete usar tecnologia para marcar consultas e exames mais rápido e corrigir a tabela do SUS (quanto o governo paga a hospitais e clínicas). Também quer ampliar o atendimento perto de casa (Saúde da Família), ampliar exames preventivos e manter a vacinação. Para quem mora longe, promete atendimento por vídeo (telessaúde). Para idosos, pessoas com deficiência e doentes crônicos, promete entrega de remédio em casa.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `Pode ficar mais fácil marcar consulta e você evitaria repetir exames, porque o médico veria seu histórico. Quem mora longe poderia ser atendido por vídeo. Isso depende de a tecnologia chegar a cada região.`,
+    impactoCotidiano: `Pode ficar mais fácil marcar consulta. Você poderia evitar repetir exames, porque o médico veria seu histórico. Quem mora longe poderia ser atendido por vídeo. Isso depende de a tecnologia chegar a cada região.`,
     condicoes: [
-      `Ter dinheiro para pagar melhor os atendimentos do SUS`,
+      `Haver espaço no orçamento federal (o próprio plano diz que a lei de reajuste da tabela do SUS ficou "presa ao orçamento")`,
       `Levar internet e equipamentos para postos e hospitais`,
     ],
     incertezas: [
@@ -51,17 +51,17 @@ export const saude: Proposta[] = [
         pagina: 21,
       },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
   {
     id: "saude-lula-sus-agora-tem-especialistas",
     temaId: "saude",
     candidaturaId: "lula",
-    titulo: "Reforçar o SUS, diminuir a fila e marcar tudo pelo celular",
-    resumoFiel: `O plano quer ampliar o atendimento perto de casa (Saúde da Família) e diminuir a fila de consultas, exames e cirurgias com o programa Agora Tem Especialistas, usando uma fila única digital que atende primeiro quem está mais grave. Promete uma ficha de saúde única para ver consultas e exames pelo celular, manter a Farmácia Popular (remédios de graça ou mais baratos) e recuperar a vacinação.`,
+    titulo: "Reforçar o SUS, diminuir a fila e marcar consulta pelo celular",
+    resumoFiel: `O plano quer ampliar o atendimento perto de casa (Saúde da Família). Promete reforçar o programa Agora Tem Especialistas, que já existe, para diminuir a fila de consultas, exames e cirurgias, com uma fila única digital que atende primeiro quem está mais grave. Quer uma ficha de saúde única para marcar consulta no posto e ver resultado de exame pelo celular, e mais atendimento por vídeo (telessaúde). Promete manter a Farmácia Popular, que já existe, com remédios de graça, e passar a oferecer nela alguns exames, como os de pressão alta e diabetes. Também quer continuar ampliando a vacinação, inclusive nas escolas.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `A espera por consulta, exame ou cirurgia poderia diminuir, e você poderia acompanhar tudo pelo celular. Isso depende de o dinheiro e as parcerias continuarem.`,
+    impactoCotidiano: `A espera por consulta, exame ou cirurgia poderia diminuir. Você poderia marcar consulta no posto e ver exames pelo celular. Isso depende de o dinheiro e as parcerias continuarem.`,
     condicoes: [
       `Manter os investimentos e as parcerias com hospitais`,
       `Ligar os sistemas de saúde de estados e cidades`,
@@ -79,37 +79,31 @@ export const saude: Proposta[] = [
         pagina: 34,
       },
       {
-        titulo: "Fortalecer a saúde (continuação)",
+        titulo: "Saúde digital e prontuário único",
         url: "/fontes/proposta-lula.pdf",
         tipo: "plano-de-governo",
         pagina: 35,
       },
       {
-        titulo: "Fortalecer a saúde (continuação)",
+        titulo: "Farmácia Popular e vacinação",
         url: "/fontes/proposta-lula.pdf",
         tipo: "plano-de-governo",
         pagina: 36,
       },
       {
-        titulo: "Fortalecer a saúde (continuação)",
+        titulo: "Agora Tem Especialistas",
         url: "/fontes/proposta-lula.pdf",
         tipo: "plano-de-governo",
         pagina: 37,
       },
       {
-        titulo: "Fortalecer a saúde (continuação)",
+        titulo: "Fila única digital",
         url: "/fontes/proposta-lula.pdf",
         tipo: "plano-de-governo",
         pagina: 38,
       },
-      {
-        titulo: "Fortalecer a saúde (continuação)",
-        url: "/fontes/proposta-lula.pdf",
-        tipo: "plano-de-governo",
-        pagina: 39,
-      },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
 ];

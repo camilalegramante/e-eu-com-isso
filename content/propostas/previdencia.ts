@@ -1,15 +1,15 @@
 import type { Proposta } from "@/lib/types";
 
-// Tema: Previdência e aposentadoria. Status "rascunho". Linguagem simples.
+// Tema: Previdência e aposentadoria. Status "aprovado" (revisado em 2026-10-21). Linguagem simples.
 export const previdencia: Proposta[] = [
   {
     id: "previdencia-flavio-inss-sem-fila-fraudes",
     temaId: "previdencia",
     candidaturaId: "flavio",
     titulo: "Acabar com a fila do INSS e barrar descontos indevidos",
-    resumoFiel: `O plano quer digitalizar e organizar melhor o INSS para diminuir a espera, que segundo o texto tinha 3 milhões de pedidos parados no começo de 2026. Promete reforçar o combate a fraudes e a descontos tirados do benefício sem a pessoa autorizar, com mais conferência e transparência no empréstimo consignado (aquele descontado direto do benefício).`,
+    resumoFiel: `O plano quer digitalizar e organizar melhor o INSS para diminuir a espera, que segundo o texto tinha 3 milhões de pedidos parados no começo de 2026. Promete um novo pacote contra fraudes, parecido com o que o governo Bolsonaro fez em 2019. Também quer mudar as regras do empréstimo consignado (aquele descontado direto do benefício), com dupla checagem e mais transparência, para que ninguém tire do benefício o que a pessoa não autorizou. O plano lembra que os descontos de associações no benefício já foram proibidos em novembro de 2025.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `Quem é aposentado, pensionista ou está pedindo um benefício poderia esperar menos por uma resposta. E ficaria mais difícil tirarem dinheiro do seu benefício sem você deixar. Depende de a mudança sair do papel.`,
+    impactoCotidiano: `Quem é aposentado, pensionista ou está pedindo um benefício poderia esperar menos por uma resposta. E poderia ficar mais difícil tirarem dinheiro do seu benefício sem você autorizar. Depende de a mudança sair do papel.`,
     condicoes: [
       `Reorganizar a gestão do INSS, com dinheiro para isso`,
       `Criar as regras do pacote contra fraude (pode precisar do Congresso)`,
@@ -39,7 +39,7 @@ export const previdencia: Proposta[] = [
         pagina: 73,
       },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
   {
@@ -47,16 +47,16 @@ export const previdencia: Proposta[] = [
     temaId: "previdencia",
     candidaturaId: "lula",
     titulo: "Fortalecer a aposentadoria e diminuir a espera do INSS",
-    resumoFiel: `O plano promete reforçar a Previdência e facilitar o acesso, lembrando que o aumento do salário mínimo também sobe as aposentadorias. Fala em reduzir a espera do INSS, avisar o trabalhador por carta quando ele tiver direito a se aposentar, e criar formas mais fáceis de contribuir para quem trabalha de forma instável, como autônomos e quem trabalha por aplicativo.`,
+    resumoFiel: `O plano diz que vai continuar a regra de aumento do salário mínimo acima da inflação. Segundo o texto, essa regra já aumentou o poder de compra de aposentados e pensionistas. Diz que já está enfrentando a fila do INSS e que quer voltar a avisar o trabalhador por carta quando ele tiver direito a se aposentar. Promete terminar a modernização do atendimento. Quer formas mais flexíveis de contribuir para quem muda muito de trabalho, incluir a Previdência nas regras do trabalho por aplicativo e buscar novas fontes de dinheiro para a Previdência.`,
     tipoAfirmacao: "proposta-documentada",
-    impactoCotidiano: `Quem recebe aposentadoria ou pensão poderia manter o poder de compra e esperar menos no INSS. Autônomos e trabalhadores de aplicativo poderiam ter mais facilidade para manter a aposentadoria. Depende de as novas regras saírem.`,
+    impactoCotidiano: `Quem recebe aposentadoria ou pensão de um salário mínimo poderia manter o poder de compra, se a regra de aumento do mínimo continuar. Poderia haver menos espera no INSS. Quem muda muito de trabalho ou trabalha por aplicativo poderia ter mais proteção da Previdência. Depende de as novas regras saírem.`,
     condicoes: [
       `Mudar o jeito de financiar a Previdência (pode precisar de lei)`,
       `Criar as regras para o trabalho por aplicativo`,
     ],
     incertezas: [
       `O plano não dá valores nem prazos das novas formas de contribuir`,
-      `Não diz de onde viria o dinheiro extra para a Previdência`,
+      `Fala em buscar novas fontes de dinheiro para a Previdência, mas não diz quais`,
     ],
     relevantePara: ["aposentado", "autonomo-mei"],
     fontes: [
@@ -67,19 +67,19 @@ export const previdencia: Proposta[] = [
         pagina: 77,
       },
       {
-        titulo: "Valorização do salário mínimo e benefícios",
-        url: "/fontes/proposta-lula.pdf",
-        tipo: "plano-de-governo",
-        pagina: 19,
-      },
-      {
-        titulo: "Pejotização e responsabilidades previdenciárias",
+        titulo: "Continuidade da valorização do salário mínimo",
         url: "/fontes/proposta-lula.pdf",
         tipo: "plano-de-governo",
         pagina: 74,
       },
+      {
+        titulo: "O que já foi feito: valorização do salário mínimo",
+        url: "/fontes/proposta-lula.pdf",
+        tipo: "plano-de-governo",
+        pagina: 19,
+      },
     ],
-    statusRevisao: "rascunho",
+    statusRevisao: "aprovado",
     revisadoEm: "2026-10-21",
   },
 ];

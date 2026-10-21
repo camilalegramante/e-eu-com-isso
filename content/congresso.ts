@@ -1,5 +1,6 @@
 // Contexto do Congresso eleito em 2026 (mandato a partir de 2027).
-// Nº de cadeiras por partido: Câmara dos Deputados / TSE (100% apuradas), via BBC.
+// Nº de cadeiras por partido: Câmara dos Deputados / TSE (100% apuradas), via BBC;
+// Senado: g1 (TSE + composição informada pelo Senado).
 // Campo de apoio no 2º turno: Poder360 (bloco de Flávio) e O Povo (listas e nuances).
 // Números são FATO atribuído à fonte; a leitura de "mais difícil" é interpretação.
 
@@ -50,13 +51,38 @@ export const CONGRESSO = {
     { sigla: "Missão", cadeiras: 1 },
     { sigla: "Cidadania", cadeiras: 0 },
   ] as PartidoCamara[],
-  // Senado 2027: destaques conhecidos.
-  senado2027: { pl: 19, pt: 6 },
+  // Senado 2027, por partido (soma = 81): 54 eleitos em 2026 + 27 com mandato
+  // até 2031, já com substituições previstas (g1, 08/10/2026). Pode mudar até
+  // a posse (2º turno estadual, decisões judiciais). Campo igual ao da Câmara.
+  senado2027: [
+    { sigla: "PL", cadeiras: 28, campo: "flavio", obs: "partido de Flávio" },
+    { sigla: "PT", cadeiras: 9, campo: "lula", obs: "partido de Lula" },
+    { sigla: "MDB", cadeiras: 8, campo: "dividido" },
+    { sigla: "PP", cadeiras: 6, campo: "flavio" },
+    { sigla: "União Brasil", cadeiras: 6, campo: "flavio" },
+    { sigla: "PSD", cadeiras: 5, campo: "neutro" },
+    { sigla: "Republicanos", cadeiras: 5, campo: "flavio" },
+    { sigla: "PSB", cadeiras: 4, campo: "lula" },
+    { sigla: "Novo", cadeiras: 3, campo: "flavio" },
+    { sigla: "Podemos", cadeiras: 2, campo: "flavio" },
+    { sigla: "PSDB", cadeiras: 2, campo: "neutro" },
+    { sigla: "PDT", cadeiras: 1, campo: "lula" },
+    { sigla: "REDE", cadeiras: 1, campo: "lula" },
+    { sigla: "Sem partido", cadeiras: 1 },
+  ] as PartidoCamara[],
   fontes: [
     {
       titulo:
         "BBC News Brasil — Composição da nova Câmara (Câmara dos Deputados / TSE)",
       url: "https://www.bbc.com/portuguese/articles/cw054z5n04e9o",
+    },
+    {
+      titulo: "g1 — Composição do Senado de 2027 por partido",
+      url: "https://g1.globo.com/politica/eleicoes/2026/noticia/2026/10/08/composicao-senado-2027.ghtml",
+    },
+    {
+      titulo: "Poder360 — Lista completa dos 81 senadores eleitos para 2027",
+      url: "https://www.poder360.com.br/poder-eleicoes-2026/leia-a-lista-completa-dos-81-senadores-eleitos-para-2027/",
     },
     {
       titulo:
@@ -82,8 +108,8 @@ export function camaraOrdenada(): PartidoCamara[] {
     .sort((a, b) => b.cadeiras - a.cadeiras);
 }
 
-/** Soma de deputados por campo de apoio (cálculo a partir das bancadas). */
-export function somaPorCampo(): {
+/** Soma de cadeiras por campo de apoio (padrão: Câmara; passe senado2027 para o Senado). */
+export function somaPorCampo(lista: PartidoCamara[] = CONGRESSO.camara2027): {
   flavio: number;
   lula: number;
   dividido: number;
@@ -91,7 +117,7 @@ export function somaPorCampo(): {
   outros: number;
 } {
   const acc = { flavio: 0, lula: 0, dividido: 0, neutro: 0, outros: 0 };
-  for (const p of CONGRESSO.camara2027) {
+  for (const p of lista) {
     if (p.campo === "flavio") acc.flavio += p.cadeiras;
     else if (p.campo === "lula") acc.lula += p.cadeiras;
     else if (p.campo === "dividido") acc.dividido += p.cadeiras;

@@ -30,10 +30,11 @@ function corBarra(p: PartidoCamara): string {
 }
 
 export function CongressoPanel() {
-  const { regras, baseFlavio, senado2027, fontes } = CONGRESSO;
+  const { regras, senado2027, fontes } = CONGRESSO;
   const partidos = camaraOrdenada();
   const max = partidos[0]?.cadeiras ?? 1;
   const soma = somaPorCampo();
+  const somaSenado = somaPorCampo(senado2027);
 
   return (
     <section
@@ -68,16 +69,25 @@ export function CongressoPanel() {
         </p>
         <p>
           Os partidos que declararam apoio a <strong>Flávio Bolsonaro</strong>{" "}
-          formam a maior base: somando as bancadas da Câmara, são{" "}
-          <strong>{soma.flavio} deputados</strong> — acima da maioria simples,
-          mas ainda abaixo dos {regras.camaraPec} para mudar a Constituição. No
-          Senado, a base dele soma cerca de {baseFlavio.senado}.
+          no 2º turno somam <strong>{soma.flavio} deputados</strong> na Câmara:
+          acima da maioria simples e abaixo dos {regras.camaraPec} para mudar a
+          Constituição. No Senado, somam <strong>{somaSenado.flavio} senadores</strong>:
+          acima da maioria simples e no limite dos {regras.senadoPec} para mudar
+          a Constituição.
         </p>
         <p>
-          A base de <strong>Lula</strong> (PT mais a coligação do 1º turno — PSB,
-          PDT, PSOL, PCdoB, PV e Rede, além de legendas menores) soma{" "}
-          <strong>{soma.lula} deputados</strong> na Câmara. É um cenário mais
-          adverso, que dependeria de negociar com o Centrão.
+          Os partidos que apoiam <strong>Lula</strong> (PT mais a coligação do
+          1º turno — PSB, PDT, PSOL, PCdoB, PV e Rede, além de legendas menores)
+          somam <strong>{soma.lula} deputados</strong> na Câmara: abaixo da
+          maioria simples e abaixo dos {regras.camaraPec} para mudar a
+          Constituição. No Senado, somam <strong>{somaSenado.lula} senadores</strong>:
+          abaixo da maioria simples e abaixo dos {regras.senadoPec} para mudar a
+          Constituição.
+        </p>
+        <p>
+          Apoio na eleição não garante voto em cada projeto. Para mudar a
+          Constituição, qualquer um dos dois precisaria de votos de partidos de
+          fora do seu grupo, como PSD, MDB e PSDB.
         </p>
       </div>
 
