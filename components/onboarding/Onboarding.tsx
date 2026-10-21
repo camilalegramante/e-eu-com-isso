@@ -6,12 +6,13 @@ import { PERFIS } from "@/content/perfis";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { Chip } from "@/components/ui/Chip";
 import { Icon } from "@/components/ui/Icon";
-import { FadeInContainer, FadeInItem } from "@/components/ui/AnimateIn";
 import { hrefRelatorio } from "@/lib/url-state";
 import { TODOS_OS_TEMAS } from "@/lib/types";
 import { getPerfil, getTema } from "@/lib/catalogs";
 
 const STORAGE_KEY = "eeci:selecao";
+// Atraso em cascata das opções (ver .anim-entrar em globals.css).
+const cascata = (i: number) => ({ "--i": i }) as React.CSSProperties;
 // Só oferece temas que já têm conteúdo, para ninguém escolher algo vazio.
 const TEMAS_DISPONIVEIS = TEMAS.filter((t) => TEMAS_COM_CONTEUDO.includes(t.id));
 const PASSOS = ["Perfil", "Interesses", "Revisão"] as const;
@@ -87,18 +88,18 @@ export function Onboarding() {
           <p className="mt-2 text-ink-soft">
             Pode marcar quantas quiser. Nenhuma resposta é obrigatória.
           </p>
-          <FadeInContainer className="mt-6 flex flex-wrap gap-2">
-            {PERFIS.map((p) => (
-              <FadeInItem key={p.id}>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {PERFIS.map((p, i) => (
+              <div key={p.id} className="anim-entrar" style={cascata(i)}>
                 <Chip
                   selected={perfis.includes(p.id)}
                   onClick={() => togglePerfil(p.id)}
                 >
                   {p.rotulo}
                 </Chip>
-              </FadeInItem>
+              </div>
             ))}
-          </FadeInContainer>
+          </div>
         </fieldset>
       )}
 
@@ -110,8 +111,8 @@ export function Onboarding() {
           <p className="mt-2 text-ink-soft">
             Escolha os assuntos que quer entender melhor.
           </p>
-          <FadeInContainer className="mt-6 flex flex-wrap gap-2">
-            <FadeInItem>
+          <div className="mt-6 flex flex-wrap gap-2">
+            <div className="anim-entrar">
               <Chip
                 selected={verTudo}
                 onClick={() => toggleInteresse(TODOS_OS_TEMAS)}
@@ -119,9 +120,9 @@ export function Onboarding() {
               >
                 Quero ver tudo
               </Chip>
-            </FadeInItem>
-            {TEMAS_DISPONIVEIS.map((t) => (
-              <FadeInItem key={t.id}>
+            </div>
+            {TEMAS_DISPONIVEIS.map((t, i) => (
+              <div key={t.id} className="anim-entrar" style={cascata(i + 1)}>
                 <Chip
                   selected={!verTudo && interesses.includes(t.id)}
                   onClick={() => toggleInteresse(t.id)}
@@ -129,9 +130,9 @@ export function Onboarding() {
                 >
                   {t.rotulo}
                 </Chip>
-              </FadeInItem>
+              </div>
             ))}
-          </FadeInContainer>
+          </div>
         </fieldset>
       )}
 

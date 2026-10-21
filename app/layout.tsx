@@ -50,10 +50,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${sans.variable} ${display.variable}`}>
       <body className="min-h-dvh bg-paper font-sans text-ink antialiased">
-        {/* Sem JavaScript, as animações não rodam: mostra tudo de uma vez. */}
-        <noscript>
-          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
-        </noscript>
         {children}
       </body>
     </html>

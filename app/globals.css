@@ -23,6 +23,45 @@ body {
   border-radius: 4px;
 }
 
+/* Animações de entrada em CSS puro (sem JavaScript). Nunca escondem conteúdo:
+   se o navegador não suporta o recurso, o elemento só aparece parado. */
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes crescer {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Ao montar (ex.: opções da escolha de temas), em cascata pelo --i. */
+  .anim-entrar {
+    animation: entrar 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  /* Barras que crescem a partir da esquerda. */
+  .anim-crescer {
+    transform-origin: left;
+    animation: crescer 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Ao rolar: termina quando o topo do elemento já entrou 160px na tela,
+     então cards altos não ficam transparentes durante a leitura. */
+  @supports (animation-timeline: view()) {
+    .anim-ao-ver {
+      animation: entrar linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 160px;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

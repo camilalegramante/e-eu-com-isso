@@ -2,7 +2,6 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Icon } from "@/components/ui/Icon";
-import { FadeInContainer, FadeInItem } from "@/components/ui/AnimateIn";
 import { TEMAS, TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS_ORDENADAS } from "@/content/candidaturas";
 import { SITE } from "@/lib/site";
@@ -63,11 +62,11 @@ export default function HomePage() {
 
         {/* Como funciona */}
         <section className="mx-auto max-w-content px-5 py-10">
-          <FadeInContainer className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             {PASSOS.map((p, i) => (
-              <FadeInItem
+              <div
                 key={p.titulo}
-                className="rounded-xl2 border border-line bg-surface p-5"
+                className="anim-ao-ver rounded-xl2 border border-line bg-surface p-5"
               >
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink">
@@ -81,9 +80,9 @@ export default function HomePage() {
                   {p.titulo}
                 </h2>
                 <p className="mt-1 text-sm text-ink-soft">{p.texto}</p>
-              </FadeInItem>
+              </div>
             ))}
-          </FadeInContainer>
+          </div>
         </section>
 
         {/* Comparando */}
@@ -96,11 +95,11 @@ export default function HomePage() {
               As duas candidaturas do 2º turno, com os mesmos critérios de
               apresentação, detalhamento e fontes para ambas.
             </p>
-            <FadeInContainer className="mt-5 grid gap-4 sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
               {CANDIDATURAS_ORDENADAS.map((c) => (
-                <FadeInItem
+                <div
                   key={c.id}
-                  className={`relative overflow-hidden rounded-xl2 border border-line bg-paper p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 ${
+                  className={`anim-ao-ver relative overflow-hidden rounded-xl2 border border-line bg-paper p-5 before:absolute before:inset-x-0 before:top-0 before:h-1 ${
                     c.corToken === "neutra-1"
                       ? "before:bg-candA"
                       : "before:bg-candB"
@@ -119,9 +118,9 @@ export default function HomePage() {
                     <Icon name="FileText" className="h-4 w-4" />
                     Plano de governo
                   </a>
-                </FadeInItem>
+                </div>
               ))}
-            </FadeInContainer>
+            </div>
           </div>
         </section>
 
@@ -130,18 +129,17 @@ export default function HomePage() {
           <h2 className="font-display text-2xl font-semibold text-ink">
             Assuntos do seu dia a dia
           </h2>
-          <FadeInContainer as="ul" className="mt-5 flex flex-wrap gap-2">
+          <ul className="mt-5 flex flex-wrap gap-2">
             {temasComConteudo.map((t) => (
-              <FadeInItem
-                as="li"
+              <li
                 key={t.id}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft"
+                className="anim-ao-ver inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink-soft"
               >
                 <Icon name={t.icone} className="h-4 w-4" />
                 {t.rotulo}
-              </FadeInItem>
+              </li>
             ))}
-          </FadeInContainer>
+          </ul>
           <div className="mt-8">
             <Link
               href="/comecar"
