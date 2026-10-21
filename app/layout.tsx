@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import { SITE } from "@/lib/site";
+import { Analytics } from "@/components/site/Analytics";
 import "./globals.css";
 
 const sans = Inter({
@@ -51,6 +52,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${sans.variable} ${display.variable}`}>
       <body className="min-h-dvh bg-paper font-sans text-ink antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );

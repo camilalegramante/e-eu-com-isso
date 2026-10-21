@@ -154,6 +154,12 @@ export default function SobrePage() {
             perfil no link — sem nome, e-mail ou qualquer identificação. Essas
             respostas não servem para te identificar.
           </p>
+          <p>
+            Usamos ferramentas da Vercel para contar visitas, saber quais
+            páginas são mais vistas e medir se o site carrega rápido. Elas não
+            usam cookies e não identificam quem visita. Suas escolhas de perfil
+            e temas não são enviadas.
+          </p>
         </Secao>
 
         <Secao titulo="Fontes dos dados">
