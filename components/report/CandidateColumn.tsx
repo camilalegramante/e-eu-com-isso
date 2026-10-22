@@ -2,7 +2,9 @@ import { Icon } from "@/components/ui/Icon";
 import { LabelTag } from "@/components/report/LabelTag";
 import { SourceList } from "@/components/report/SourceList";
 import { HistoricoSection } from "@/components/report/HistoricoSection";
+import { JaFezSection } from "@/components/report/JaFezSection";
 import { getPontosDeAtencao } from "@/content/historico";
+import { getAcoesNaDirecao } from "@/content/ja-fez";
 import type { Candidatura, Proposta } from "@/lib/types";
 
 const ACENTO: Record<Candidatura["corToken"], string> = {
@@ -69,6 +71,8 @@ export function CandidateColumn({
           <SourceList fontes={proposta.fontes} candidatura={candidatura} />
 
           <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
+
+          <JaFezSection acoes={getAcoesNaDirecao(proposta.id)} />
         </div>
       ) : (
         <div className="mt-3 space-y-2">

@@ -29,6 +29,9 @@ const config: Config = {
         // Destaque da análise no histórico: lilás, distinto do bege da marca
         // e sem relação com as cores das candidaturas.
         destaque: { DEFAULT: "#6B5CA5", soft: "#EFEAF8", ink: "#43357A" },
+        // "O candidato já fez algo nessa direção?": verde-água, bem distinto
+        // do verde de candA para não parecer ligado a uma candidatura.
+        agua: { DEFAULT: "#0F766E", soft: "#E6F4F1", ink: "#115E59" },
       },
       maxWidth: {
         content: "72rem",

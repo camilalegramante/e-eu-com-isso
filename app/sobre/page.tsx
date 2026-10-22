@@ -82,6 +82,23 @@ export default function SobrePage() {
           </p>
         </Secao>
 
+        <Secao titulo="“O candidato já fez algo nessa direção?”" id="ja-fez">
+          <p>
+            É o outro lado do histórico: o que o candidato já fez ou disse que
+            vai na mesma linha do que o plano promete. Mostramos o fato, o que
+            aconteceu depois e as fontes. Não dizemos se foi bom ou ruim.
+          </p>
+          <p>
+            Valem as <strong>mesmas regras</strong> do histórico, iguais para
+            todas as candidaturas: ação do próprio candidato, ligada a uma
+            proposta do plano e com fonte que dá para conferir.
+          </p>
+          <p>
+            A lista também <strong>não é completa</strong>. Ter feito algo antes
+            não garante que a proposta vai sair do papel.
+          </p>
+        </Secao>
+
         <Secao titulo="Transparência eleitoral">
           <p>
             É o período do 2º turno das {SITE.eleicao.toLowerCase()}, marcado

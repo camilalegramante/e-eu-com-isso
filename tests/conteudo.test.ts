@@ -3,6 +3,7 @@ import { TODAS_PROPOSTAS, propostasDoTema } from "@/content/propostas";
 import { TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS } from "@/content/candidaturas";
 import { PONTOS_DE_ATENCAO } from "@/content/historico";
+import { ACOES_NA_DIRECAO } from "@/content/ja-fez";
 import { APOIOS_INDIVIDUAIS, CONGRESSO, somaPorCampo } from "@/content/congresso";
 import { isCandidaturaId, isPerfilId, isTemaId } from "@/lib/catalogs";
 
@@ -82,6 +83,36 @@ describe("integridade do histórico (pontos de atenção)", () => {
 
   it("ids são únicos", () => {
     const ids = PONTOS_DE_ATENCAO.map((h) => h.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe("integridade do \"já fez nessa direção\"", () => {
+  const propostas = new Map(TODAS_PROPOSTAS.map((p) => [p.id, p]));
+
+  it("aponta para uma proposta documentada existente", () => {
+    for (const a of ACOES_NA_DIRECAO) {
+      const p = propostas.get(a.propostaId);
+      expect(p, `propostaId inexistente em ${a.id}`).toBeDefined();
+      expect(p?.tipoAfirmacao, `proposta não documentada em ${a.id}`).toBe(
+        "proposta-documentada",
+      );
+    }
+  });
+
+  it("tem fonte externa com URL válida e data no formato certo", () => {
+    for (const a of ACOES_NA_DIRECAO) {
+      expect(a.fontes.length, `sem fontes em ${a.id}`).toBeGreaterThanOrEqual(1);
+      for (const f of a.fontes) {
+        expect(/^https:\/\//.test(f.url), `URL inválida em ${a.id}: ${f.url}`).toBe(true);
+        expect(f.tipo, `fonte do próprio plano em ${a.id}`).not.toBe("plano-de-governo");
+      }
+      expect(/^\d{4}(-\d{2}(-\d{2})?)?$/.test(a.dataAcao), `data inválida em ${a.id}`).toBe(true);
+    }
+  });
+
+  it("ids são únicos", () => {
+    const ids = ACOES_NA_DIRECAO.map((a) => a.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 });

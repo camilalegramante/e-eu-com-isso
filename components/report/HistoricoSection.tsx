@@ -1,7 +1,7 @@
 import { Icon } from "@/components/ui/Icon";
 import type { PontoDeAtencao, TipoAcao } from "@/lib/types";
 
-const TIPO_ACAO: Record<TipoAcao, string> = {
+export const TIPO_ACAO: Record<TipoAcao, string> = {
   voto: "Voto",
   "projeto-de-lei": "Projeto de lei",
   "ato-parlamentar": "Ato como parlamentar",

@@ -111,6 +111,27 @@ export interface PontoDeAtencao {
   fontes: Fonte[];
 }
 
+// O oposto do ponto de atenção: algo que o candidato já fez na mesma
+// direção do que o plano promete. Mesmos critérios de fonte e de autoria.
+export interface AcaoNaDirecao {
+  id: string;
+  /** Proposta (do mesmo candidato) com a qual a ação é comparada. */
+  propostaId: string;
+  /** O que o plano promete, em uma frase. */
+  oQuePlanoDiz: string;
+  /** O que o candidato fez ou disse antes, de forma factual. */
+  oQueFez: string;
+  /** Data da ação, YYYY-MM-DD, YYYY-MM ou YYYY (só o que a fonte confirma). */
+  dataAcao: string;
+  tipoAcao: TipoAcao;
+  /** Por que a ação vai na direção da proposta (análise, sem elogio). */
+  porQueCombina: string;
+  /** O que aconteceu depois (ex.: virou lei, foi arquivado), quando se sabe. */
+  resultado?: string;
+  /** >= 1 fonte obrigatória. */
+  fontes: Fonte[];
+}
+
 export type EtiquetaOrcamento =
   | "Gasto contínuo"
   | "Reduz arrecadação"

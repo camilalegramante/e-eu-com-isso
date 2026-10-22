@@ -4,7 +4,8 @@ import {
   HistoricoSection,
   formatarDataAcao,
 } from "@/components/report/HistoricoSection";
-import type { PontoDeAtencao } from "@/lib/types";
+import { JaFezSection } from "@/components/report/JaFezSection";
+import type { AcaoNaDirecao, PontoDeAtencao } from "@/lib/types";
 
 // Conteúdo FICTÍCIO, só para testar a interface.
 const EXEMPLO: PontoDeAtencao = {
@@ -52,5 +53,36 @@ describe("HistoricoSection", () => {
     expect(html).toContain("Exemplo de justificativa.");
     expect(html).toContain('href="https://example.com"');
     expect(html).toContain('rel="noopener noreferrer"');
+  });
+});
+
+// Conteúdo FICTÍCIO, só para testar a interface.
+const ACAO: AcaoNaDirecao = {
+  id: "exemplo-acao",
+  propostaId: "exemplo-proposta",
+  oQuePlanoDiz: "Exemplo: o plano promete A.",
+  oQueFez: "Exemplo: apresentou projeto para A.",
+  dataAcao: "2021-06",
+  tipoAcao: "projeto-de-lei",
+  porQueCombina: "Exemplo de análise.",
+  resultado: "Exemplo: virou lei.",
+  fontes: [{ titulo: "Fonte de exemplo", url: "https://example.com/a", tipo: "orgao-publico" }],
+};
+
+describe("JaFezSection", () => {
+  it("sem ações, avisa que a lista não é completa", () => {
+    const html = renderToStaticMarkup(<JaFezSection acoes={[]} />);
+    expect(html).toContain("O candidato já fez algo nessa direção?");
+    expect(html).toContain("a lista não é completa");
+  });
+
+  it("mostra o fato, a análise rotulada, o resultado e a fonte, sem contagem", () => {
+    const html = renderToStaticMarkup(<JaFezSection acoes={[ACAO]} />);
+    expect(html).toContain("Exemplo: apresentou projeto para A.");
+    expect(html).toContain("Projeto de lei, jun 2021");
+    expect(html).toContain("Análise");
+    expect(html).toContain("Exemplo: virou lei.");
+    expect(html).toContain('href="https://example.com/a"');
+    expect(html).not.toMatch(/\(\d+\)/);
   });
 });
