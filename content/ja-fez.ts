@@ -259,6 +259,117 @@ export const ACOES_NA_DIRECAO: AcaoNaDirecao[] = [
       },
     ],
   },
+
+  // ---- Flávio (pesquisa de 22/10/2026; projetos conferidos nos dados
+  // abertos do Senado). São projetos de lei: o resultado diz em que pé estão.
+  {
+    id: "ja-fez-flavio-devolucao-descontos-inss",
+    propostaId: "previdencia-flavio-inss-sem-fila-fraudes",
+    oQuePlanoDiz: `Promete mudar as regras para que ninguém tire do benefício o que a pessoa não autorizou.`,
+    oQueFez: `Em abril de 2025, como senador, Flávio apresentou um projeto de lei para devolver a aposentados e pensionistas os descontos de mensalidades de associações feitos sem autorização no benefício.`,
+    dataAcao: "2025-04-29",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto trata do mesmo problema que a proposta quer resolver: dinheiro tirado do benefício sem a pessoa autorizar.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, estava pronto para ser votado numa comissão do Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 1950/2025 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/168298",
+        tipo: "orgao-publico",
+        publicadoEm: "2025-04-29",
+      },
+    ],
+  },
+  {
+    id: "ja-fez-flavio-medida-protetiva-imediata",
+    propostaId: "direitos-mulheres-flavio-brasil-por-elas",
+    oQuePlanoDiz: `Promete mais proteção para mulheres que sofrem violência, como tornozeleira para agressores com medida protetiva.`,
+    oQueFez: `Em março de 2026, como senador, Flávio apresentou um projeto de lei para que o delegado possa dar na hora uma medida protetiva em casos de violência doméstica contra a mulher, com conferência posterior de um juiz.`,
+    dataAcao: "2026-03-25",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto busca acelerar a proteção da mulher ameaçada, que é o objetivo da proposta.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, aguardava o primeiro encaminhamento no Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 1400/2026 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/173320",
+        tipo: "orgao-publico",
+        publicadoEm: "2026-03-25",
+      },
+    ],
+  },
+  {
+    id: "ja-fez-flavio-diagnostico-autismo",
+    propostaId: "diversidade-flavio-cuidado-terras-esporte",
+    oQuePlanoDiz: `Promete Centros de Referência em Transtorno do Espectro Autista (TEA).`,
+    oQueFez: `Em agosto de 2025, como senador, Flávio apresentou um projeto de lei para que o SUS cubra de forma integral e prioritária os exames que ajudam a identificar cedo o autismo.`,
+    dataAcao: "2025-08-13",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto e a proposta tratam do atendimento a pessoas autistas no serviço público de saúde.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, aguardava a escolha de um relator no Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 3980/2025 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/169904",
+        tipo: "orgao-publico",
+        publicadoEm: "2025-08-13",
+      },
+    ],
+  },
+  {
+    id: "ja-fez-flavio-sem-liberdade-provisoria-hediondos",
+    propostaId: "seguranca-flavio-brasil-sem-medo",
+    oQuePlanoDiz: `Promete mais rigor contra o crime, como acabar com a progressão de regime.`,
+    oQueFez: `Em outubro de 2024, como senador, Flávio apresentou um projeto de lei para proibir a liberdade provisória de quem for preso em flagrante por crime hediondo (os crimes mais graves da lei).`,
+    dataAcao: "2024-10-25",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto deixaria presos por crimes graves mais tempo na cadeia, na mesma linha de endurecimento da proposta.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, aguardava a escolha de um relator no Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 4082/2024 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/165920",
+        tipo: "orgao-publico",
+        publicadoEm: "2024-10-25",
+      },
+    ],
+  },
+  {
+    id: "ja-fez-flavio-titulo-imovel-urbano",
+    propostaId: "moradia-flavio-caixa-casa-propria-saneamento",
+    oQuePlanoDiz: `Promete ajudar a regularizar o documento do imóvel.`,
+    oQueFez: `Em novembro de 2023, como senador, Flávio apresentou um projeto de lei para dar o título de propriedade a quem mora sem documento em imóvel urbano de até 80 m² em terreno público.`,
+    dataAcao: "2023-11-06",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto trata de regularizar o documento da casa, como a proposta promete.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, aguardava a escolha de um relator no Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 5335/2023 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/160817",
+        tipo: "orgao-publico",
+        publicadoEm: "2023-11-06",
+      },
+    ],
+  },
+  {
+    id: "ja-fez-flavio-debentures-limitadas",
+    propostaId: "empreendedorismo-flavio-minha-primeira-empresa",
+    oQuePlanoDiz: `Promete mais crédito para pequenos negócios.`,
+    oQueFez: `Em junho de 2020, como senador, Flávio apresentou um projeto de lei para permitir que empresas limitadas (Ltda.) e cooperativas emitam debêntures, títulos usados para pegar dinheiro emprestado com investidores.`,
+    dataAcao: "2020-06-16",
+    tipoAcao: "projeto-de-lei",
+    porQueCombina: `O projeto abriria outra forma de financiamento para empresas menores. A proposta fala em crédito, mas pelos bancos públicos, não por debêntures.`,
+    resultado: `Ainda não foi votado. Em 22/10/2026, estava com um relator no Senado.`,
+    fontes: [
+      {
+        titulo: "Senado Federal — PL 3324/2020 (tramitação)",
+        url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/142510",
+        tipo: "orgao-publico",
+        publicadoEm: "2020-06-16",
+      },
+    ],
+  },
 ];
 
 export function getAcoesNaDirecao(propostaId: string): AcaoNaDirecao[] {
