@@ -60,50 +60,6 @@ export default function SobrePage() {
           </div>
         </Secao>
 
-        <Secao titulo="“Dá pra sair do papel?” — como a viabilidade é avaliada" id="viabilidade">
-          <p>
-            Muita proposta boa no papel esbarra na realidade. Por isso, cada
-            proposta recebe uma leitura simples de 4 pontos — os{" "}
-            <strong>mesmos para todas as candidaturas</strong>. É{" "}
-            <strong>análise, não é nota nem comparação de quem é melhor</strong>.
-          </p>
-          <ul className="space-y-3">
-            <li>
-              <strong className="text-ink">Tem o dinheiro?</strong> O governo
-              não pode simplesmente gastar: o recurso precisa estar previsto nas
-              leis do orçamento (PPA, LDO e LOA), respeitar as regras fiscais e
-              ter de onde sair se criar uma despesa que se repete.
-            </li>
-            <li>
-              <strong className="text-ink">Passa no Congresso?</strong> O
-              governo quase nunca tem maioria garantida. Para votar uma
-              mudança, precisa negociar com partidos e comissões — e mudar a
-              Constituição (PEC) é ainda mais difícil.
-            </li>
-            <li>
-              <strong className="text-ink">Dá pra executar?</strong> É preciso
-              ter servidores, sistemas de tecnologia, logística e licitações
-              funcionando para a medida sair do papel.
-            </li>
-            <li>
-              <strong className="text-ink">Está dentro da lei?</strong> A
-              proposta não pode ferir a Constituição nem leis maiores, sob risco
-              de ser questionada pelo Ministério Público e suspensa pela Justiça
-              (como o STF) ou pelos tribunais de contas (como o TCU).
-            </li>
-          </ul>
-          <p>
-            O ponto “Passa no Congresso?” leva em conta a bancada eleita em
-            2026. No relatório há um painel com a composição do Congresso:
-            somando as bancadas da Câmara, a base de Flávio reúne cerca de 291
-            deputados e a de Lula, 124 (o MDB está dividido; PSD e PSDB liberaram
-            apoio). No Senado, são cerca de 50 senadores com Flávio e 15 com
-            Lula. Lembrando: lei comum precisa de maioria simples (257 de 513 e
-            41 de 81), e mudar a Constituição precisa de 3/5 (308 e 49) — em dois
-            turnos nas duas Casas.
-          </p>
-        </Secao>
-
         <Secao titulo="“O histórico combina com a proposta?”" id="historico">
           <p>
             Proposta não é garantia. Às vezes, o que o candidato já fez ou

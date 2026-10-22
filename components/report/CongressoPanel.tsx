@@ -100,8 +100,7 @@ export function CongressoPanel() {
             <p>
               <strong className="font-semibold text-ink">Análise:</strong> propostas
               que dependem de muitos votos, ainda mais as que mudam a Constituição,
-              tendem a ser mais difíceis de aprovar. Veja “Passa no Congresso?” em
-              cada proposta.
+              tendem a ser mais difíceis de aprovar.
             </p>
 
             <div>

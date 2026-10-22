@@ -1,9 +1,7 @@
 import { Icon } from "@/components/ui/Icon";
 import { LabelTag } from "@/components/report/LabelTag";
 import { SourceList } from "@/components/report/SourceList";
-import { ViabilidadeSection } from "@/components/report/ViabilidadeSection";
 import { HistoricoSection } from "@/components/report/HistoricoSection";
-import { getViabilidade } from "@/content/viabilidade";
 import { getPontosDeAtencao } from "@/content/historico";
 import type { Candidatura, Proposta } from "@/lib/types";
 
@@ -21,10 +19,7 @@ export function CandidateColumn({
 }) {
   const exibivel = !!proposta && proposta.tipoAfirmacao !== "nao-localizado";
 
-  const viabilidade = proposta ? getViabilidade(proposta.id) : undefined;
   const impacto = proposta?.impactoCotidiano;
-  const temCondicoes = !!proposta?.condicoes?.length;
-  const temIncertezas = !!proposta?.incertezas?.length;
   const resumo = proposta && (
     <p className="whitespace-pre-line text-sm leading-relaxed text-ink-soft">
       {proposta.resumoFiel}
@@ -59,7 +54,7 @@ export function CandidateColumn({
           </p>
           {/* O que muda na vida da pessoa vem primeiro. É interpretação: o
               título ("pode") e o texto (sempre condicional) deixam isso claro.
-              O texto fiel ao plano fica logo abaixo. */}
+              A fonte vem logo abaixo, para conferir no plano. */}
           {impacto && (
             <div className="border-l-2 border-brand pl-3">
               <p className="text-sm font-semibold text-ink">
@@ -71,49 +66,9 @@ export function CandidateColumn({
 
           {!impacto && resumo}
 
-          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
-
-          {(impacto || temCondicoes || temIncertezas) && (
-            <details className="group border-t border-line pt-3">
-              <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 py-2 text-sm font-medium text-ink transition-opacity active:opacity-60">
-                {impacto ? "O que o plano diz e o que falta" : "O que ainda falta"}
-                <span className="text-ink-faint transition group-open:rotate-180">
-                  ▾
-                </span>
-              </summary>
-              <div className="space-y-3 pb-3 text-sm">
-                {impacto && resumo}
-                {temCondicoes && (
-                  <div>
-                    <p className="font-semibold text-ink">
-                      Pra isso valer, precisa de
-                    </p>
-                    <ul className="mt-1 list-disc space-y-1 pl-5 text-ink-soft">
-                      {proposta.condicoes?.map((c, i) => (
-                        <li key={`${i}-${c}`}>{c}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {temIncertezas && (
-                  <div>
-                    <p className="font-semibold text-ink">
-                      O que ainda não está claro
-                    </p>
-                    <ul className="mt-1 list-disc space-y-1 pl-5 text-ink-soft">
-                      {proposta.incertezas?.map((c, i) => (
-                        <li key={`${i}-${c}`}>{c}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </details>
-          )}
-
-          {viabilidade &&<ViabilidadeSection viabilidade={viabilidade} />}
-
           <SourceList fontes={proposta.fontes} candidatura={candidatura} />
+
+          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
         </div>
       ) : (
         <div className="mt-3 space-y-2">

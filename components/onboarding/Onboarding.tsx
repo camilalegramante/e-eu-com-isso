@@ -9,13 +9,12 @@ import { Icon } from "@/components/ui/Icon";
 import { corDoTema } from "@/components/ui/coresTema";
 import { hrefRelatorio } from "@/lib/url-state";
 import { TODOS_OS_TEMAS } from "@/lib/types";
-import { getPerfil, getTema } from "@/lib/catalogs";
 
 // Chave usada por versões anteriores para guardar a seleção (só limpeza).
 const STORAGE_KEY = "eeci:selecao";
 // Só oferece temas que já têm conteúdo, para ninguém escolher algo vazio.
 const TEMAS_DISPONIVEIS = TEMAS.filter((t) => TEMAS_COM_CONTEUDO.includes(t.id));
-const PASSOS = ["Perfil", "Interesses", "Revisão"] as const;
+const PASSOS = ["Perfil", "Interesses"] as const;
 
 export function Onboarding() {
   const router = useRouter();
@@ -70,7 +69,7 @@ export function Onboarding() {
     <div className="mx-auto max-w-readable px-5 py-10">
       <Stepper passo={passo} onIr={setPasso} />
 
-      {/* No desktop, os três passos ficam empilhados na mesma célula do grid
+      {/* No desktop, os passos ficam empilhados na mesma célula do grid
           e só o atual aparece: a área tem a altura do passo mais alto, então
           nada "pula" ao avançar ou voltar. No celular, os ocultos saem do
           layout para o botão ficar logo abaixo do conteúdo. Os ocultos ficam
@@ -127,15 +126,6 @@ export function Onboarding() {
                 ))}
               </div>
             </fieldset>
-          ),
-          (
-            <Revisao
-              perfis={perfis}
-              interesses={interesses}
-              verTudo={verTudo}
-              onEditarPerfil={() => setPasso(0)}
-              onEditarInteresses={() => setPasso(1)}
-            />
           ),
         ].map((conteudo, i) => (
           <div
@@ -241,97 +231,5 @@ function Stepper({
         );
       })}
     </ol>
-  );
-}
-
-function Revisao({
-  perfis,
-  interesses,
-  verTudo,
-  onEditarPerfil,
-  onEditarInteresses,
-}: {
-  perfis: string[];
-  interesses: string[];
-  verTudo: boolean;
-  onEditarPerfil: () => void;
-  onEditarInteresses: () => void;
-}) {
-  const perfisLabels = perfis
-    .map((id) => getPerfil(id)?.rotulo)
-    .filter(Boolean) as string[];
-  const temasLabels = verTudo
-    ? ["Todos os temas"]
-    : (interesses.map((id) => getTema(id)?.rotulo).filter(Boolean) as string[]);
-
-  return (
-    <div className="mt-8">
-      <h2 className="font-display text-2xl font-semibold text-ink">
-        Confira suas escolhas
-      </h2>
-      <p className="mt-2 text-ink-soft">
-        Você pode editar antes de ver o relatório.
-      </p>
-
-      <div className="mt-6 space-y-4">
-        <ResumoBloco
-          titulo="Seu perfil"
-          itens={perfisLabels}
-          vazio="Nenhum perfil selecionado"
-          onEditar={onEditarPerfil}
-        />
-        <ResumoBloco
-          titulo="Seus interesses"
-          itens={temasLabels}
-          vazio="Nenhum tema selecionado. Escolha ao menos um para ver o relatório."
-          onEditar={onEditarInteresses}
-        />
-      </div>
-    </div>
-  );
-}
-
-function ResumoBloco({
-  titulo,
-  itens,
-  vazio,
-  onEditar,
-}: {
-  titulo: string;
-  itens: string[];
-  vazio: string;
-  onEditar: () => void;
-}) {
-  return (
-    <div className="rounded-xl2 border border-line bg-surface p-5">
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="font-semibold text-ink">{titulo}</h3>
-        <button
-          type="button"
-          onClick={onEditar}
-          className="-mx-2 inline-flex min-h-11 items-center px-2 text-sm font-medium text-brand underline transition-opacity hover:text-brand-ink active:opacity-60"
-        >
-          Editar
-        </button>
-      </div>
-      {itens.length > 0 ? (
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {itens.map((i) => (
-            <li
-              key={i}
-              className="rounded-full bg-paper px-3 py-1 text-sm text-ink-soft"
-            >
-              {i}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        // Mesma altura de uma linha de chips, para a revisão não crescer
-        // quando aparece o primeiro item.
-        <p className="mt-3 flex min-h-7 items-center text-sm text-ink-faint">
-          {vazio}
-        </p>
-      )}
-    </div>
   );
 }

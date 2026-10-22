@@ -26,6 +26,9 @@ const config: Config = {
         candA: { DEFAULT: "#15803D", soft: "#DCFCE7", ink: "#14532D" },
         candB: { DEFAULT: "#38BDF8", soft: "#E0F2FE", ink: "#075985" },
         brand: { DEFAULT: "#B45309", soft: "#F6E8D5", ink: "#7C3A06" },
+        // Destaque da análise no histórico: lilás, distinto do bege da marca
+        // e sem relação com as cores das candidaturas.
+        destaque: { DEFAULT: "#6B5CA5", soft: "#EFEAF8", ink: "#43357A" },
       },
       maxWidth: {
         content: "72rem",
