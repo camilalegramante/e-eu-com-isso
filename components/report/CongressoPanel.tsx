@@ -1,11 +1,20 @@
 import { Icon } from "@/components/ui/Icon";
 import { GraficoCongresso } from "@/components/report/GraficoCongresso";
-import { CONGRESSO, somaPorCampo } from "@/content/congresso";
+import {
+  CONGRESSO,
+  apoiosIndividuais,
+  somaPorCampo,
+} from "@/content/congresso";
 
 export function CongressoPanel() {
   const { regras, senado2027, fontes } = CONGRESSO;
   const soma = somaPorCampo();
   const somaSenado = somaPorCampo(senado2027);
+  const indCamara = apoiosIndividuais("camara");
+  const indSenado = apoiosIndividuais("senado");
+  const temIndividuais =
+    indCamara.flavio.length + indCamara.lula.length +
+      indSenado.flavio.length + indSenado.lula.length > 0;
 
   return (
     <section
@@ -64,6 +73,15 @@ export function CongressoPanel() {
               Os partidos que apoiam Flávio somam {soma.flavio} deputados e{" "}
               {somaSenado.flavio} senadores. Os que apoiam Lula somam {soma.lula}{" "}
               deputados e {somaSenado.lula} senadores.
+              {temIndividuais && (
+                <>
+                  {" "}
+                  Além disso, de partidos que não fecharam apoio,{" "}
+                  {indCamara.flavio.length} deputados e {indSenado.flavio.length}{" "}
+                  senadores declararam apoio a Flávio, e {indCamara.lula.length}{" "}
+                  deputados e {indSenado.lula.length} senadores, a Lula.
+                </>
+              )}
             </p>
             <p>
               Apoio na eleição não garante voto em cada projeto. Para mudar a
@@ -74,6 +92,9 @@ export function CongressoPanel() {
               <strong className="font-semibold text-ink">Como contamos:</strong>{" "}
               bancadas eleitas (TSE) e declarações de apoio no 2º turno. MDB, PSD e
               PSDB ficam em “outros” por estarem divididos ou terem liberado o apoio.
+              Quando um deputado ou senador desses partidos declarou apoio
+              com as próprias palavras, e conferimos a fonte, ele entra na barra
+              do candidato, no trecho mais claro. Essa lista não é completa.
               A composição ainda pode mudar até a posse.
             </p>
             <p>

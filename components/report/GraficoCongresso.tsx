@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import {
   CONGRESSO,
+  apoiosIndividuais,
   somaPorCampo,
   type PartidoCamara,
 } from "@/content/congresso";
@@ -69,10 +70,25 @@ export function GraficoCongresso() {
   });
   const dados = CASAS[casa];
   const soma = somaPorCampo(dados.partidos);
-  const somaGrupo = {
+  // Quem é de partido sem campo e declarou apoio sai de "outros" e entra na
+  // barra do candidato, num trecho mais claro.
+  const individuais = apoiosIndividuais(casa);
+  const extra = {
+    flavio: individuais.flavio.length,
+    lula: individuais.lula.length,
+    outros: 0,
+  };
+  const temExtra = extra.flavio + extra.lula > 0;
+  const somaPartidos = {
     flavio: soma.flavio,
     lula: soma.lula,
-    outros: soma.dividido + soma.neutro + soma.outros,
+    outros:
+      soma.dividido + soma.neutro + soma.outros - extra.flavio - extra.lula,
+  };
+  const somaGrupo = {
+    flavio: somaPartidos.flavio + extra.flavio,
+    lula: somaPartidos.lula + extra.lula,
+    outros: somaPartidos.outros,
   };
   const maiorPartido = Math.max(...dados.partidos.map((p) => p.cadeiras), 1);
   const pct = (n: number) => `${(n / dados.total) * 100}%`;
@@ -158,10 +174,18 @@ export function GraficoCongresso() {
                       aria-hidden
                     >
                       {/* Sem animação: é um dado lido contra as marcas de maioria e PEC. */}
-                      <span
-                        className={`block h-full rounded-full ${g.cor}`}
-                        style={{ width: pct(somaGrupo[g.id]) }}
-                      />
+                      <span className="flex h-full overflow-hidden rounded-full">
+                        <span
+                          className={`h-full ${g.cor}`}
+                          style={{ width: pct(somaPartidos[g.id]) }}
+                        />
+                        {extra[g.id] > 0 && (
+                          <span
+                            className={`h-full ${g.cor} opacity-45`}
+                            style={{ width: pct(extra[g.id]) }}
+                          />
+                        )}
+                      </span>
                       <span
                         className="absolute -top-1 h-5 w-0.5 bg-ink"
                         style={{ left: pct(dados.maioria) }}
@@ -206,6 +230,44 @@ export function GraficoCongresso() {
                         </li>
                       );
                     })}
+                    {g.id === "outros" && temExtra && (
+                      <li className="pt-1 text-xs text-ink-faint">
+                        {extra.flavio + extra.lula} {dados.unidade} desses
+                        partidos declararam apoio e foram contados nas barras de
+                        Flávio ou Lula.
+                      </li>
+                    )}
+                    {g.id !== "outros" && extra[g.id] > 0 && (
+                      <li className="border-t border-line pt-3">
+                        <p className="text-sm font-medium text-ink">
+                          + {extra[g.id]} de outros partidos que declararam apoio
+                        </p>
+                        <ul className="mt-2 space-y-2">
+                          {individuais[g.id].map((a) => (
+                            <li key={a.nome} className="text-sm">
+                              <span className="font-medium text-ink">{a.nome}</span>{" "}
+                              <span className="text-xs text-ink-faint">
+                                ({a.partido}-{a.uf})
+                              </span>
+                              <span className="mt-0.5 block text-ink-soft">
+                                {a.fala && <>“{a.fala}” </>}
+                                {a.registro && (
+                                  <span className="text-ink-faint">{a.registro} </span>
+                                )}
+                                <a
+                                  href={a.fonte.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="whitespace-nowrap underline decoration-line underline-offset-2 hover:text-ink"
+                                >
+                                  {a.fonte.titulo}
+                                </a>
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    )}
                   </ul>
                 </details>
               </li>
@@ -225,6 +287,12 @@ export function GraficoCongresso() {
             />
             Mudar a Constituição: {dados.pec}
           </span>
+          {temExtra && (
+            <span className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-sm bg-ink/35 opacity-45" aria-hidden />
+              Mais claro: apoio declarado por {dados.unidade} de outros partidos
+            </span>
+          )}
         </div>
       </div>
     </div>

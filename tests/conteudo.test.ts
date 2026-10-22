@@ -3,6 +3,7 @@ import { TODAS_PROPOSTAS, propostasDoTema } from "@/content/propostas";
 import { TEMAS_COM_CONTEUDO } from "@/content/temas";
 import { CANDIDATURAS } from "@/content/candidaturas";
 import { PONTOS_DE_ATENCAO } from "@/content/historico";
+import { APOIOS_INDIVIDUAIS, CONGRESSO, somaPorCampo } from "@/content/congresso";
 import { isCandidaturaId, isPerfilId, isTemaId } from "@/lib/catalogs";
 
 const URL_OK = /^(https?:\/\/|\/fontes\/)/;
@@ -82,5 +83,36 @@ describe("integridade do histórico (pontos de atenção)", () => {
   it("ids são únicos", () => {
     const ids = PONTOS_DE_ATENCAO.map((h) => h.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe("integridade dos apoios individuais no Congresso", () => {
+  const listaDa = (casa: "camara" | "senado") =>
+    casa === "camara" ? CONGRESSO.camara2027 : CONGRESSO.senado2027;
+
+  it("só entra quem é de partido sem campo definido na Casa", () => {
+    for (const a of APOIOS_INDIVIDUAIS) {
+      const partido = listaDa(a.casa).find((p) => p.sigla === a.partido);
+      expect(partido, `${a.nome}: partido ${a.partido}`).toBeDefined();
+      expect(partido?.campo === "flavio" || partido?.campo === "lula", a.nome).toBe(false);
+    }
+  });
+
+  it("não tira de 'outros' mais cadeiras do que existem", () => {
+    for (const casa of ["camara", "senado"] as const) {
+      const soma = somaPorCampo(listaDa(casa));
+      const n = APOIOS_INDIVIDUAIS.filter((a) => a.casa === casa).length;
+      expect(n).toBeLessThanOrEqual(soma.dividido + soma.neutro + soma.outros);
+    }
+  });
+
+  it("cada nome aparece uma vez, com data e fonte https", () => {
+    const nomes = APOIOS_INDIVIDUAIS.map((a) => a.nome);
+    expect(new Set(nomes).size).toBe(nomes.length);
+    for (const a of APOIOS_INDIVIDUAIS) {
+      expect(a.data, a.nome).toMatch(/^\d{4}-\d{2}(-\d{2})?$/);
+      expect(a.fonte.url, a.nome).toMatch(/^https:\/\//);
+      expect((a.fala ?? a.registro ?? "").trim().length, a.nome).toBeGreaterThan(0);
+    }
   });
 });
