@@ -70,9 +70,9 @@ export function CandidateColumn({
 
           <SourceList fontes={proposta.fontes} candidatura={candidatura} />
 
-          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
-
           <JaFezSection acoes={getAcoesNaDirecao(proposta.id)} />
+
+          <HistoricoSection pontos={getPontosDeAtencao(proposta.id)} />
         </div>
       ) : (
         <div className="mt-3 space-y-2">
